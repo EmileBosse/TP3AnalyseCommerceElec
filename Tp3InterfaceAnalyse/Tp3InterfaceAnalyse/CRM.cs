@@ -71,6 +71,7 @@ namespace Tp3InterfaceAnalyse
             }
             return null;
         }
+
         private static Boolean isValidConnectionString(String connectionString)
         {
             //Vérifie si c'est la bonne ligne pour CRM
@@ -86,11 +87,11 @@ namespace Tp3InterfaceAnalyse
         public Guid getEmployeID(string nomEmploye, string prenomEmploye)
         {
             QueryExpression queryExp = new QueryExpression();
-            queryExp.EntityName = "Employé universitéJKWE";
+            queryExp.EntityName = "new_employeuniversietjkwe";
             queryExp.ColumnSet = new ColumnSet();
             queryExp.ColumnSet.Columns.Add("new_employeuniversietjkweid");
             ConditionExpression conExp1 = new ConditionExpression();
-            conExp1.AttributeName = "new_nom";
+            conExp1.AttributeName = "new_name";
             conExp1.Operator = ConditionOperator.Equal;
             conExp1.Values.Add(nomEmploye);
             ConditionExpression conExp2 = new ConditionExpression();
@@ -126,7 +127,7 @@ namespace Tp3InterfaceAnalyse
 
         public void getentityRecord()
         {
-            Guid guidEmployeId = null;
+            Guid guidEmployeId = Guid.Empty;
             Entity entity = RetrieveEntityById("", guidEmployeId);
             if(entity.Attributes.Contains("name"))
             {
