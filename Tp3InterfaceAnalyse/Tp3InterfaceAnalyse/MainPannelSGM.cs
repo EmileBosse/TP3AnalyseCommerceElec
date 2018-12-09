@@ -43,9 +43,16 @@ namespace Tp3InterfaceAnalyse
 
         private void MainPannelSGM_Load(object sender, EventArgs e)
         {
-            lbMissionsSGM.DisplayMember = "new_name";
-            lbMissionsSGM.ValueMember = "new_missionjkweid";
-            //lbMissionsSGM.Items.Add(crm.RetrieveMissions().ForEach(e => new ListItem("lol","lol")));
+            lbMissionsSGM.DisplayMember = "nom";
+            lbMissionsSGM.ValueMember = "identifiant";
+            var resultat = new List<Mission>();
+
+            foreach(var item in crm.RetrieveMissions())
+            {
+                var nom = item.Attributes["new_name"].ToString();
+                var id = item.Attributes["new_missionjkweid"].ToString();
+                lbMissionsSGM.Items.Add(new ListItem(nom,id));
+            }
         }
     }
 }
