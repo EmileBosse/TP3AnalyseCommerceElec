@@ -13,7 +13,7 @@ using Microsoft.Xrm.Sdk.Query;
 
 namespace Tp3InterfaceAnalyse
 {
-    class CRM
+    public class CRM
     {
 
         //CRM related
@@ -125,7 +125,7 @@ namespace Tp3InterfaceAnalyse
             return entityRecord;
         }
 
-        public void getentityRecord()
+        public void getMissions()
         {
             Guid guidEmployeId = Guid.Empty;
             Entity entity = RetrieveEntityById("", guidEmployeId);
@@ -136,5 +136,28 @@ namespace Tp3InterfaceAnalyse
         }
 
         #endregion
+
+        public List<Entity> RetrieveMissions()
+        {
+            var result = new List<Entity>();
+
+            QueryExpression queryExp = new QueryExpression();
+            queryExp.EntityName = "new_missionjkwe";
+            queryExp.ColumnSet = new ColumnSet();
+            queryExp.ColumnSet.Columns.Add("new_missionjkweid");
+            queryExp.ColumnSet.Columns.Add("new_name");
+            EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
+            if (contCollection.Entities.Count > 0)
+            {
+                result.AddRange(contCollection.Entities.ToList());
+                return result;
+                
+            }
+            else
+            {
+                return result;
+            }
+        }
+
     }
 }

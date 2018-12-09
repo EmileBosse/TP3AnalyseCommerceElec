@@ -30,6 +30,8 @@
         {
             this.gbQuestionSGM = new System.Windows.Forms.GroupBox();
             this.gbGeneralSGM = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnPaysOriginSGM = new System.Windows.Forms.Button();
             this.btnTrieCycleEtudeSGM = new System.Windows.Forms.Button();
             this.lblMissionListSGM = new System.Windows.Forms.Label();
@@ -53,8 +55,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblNomEtudiantSGM = new System.Windows.Forms.Label();
             this.lblCodePermanentSGM = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.gbGeneralSGM.SuspendLayout();
             this.gbEtudiantSGM.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +84,24 @@
             this.gbGeneralSGM.TabIndex = 2;
             this.gbGeneralSGM.TabStop = false;
             this.gbGeneralSGM.Text = "Sélection";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(132, 151);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(68, 23);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Programme";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(132, 175);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(137, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "établissement origine";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // btnPaysOriginSGM
             // 
@@ -292,24 +310,6 @@
             this.lblCodePermanentSGM.TabIndex = 0;
             this.lblCodePermanentSGM.Text = "Code permanent :";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(132, 175);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "établissement origine";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(132, 151);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(68, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Programme";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // MainPannelSGM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,6 +321,7 @@
             this.Name = "MainPannelSGM";
             this.Text = "Systeme de Gestion de Mission";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainPannelSGM_FormClosing);
+            this.Load += new System.EventHandler(this.MainPannelSGM_Load);
             this.gbGeneralSGM.ResumeLayout(false);
             this.gbGeneralSGM.PerformLayout();
             this.gbEtudiantSGM.ResumeLayout(false);

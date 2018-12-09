@@ -48,7 +48,7 @@ namespace Tp3InterfaceAnalyse
             {
                 MainPannelSGM main = new MainPannelSGM();
                 main.setPreviousWindow(this);
-                //main.setCrmGen(crm);
+                main.SetCrmGen(crm);
                 main.Show();
                 this.Hide();
             }

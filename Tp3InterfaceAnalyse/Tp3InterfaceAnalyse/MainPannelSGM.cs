@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
 namespace Tp3InterfaceAnalyse
@@ -24,18 +25,27 @@ namespace Tp3InterfaceAnalyse
         {
             previousWindow = window;
         }
-        /*
-        public void setCrmGen(CRM crmGen)
+
+
+        public void SetCrmGen(CRM crmGen)
         {
-            this.crm = crmGen;
+            crm = crmGen;
         }
-        */
+
+
         private void MainPannelSGM_FormClosing(object sender, FormClosingEventArgs e)
         {
             if(this.previousWindow != null)
             {
                 this.previousWindow.Close();
             }
+        }
+
+        private void MainPannelSGM_Load(object sender, EventArgs e)
+        {
+            lbMissionsSGM.DisplayMember = "new_name";
+            lbMissionsSGM.ValueMember = "new_missionjkweid";
+            //lbMissionsSGM.Items.Add(crm.RetrieveMissions().ForEach(e => new ListItem("lol","lol")));
         }
     }
 }
