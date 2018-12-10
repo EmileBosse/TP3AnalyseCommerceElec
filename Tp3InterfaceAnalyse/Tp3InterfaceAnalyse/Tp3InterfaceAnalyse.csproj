@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="CRM.cs" />
     <Compile Include="Employe.cs" />
+    <Compile Include="Etablissement.cs" />
     <Compile Include="Etudiant.cs" />
     <Compile Include="MainPannelSGM.cs">
       <SubType>Form</SubType>

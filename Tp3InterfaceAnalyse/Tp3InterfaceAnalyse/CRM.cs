@@ -257,5 +257,31 @@ namespace Tp3InterfaceAnalyse
             }
             return result;
         }
+
+        public List<Entity> RetrieveEtablissementForMisson(string idMission)
+        {
+            var result = new List<Entity>();
+
+            QueryExpression queryExp = new QueryExpression();
+            queryExp.EntityName = "new_etablissementjkwe";
+            queryExp.ColumnSet = new ColumnSet();
+            queryExp.ColumnSet.Columns.Add("new_name");
+            queryExp.ColumnSet.Columns.Add("new_etablissementjkweid");
+
+            LinkEntity link = queryExp.AddLink("new_new_etablissementjkwe_new_missionjkwe", "new_etablissementjkweid", "new_etablissementjkweid", JoinOperator.Inner);
+            //link.Columns.AddColumn("new_new_etablissementjkwe_new_missionjkwe");
+            link.Columns.AddColumn("new_missionjkweid");
+            link.EntityAlias = "etablissementsliees";
+            queryExp.Criteria = new FilterExpression();
+            queryExp.Criteria.AddCondition("etablissementsliees", "new_missionjkweid", ConditionOperator.Equal, idMission);
+
+            EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
+
+            if (contCollection.Entities.Count > 0)
+            {
+                result.AddRange(contCollection.Entities.ToList());
+            }
+            return result;
+        }
     }
 }
