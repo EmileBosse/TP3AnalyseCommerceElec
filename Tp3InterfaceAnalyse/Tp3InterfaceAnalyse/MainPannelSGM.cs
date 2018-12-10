@@ -67,7 +67,6 @@ namespace Tp3InterfaceAnalyse
 
         private void lbMissionsSGM_SelectedValueChanged(object sender, EventArgs e)
         {
-
             List<Etudiant> result = new List<Etudiant>();
 
             if (lbMissionsSGM.SelectedIndex != -1)
@@ -114,7 +113,30 @@ namespace Tp3InterfaceAnalyse
 
         private void gvEtudiant_SelectionChanged(object sender, EventArgs e)
         {
-            //MessageBox.Show("on change");
+            List<Question> result = new List<Question>();
+
+            var rowsCount = gvEtudiant.SelectedRows.Count;
+            if (rowsCount == 0 || rowsCount > 1) return;
+
+            var row = gvEtudiant.SelectedRows[0];
+            if (row == null) return;
+
+            // Get questions de l'étudiant
+            var idEtudiant = gvEtudiant.CurrentRow.Cells["identifiant"].Value.ToString();
+            foreach(var item in crm.RetrieveQuestionForEtudiant(idEtudiant))
+            {
+                var nom = item.Attributes["new_name"].ToString();
+                var id = item.Attributes["new_questionjkweid"].ToString();
+                var libelle = item.Attributes["new_libelle"].ToString();
+                result.Add(new Question(nom, id, libelle));
+            }
+
+            gvQuestions.AutoGenerateColumns = true;
+            gvQuestions.Columns.Clear();
+            var bindingList = new BindingList<Question>(result);
+            gvQuestions.DataSource = new BindingSource(bindingList, null);
+                
+            
         }
 
         #region tabEtudiant
@@ -160,6 +182,36 @@ namespace Tp3InterfaceAnalyse
                     etudiants.Add(new Etudiant(nom, id, prenom, adresse, ville, pays, codepermanent));
                 }
             }
+        }
+
+        private void btnPaysOriginSGM_Click(object sender, EventArgs e)
+        {
+            // Trier selon le pays en ordre alphabetique
+        }
+
+        private void btnTrieCycleEtudeSGM_Click(object sender, EventArgs e)
+        {
+            // Trier selon le cycle d'etude en ordre alphabetique
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Trier selon le programme d'etude en ordre alphabetique
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Trier selon l'etablissement d'origine en ordre alphabetique
+        }
+
+        private void gvQuestions_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void lblQuestions_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
