@@ -45,7 +45,6 @@ namespace Tp3InterfaceAnalyse
         {
             lbMissionsSGM.DisplayMember = "nom";
             lbMissionsSGM.ValueMember = "identifiant";
-            var resultat = new List<Mission>();
 
             foreach(var item in crm.RetrieveMissions())
             {
@@ -54,15 +53,24 @@ namespace Tp3InterfaceAnalyse
                 lbMissionsSGM.Items.Add(new ListItem(nom,id));
             }
 
-            //lbMissionsSGM.SelectedIndex = 0;
-
-
         }
 
         private void lbMissionsSGM_SelectedValueChanged(object sender, EventArgs e)
         {
+
             if (lbMissionsSGM.SelectedIndex != -1)
-                crm.RetrieveEtudiantForMission(((ListItem)lbMissionsSGM.SelectedItem).Value);
+            {
+                lbMissionsSGM.DisplayMember = "nom";
+                lbMissionsSGM.ValueMember = "identifiant";
+
+                lbEtudiantsSGM.Items.Clear();
+                foreach (var item in crm.RetrieveEtudiantForMission(((ListItem)lbMissionsSGM.SelectedItem).Value))
+                {
+                    var nom = item.Attributes["new_name"].ToString();
+                    var id = item.Attributes["new_etudiantjkweid"].ToString();
+                    lbEtudiantsSGM.Items.Add(new ListItem(nom, id));
+                }
+            }
         }
     }
 }

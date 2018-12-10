@@ -10,6 +10,7 @@ using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Client;
 using Microsoft.Xrm.Client.Services;
 using Microsoft.Xrm.Sdk.Query;
+using Microsoft.Xrm.Sdk.Deployment;
 
 namespace Tp3InterfaceAnalyse
 {
@@ -141,7 +142,7 @@ namespace Tp3InterfaceAnalyse
             {
                 result.AddRange(contCollection.Entities.ToList());
                 return result;
-                
+
             }
             else
             {
@@ -164,14 +165,13 @@ namespace Tp3InterfaceAnalyse
             queryExp.ColumnSet.Columns.Add("new_codepermanent");
             queryExp.ColumnSet.Columns.Add("new_etudiantjkweid");
 
-            queryExp.LinkEntities.Add(new LinkEntity("new_etudiantjkwe", "new_missionjkwe", "new_etudiantjkweId", "new_missionjkweid", JoinOperator.Inner));
-            queryExp.LinkEntities[0].Columns.AddColumns("new_name", "new_missionjkweid");
-            queryExp.LinkEntities[0].EntityAlias = "MissionsLiees";
+            LinkEntity link = queryExp.AddLink("new_new_etudiantjkwe_new_missionjkwe", "new_etudiantjkweid", "new_etudiantjkweid", JoinOperator.Inner);
+            link.Columns.AddColumn("new_new_etudiantjkwe_new_missionjkweid");
+            link.Columns.AddColumn("new_missionjkweid");
+            link.EntityAlias = "missionsliees";
+            queryExp.Criteria = new FilterExpression();
+            queryExp.Criteria.AddCondition("missionsliees", "new_missionjkweid", ConditionOperator.Equal, idMission);
 
-            ConditionExpression conExp1 = new ConditionExpression();
-            conExp1.AttributeName = "new_etudiantjkweid";
-            conExp1.Operator = ConditionOperator.Equal;
-            conExp1.Values.Add(idMission);
 
             EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
             if (contCollection.Entities.Count > 0)
@@ -179,7 +179,7 @@ namespace Tp3InterfaceAnalyse
                 result.AddRange(contCollection.Entities.ToList());
             }
             return result;
-        }
 
+        }
     }
 }

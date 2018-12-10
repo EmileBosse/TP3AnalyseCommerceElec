@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tp3InterfaceAnalyse
 {
-    class Mission
+    public class Mission
     {
         private string identifiant;
         private string nom;
