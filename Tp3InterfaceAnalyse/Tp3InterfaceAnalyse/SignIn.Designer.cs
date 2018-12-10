@@ -79,6 +79,7 @@
             this.btnAnnulerSignIn.TabIndex = 4;
             this.btnAnnulerSignIn.Text = "annuler";
             this.btnAnnulerSignIn.UseVisualStyleBackColor = true;
+            this.btnAnnulerSignIn.Click += new System.EventHandler(this.btnAnnulerSignIn_Click);
             // 
             // lblPrenom
             // 

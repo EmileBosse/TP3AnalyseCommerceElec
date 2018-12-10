@@ -212,7 +212,7 @@ namespace Tp3InterfaceAnalyse
                     break;
                 case Btn1State.confirmerAjout:
                     //throw the creation action to CRM
-
+                    crm.CreateEtudiant(new Etudiant(txtNomSGM.Text, new Guid().ToString(), txtPrenomSGM.Text, txtAdresseSGM.Text, txtVilleSGM.Text, txtPaysSGM.Text, txtCodePermanentSGM.Text));
                     onloadEtudiantTab();
                     enableEtudiantFields(false);
                     //switch btn1 to ajouter
