@@ -150,6 +150,32 @@ namespace Tp3InterfaceAnalyse
             }
         }
 
+        public List<Entity> RetrieveEtudiants()
+        {
+            var result = new List<Entity>();
+
+            QueryExpression queryExp = new QueryExpression();
+            queryExp.EntityName = "new_etudiantjkwe";
+            queryExp.ColumnSet = new ColumnSet();
+            queryExp.ColumnSet.Columns.Add("new_name");
+            queryExp.ColumnSet.Columns.Add("new_prenom");
+            queryExp.ColumnSet.Columns.Add("new_adresse");
+            queryExp.ColumnSet.Columns.Add("new_pays");
+            queryExp.ColumnSet.Columns.Add("new_ville");
+            queryExp.ColumnSet.Columns.Add("new_codepermanent");
+            queryExp.ColumnSet.Columns.Add("new_etudiantjkweid");
+            EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
+            if (contCollection.Entities.Count > 0)
+            {
+                result.AddRange(contCollection.Entities.ToList());
+                return result;
+            }
+            else
+            {
+                return result;
+            }
+        }
+
         public List<Entity> RetrieveMissions()
         {
             var result = new List<Entity>();

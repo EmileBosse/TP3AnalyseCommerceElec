@@ -51,6 +51,7 @@
             this.txtNomSignIn.Name = "txtNomSignIn";
             this.txtNomSignIn.Size = new System.Drawing.Size(138, 20);
             this.txtNomSignIn.TabIndex = 1;
+            this.txtNomSignIn.Text = "Bond";
             // 
             // txtPrenomSignIn
             // 
@@ -58,6 +59,7 @@
             this.txtPrenomSignIn.Name = "txtPrenomSignIn";
             this.txtPrenomSignIn.Size = new System.Drawing.Size(138, 20);
             this.txtPrenomSignIn.TabIndex = 2;
+            this.txtPrenomSignIn.Text = "James";
             // 
             // btnConnexionSignIn
             // 

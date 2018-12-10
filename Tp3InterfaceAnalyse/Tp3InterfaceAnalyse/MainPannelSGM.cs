@@ -16,10 +16,12 @@ namespace Tp3InterfaceAnalyse
         private SignIn previousWindow;
         private CRM crm;
         private Employe employe;
+        private List<Etudiant> etudiants;
 
         public MainPannelSGM()
         {
             InitializeComponent();
+            etudiants = new List<Etudiant>();
         }
 
         public void setPreviousWindow(SignIn window)
@@ -100,11 +102,6 @@ namespace Tp3InterfaceAnalyse
 
         }
 
-        private void lbEtudiantsSGM_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void lblEtudiantListSGM_Click(object sender, EventArgs e)
         {
 
@@ -112,7 +109,57 @@ namespace Tp3InterfaceAnalyse
 
         private void gvEtudiant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("on clique");
+            
+        }
+
+        private void gvEtudiant_SelectionChanged(object sender, EventArgs e)
+        {
+            //MessageBox.Show("on change");
+        }
+
+        #region tabEtudiant
+        private void lbEtudiantsSGM_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //here we need to fill the info box to the right
+            MessageBox.Show(lbEtudiantsSGM.SelectedItem.ToString());
+            //MessageBox.Show(lbEtudiantsSGM.SelectedValue.ToString());
+            foreach (Etudiant et in etudiants)
+            {
+                if(et.Identifiant == lbEtudiantsSGM.SelectedValue.ToString())
+                {
+                    txtCodePermanentSGM.Text = et.CodePermanent;
+                    txtNomSGM.Text = et.Nom;
+                    txtPrenomSGM.Text = et.Prenom;
+                    txtAdresseSGM.Text = et.Adresse;
+                    txtVilleSGM.Text = et.Ville;
+                    txtPaysSGM.Text = et.Pays;
+                    //this one should be added in CRM
+                    //txtEtatSGM.Text = et.Etat;
+                }
+            }
+        }
+
+        #endregion
+
+        private void tabRecherche_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(tabRecherche.SelectedTab.Name.ToString());
+            if (tabRecherche.SelectedTab.Name.ToString() == "tabEtudiant")
+            {
+                foreach (var item in crm.RetrieveEtudiants())
+                {
+                    var id = item.Attributes["new_etudiantjkweid"].ToString();
+                    var nom = item.Attributes["new_name"].ToString();
+                    var pays = item.Attributes["new_pays"].ToString();
+                    var prenom = item.Attributes["new_prenom"].ToString();
+                    var adresse = item.Attributes["new_adresse"].ToString();
+                    var ville = item.Attributes["new_ville"].ToString();
+                    var codepermanent = item.Attributes["new_codepermanent"].ToString();
+                    lbEtudiantsSGM.Items.Add(new ListItem(nom, id));
+                    MessageBox.Show(nom + ", " + id);
+                    etudiants.Add(new Etudiant(nom, id, prenom, adresse, ville, pays, codepermanent));
+                }
+            }
         }
     }
 }
