@@ -58,6 +58,8 @@ namespace Tp3InterfaceAnalyse
         private void lbMissionsSGM_SelectedValueChanged(object sender, EventArgs e)
         {
 
+            List<Etudiant> result = new List<Etudiant>();
+
             if (lbMissionsSGM.SelectedIndex != -1)
             {
                 lbMissionsSGM.DisplayMember = "nom";
@@ -69,8 +71,19 @@ namespace Tp3InterfaceAnalyse
                     var nom = item.Attributes["new_name"].ToString();
                     var id = item.Attributes["new_etudiantjkweid"].ToString();
                     lbEtudiantsSGM.Items.Add(new ListItem(nom, id));
+                    result.Add(new Etudiant(nom, id));
                 }
+
+                var source = new BindingSource();
+                source.DataSource = result;
+                gvEtudiant.DataSource = source;
             }
         }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

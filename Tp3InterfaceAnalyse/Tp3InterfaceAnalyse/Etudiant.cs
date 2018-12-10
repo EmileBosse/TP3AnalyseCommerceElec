@@ -20,6 +20,12 @@ namespace Tp3InterfaceAnalyse
         {
         }
 
+        public Etudiant(string pNom, string id)
+        {
+            nom = pNom;
+            identifiant = id;
+        }
+
         public Etudiant(string pNom, string id, string pPrenom, string pAdresse, string pVille, string pPays, string pCodePermanent)
         {
             nom = pNom;
