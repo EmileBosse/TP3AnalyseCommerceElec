@@ -32,8 +32,6 @@
             this.gbGeneralSGM = new System.Windows.Forms.GroupBox();
             this.lblEtudiantsAccueil = new System.Windows.Forms.Label();
             this.gvEtudiant = new System.Windows.Forms.DataGridView();
-            this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnPaysOriginSGM = new System.Windows.Forms.Button();
@@ -69,6 +67,12 @@
             this.tabEtudiant = new System.Windows.Forms.TabPage();
             this.tabEmploye = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pays = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Adresse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VIle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodePermanent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbGeneralSGM.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvEtudiant)).BeginInit();
             this.gbEtudiantSGM.SuspendLayout();
@@ -120,27 +124,17 @@
             this.gvEtudiant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvEtudiant.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nom,
-            this.prenom});
+            this.prenom,
+            this.Pays,
+            this.Adresse,
+            this.VIle,
+            this.CodePermanent});
             this.gvEtudiant.Location = new System.Drawing.Point(147, 32);
             this.gvEtudiant.Name = "gvEtudiant";
             this.gvEtudiant.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gvEtudiant.Size = new System.Drawing.Size(516, 173);
             this.gvEtudiant.TabIndex = 9;
             this.gvEtudiant.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvEtudiant_CellContentClick);
-            // 
-            // nom
-            // 
-            this.nom.DataPropertyName = "nom";
-            this.nom.HeaderText = "Nom";
-            this.nom.Name = "nom";
-            this.nom.ReadOnly = true;
-            // 
-            // prenom
-            // 
-            this.prenom.DataPropertyName = "prenom";
-            this.prenom.HeaderText = "Prénom";
-            this.prenom.Name = "prenom";
-            this.prenom.ReadOnly = true;
             // 
             // button2
             // 
@@ -474,6 +468,40 @@
             this.listBox1.TabIndex = 2;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.lbEtudiantsSGM_SelectedIndexChanged);
             // 
+            // prenom
+            // 
+            this.prenom.DataPropertyName = "prenom";
+            this.prenom.HeaderText = "Prénom";
+            this.prenom.Name = "prenom";
+            this.prenom.ReadOnly = true;
+            // 
+            // nom
+            // 
+            this.nom.DataPropertyName = "nom";
+            this.nom.HeaderText = "Nom";
+            this.nom.Name = "nom";
+            this.nom.ReadOnly = true;
+            // 
+            // Pays
+            // 
+            this.Pays.HeaderText = "Pays";
+            this.Pays.Name = "Pays";
+            // 
+            // Adresse
+            // 
+            this.Adresse.HeaderText = "Adresse";
+            this.Adresse.Name = "Adresse";
+            // 
+            // VIle
+            // 
+            this.VIle.HeaderText = "Vile";
+            this.VIle.Name = "VIle";
+            // 
+            // CodePermanent
+            // 
+            this.CodePermanent.HeaderText = "CodePermanent";
+            this.CodePermanent.Name = "CodePermanent";
+            // 
             // MainPannelSGM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -539,10 +567,14 @@
         private System.Windows.Forms.DataGridView gvQuestions;
         private System.Windows.Forms.DataGridView gvEtudiant;
         private System.Windows.Forms.Label lblQuestions;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prenom;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label lblEtudiantsAccueil;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prenom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pays;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Adresse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VIle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodePermanent;
     }
 }
 

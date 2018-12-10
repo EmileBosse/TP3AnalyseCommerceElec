@@ -68,15 +68,22 @@ namespace Tp3InterfaceAnalyse
                 lbEtudiantsSGM.Items.Clear();
                 foreach (var item in crm.RetrieveEtudiantForMission(((ListItem)lbMissionsSGM.SelectedItem).Value))
                 {
-                    var nom = item.Attributes["new_name"].ToString();
                     var id = item.Attributes["new_etudiantjkweid"].ToString();
+                    var nom = item.Attributes["new_name"].ToString();
+                    var pays = item.Attributes["new_pays"].ToString();
+                    var prenom = item.Attributes["new_prenom"].ToString();
+                    var adresse = item.Attributes["new_adresse"].ToString();
+                    var ville = item.Attributes["new_ville"].ToString();
+                    var codepermanent = item.Attributes["new_codepermanent"].ToString();
                     lbEtudiantsSGM.Items.Add(new ListItem(nom, id));
-                    result.Add(new Etudiant(nom, id));
+                    result.Add(new Etudiant(nom, id, prenom, adresse, ville, pays, codepermanent));
                 }
 
                 gvEtudiant.AutoGenerateColumns = true;
+                gvEtudiant.Columns.Clear();
                 var bindinList = new BindingList<Etudiant>(result);
                 gvEtudiant.DataSource = new BindingSource(bindinList, null);
+                gvEtudiant.Columns["Identifiant"].Visible = false;
             }
         }
 
