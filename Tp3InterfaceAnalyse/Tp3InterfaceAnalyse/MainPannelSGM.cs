@@ -118,24 +118,168 @@ namespace Tp3InterfaceAnalyse
         }
 
         #region tabEtudiant
+        private enum Btn1State { ajouter, confirmerAjout, confirmerModif};
+        private Btn1State btn1State = Btn1State.ajouter;
+        private enum Btn2State { modifier, annulerAjout, annulerModif };
+        private Btn2State btn2State = Btn2State.modifier;
+
         private void lbEtudiantsSGM_SelectedIndexChanged(object sender, EventArgs e)
         {
             //here we need to fill the info box to the right
-            MessageBox.Show(lbEtudiantsSGM.SelectedItem.ToString());
-            //MessageBox.Show(lbEtudiantsSGM.SelectedValue.ToString());
-            foreach (Etudiant et in etudiants)
+            clearEtudiantFields(false);
+        }
+
+        private void enableEtudiantFields(bool enable)
+        {
+            txtCodePermanentSGM.Enabled = enable;
+            txtNomSGM.Enabled = enable;
+            txtPrenomSGM.Enabled = enable;
+            txtAdresseSGM.Enabled = enable;
+            txtVilleSGM.Enabled = enable;
+            txtPaysSGM.Enabled = enable;
+            txtEtatSGM.Enabled = enable;
+
+            lbEtudiantsSGM.Enabled = !enable;
+        }
+
+        private void clearEtudiantFields(bool clear)
+        {
+            if (clear)
             {
-                if(et.Identifiant == lbEtudiantsSGM.SelectedValue.ToString())
+                txtCodePermanentSGM.Text = "";
+                txtNomSGM.Text = "";
+                txtPrenomSGM.Text = "";
+                txtAdresseSGM.Text = "";
+                txtVilleSGM.Text = "";
+                txtPaysSGM.Text = "";
+                txtEtatSGM.Text = "";
+            }
+            else
+            {
+                foreach (Etudiant et in etudiants)
                 {
-                    txtCodePermanentSGM.Text = et.CodePermanent;
-                    txtNomSGM.Text = et.Nom;
-                    txtPrenomSGM.Text = et.Prenom;
-                    txtAdresseSGM.Text = et.Adresse;
-                    txtVilleSGM.Text = et.Ville;
-                    txtPaysSGM.Text = et.Pays;
-                    //this one should be added in CRM
-                    //txtEtatSGM.Text = et.Etat;
+                    if (et.Nom + ", " + et.Prenom == lbEtudiantsSGM.SelectedItem.ToString())
+                    {
+                        txtCodePermanentSGM.Text = et.CodePermanent;
+                        txtNomSGM.Text = et.Nom;
+                        txtPrenomSGM.Text = et.Prenom;
+                        txtAdresseSGM.Text = et.Adresse;
+                        txtVilleSGM.Text = et.Ville;
+                        txtPaysSGM.Text = et.Pays;
+                        //this one should be added in CRM
+                        //txtEtatSGM.Text = et.Etat;
+                    }
                 }
+            }
+        }
+
+        private void btnAction1EtudiantSGM_Click(object sender, EventArgs e)
+        {
+            switch (btn1State)
+            {
+                case Btn1State.ajouter:
+                    //clear all the fields
+                    enableEtudiantFields(true);
+                    clearEtudiantFields(true);
+                    //switch btn1 to confirmerAjout
+                    btn1State = Btn1State.confirmerAjout;
+                    btnAction1EtudiantSGM.Text = "Confirmer";
+                    //switch btn2 to annulerAjout
+                    btn2State = Btn2State.annulerAjout;
+                    btnAction2EtudiantSGM.Text = "Annuler";
+                    break;
+                case Btn1State.confirmerAjout:
+                    //throw the creation action to CRM
+
+                    onloadEtudiantTab();
+                    enableEtudiantFields(false);
+                    //switch btn1 to ajouter
+                    btn1State = Btn1State.ajouter;
+                    btnAction1EtudiantSGM.Text = "Ajouter";
+                    //switch btn2 to modifier
+                    btn2State = Btn2State.modifier;
+                    btnAction2EtudiantSGM.Text = "Modifier";
+                    break;
+                case Btn1State.confirmerModif:
+                    //throw the modification action to CRM
+
+                    onloadEtudiantTab();
+                    enableEtudiantFields(false);
+                    //switch btn1 to ajouter
+                    btn1State = Btn1State.ajouter;
+                    btnAction1EtudiantSGM.Text = "Ajouter";
+                    //switch btn2 to modifier
+                    btn2State = Btn2State.modifier;
+                    btnAction1EtudiantSGM.Text = "Modifier";
+                    break;
+            }
+        }
+
+        private void btnAction2EtudiantSGM_Click(object sender, EventArgs e)
+        {
+            switch (btn2State)
+            {
+                case Btn2State.modifier:
+                    //Enable the fields
+                    enableEtudiantFields(true);
+                    //switch btn2 to annulerModif
+                    btn2State = Btn2State.annulerModif;
+                    btnAction2EtudiantSGM.Text = "Annuler";
+                    //switch btn1 to confirmerModif
+                    btn1State = Btn1State.confirmerModif;
+                    btnAction1EtudiantSGM.Text = "Confirmer";
+                    break;
+                case Btn2State.annulerAjout:
+                    //messagebox of validation
+                    DialogResult dialogResult1 = MessageBox.Show("Êtes-vous certain de vouloir annuler l'ajout?", "SGM", MessageBoxButtons.YesNo);
+                    //if yes fill the field with the initial state
+                    if (dialogResult1 == DialogResult.Yes)
+                    {
+                        enableEtudiantFields(false);
+                        clearEtudiantFields(false);
+                        //switch btn2 to modifier
+                        btn2State = Btn2State.modifier;
+                        btnAction2EtudiantSGM.Text = "Modifier";
+                        //switch btn1 to ajouter
+                        btn1State = Btn1State.ajouter;
+                        btnAction1EtudiantSGM.Text = "Ajouter";
+                    }
+                    //else do nothing
+                    break;
+                case Btn2State.annulerModif:
+                    //messagebox of validation
+                    DialogResult dialogResult2 = MessageBox.Show("Êtes-vous certain de vouloir annuler les modifications?", "SGM", MessageBoxButtons.YesNo);
+                    //if yes fill the field with the initial state
+                    if (dialogResult2 == DialogResult.Yes)
+                    {
+                        enableEtudiantFields(false);
+                        clearEtudiantFields(false);
+                        //switch btn2 to modifier
+                        btn2State = Btn2State.modifier;
+                        btnAction2EtudiantSGM.Text = "Modifier";
+                        //switch btn1 to ajouter
+                        btn1State = Btn1State.ajouter;
+                        btnAction1EtudiantSGM.Text = "Ajouter";
+                    }
+                    //else do nothing
+                    break;
+            }
+        }
+
+        private void onloadEtudiantTab()
+        {
+            lbEtudiantsSGM.Items.Clear();
+            foreach (var item in crm.RetrieveEtudiants())
+            {
+                var id = item.Attributes["new_etudiantjkweid"].ToString();
+                var nom = item.Attributes["new_name"].ToString();
+                var pays = item.Attributes["new_pays"].ToString();
+                var prenom = item.Attributes["new_prenom"].ToString();
+                var adresse = item.Attributes["new_adresse"].ToString();
+                var ville = item.Attributes["new_ville"].ToString();
+                var codepermanent = item.Attributes["new_codepermanent"].ToString();
+                lbEtudiantsSGM.Items.Add(new ListItem(nom + ", " + prenom, id));
+                etudiants.Add(new Etudiant(nom, id, prenom, adresse, ville, pays, codepermanent));
             }
         }
 
@@ -143,22 +287,10 @@ namespace Tp3InterfaceAnalyse
 
         private void tabRecherche_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageBox.Show(tabRecherche.SelectedTab.Name.ToString());
+            //you can add your tab change here if you want to do an onload thing
             if (tabRecherche.SelectedTab.Name.ToString() == "tabEtudiant")
             {
-                foreach (var item in crm.RetrieveEtudiants())
-                {
-                    var id = item.Attributes["new_etudiantjkweid"].ToString();
-                    var nom = item.Attributes["new_name"].ToString();
-                    var pays = item.Attributes["new_pays"].ToString();
-                    var prenom = item.Attributes["new_prenom"].ToString();
-                    var adresse = item.Attributes["new_adresse"].ToString();
-                    var ville = item.Attributes["new_ville"].ToString();
-                    var codepermanent = item.Attributes["new_codepermanent"].ToString();
-                    lbEtudiantsSGM.Items.Add(new ListItem(nom, id));
-                    MessageBox.Show(nom + ", " + id);
-                    etudiants.Add(new Etudiant(nom, id, prenom, adresse, ville, pays, codepermanent));
-                }
+                onloadEtudiantTab();
             }
         }
     }

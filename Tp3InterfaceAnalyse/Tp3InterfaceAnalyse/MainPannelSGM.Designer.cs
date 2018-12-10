@@ -30,6 +30,7 @@
         {
             this.gbQuestionSGM = new System.Windows.Forms.GroupBox();
             this.gbGeneralSGM = new System.Windows.Forms.GroupBox();
+            this.lblTrierPar = new System.Windows.Forms.Label();
             this.lblEtudiantsAccueil = new System.Windows.Forms.Label();
             this.gvEtudiant = new System.Windows.Forms.DataGridView();
             this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,9 +55,6 @@
             this.tabEtablissement = new System.Windows.Forms.TabPage();
             this.tabProgramme = new System.Windows.Forms.TabPage();
             this.tabEtudiant = new System.Windows.Forms.TabPage();
-            this.tabEmploye = new System.Windows.Forms.TabPage();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.lblTrierPar = new System.Windows.Forms.Label();
             this.gbEtudiantSGM = new System.Windows.Forms.GroupBox();
             this.lblTypeEtudiantSGM = new System.Windows.Forms.Label();
             this.lblPaysEtudiantSGM = new System.Windows.Forms.Label();
@@ -74,6 +72,8 @@
             this.txtCodePermanentSGM = new System.Windows.Forms.TextBox();
             this.lblNomEtudiantSGM = new System.Windows.Forms.Label();
             this.lblCodePermanentSGM = new System.Windows.Forms.Label();
+            this.tabEmploye = new System.Windows.Forms.TabPage();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.gbGeneralSGM.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvEtudiant)).BeginInit();
             this.tabRecherche.SuspendLayout();
@@ -110,6 +110,15 @@
             this.gbGeneralSGM.TabIndex = 2;
             this.gbGeneralSGM.TabStop = false;
             this.gbGeneralSGM.Text = "Sélection";
+            // 
+            // lblTrierPar
+            // 
+            this.lblTrierPar.AutoSize = true;
+            this.lblTrierPar.Location = new System.Drawing.Point(713, 16);
+            this.lblTrierPar.Name = "lblTrierPar";
+            this.lblTrierPar.Size = new System.Drawing.Size(53, 13);
+            this.lblTrierPar.TabIndex = 11;
+            this.lblTrierPar.Text = "Trier Par :";
             // 
             // lblEtudiantsAccueil
             // 
@@ -333,33 +342,6 @@
             this.tabEtudiant.Text = "Étudiant(s)";
             this.tabEtudiant.UseVisualStyleBackColor = true;
             // 
-            // tabEmploye
-            // 
-            this.tabEmploye.Location = new System.Drawing.Point(4, 22);
-            this.tabEmploye.Name = "tabEmploye";
-            this.tabEmploye.Size = new System.Drawing.Size(824, 565);
-            this.tabEmploye.TabIndex = 5;
-            this.tabEmploye.Text = "Employé(s)";
-            this.tabEmploye.UseVisualStyleBackColor = true;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(282, 433);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(137, 43);
-            this.listBox1.TabIndex = 2;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.lbEtudiantsSGM_SelectedIndexChanged);
-            // 
-            // lblTrierPar
-            // 
-            this.lblTrierPar.AutoSize = true;
-            this.lblTrierPar.Location = new System.Drawing.Point(713, 16);
-            this.lblTrierPar.Name = "lblTrierPar";
-            this.lblTrierPar.Size = new System.Drawing.Size(53, 13);
-            this.lblTrierPar.TabIndex = 11;
-            this.lblTrierPar.Text = "Trier Par :";
-            // 
             // gbEtudiantSGM
             // 
             this.gbEtudiantSGM.Controls.Add(this.lblTypeEtudiantSGM);
@@ -432,6 +414,7 @@
             // 
             // txtEtatSGM
             // 
+            this.txtEtatSGM.Enabled = false;
             this.txtEtatSGM.Location = new System.Drawing.Point(104, 175);
             this.txtEtatSGM.Name = "txtEtatSGM";
             this.txtEtatSGM.Size = new System.Drawing.Size(139, 20);
@@ -439,6 +422,7 @@
             // 
             // txtPaysSGM
             // 
+            this.txtPaysSGM.Enabled = false;
             this.txtPaysSGM.Location = new System.Drawing.Point(104, 149);
             this.txtPaysSGM.Name = "txtPaysSGM";
             this.txtPaysSGM.Size = new System.Drawing.Size(139, 20);
@@ -446,6 +430,7 @@
             // 
             // txtVilleSGM
             // 
+            this.txtVilleSGM.Enabled = false;
             this.txtVilleSGM.Location = new System.Drawing.Point(104, 123);
             this.txtVilleSGM.Name = "txtVilleSGM";
             this.txtVilleSGM.Size = new System.Drawing.Size(139, 20);
@@ -453,6 +438,7 @@
             // 
             // txtAdresseSGM
             // 
+            this.txtAdresseSGM.Enabled = false;
             this.txtAdresseSGM.Location = new System.Drawing.Point(104, 97);
             this.txtAdresseSGM.Name = "txtAdresseSGM";
             this.txtAdresseSGM.Size = new System.Drawing.Size(139, 20);
@@ -460,6 +446,7 @@
             // 
             // txtPrenomSGM
             // 
+            this.txtPrenomSGM.Enabled = false;
             this.txtPrenomSGM.Location = new System.Drawing.Point(104, 71);
             this.txtPrenomSGM.Name = "txtPrenomSGM";
             this.txtPrenomSGM.Size = new System.Drawing.Size(139, 20);
@@ -473,6 +460,7 @@
             this.btnAction1EtudiantSGM.TabIndex = 5;
             this.btnAction1EtudiantSGM.Text = "Ajouter";
             this.btnAction1EtudiantSGM.UseVisualStyleBackColor = true;
+            this.btnAction1EtudiantSGM.Click += new System.EventHandler(this.btnAction1EtudiantSGM_Click);
             // 
             // btnAction2EtudiantSGM
             // 
@@ -482,9 +470,11 @@
             this.btnAction2EtudiantSGM.TabIndex = 4;
             this.btnAction2EtudiantSGM.Text = "Modifier";
             this.btnAction2EtudiantSGM.UseVisualStyleBackColor = true;
+            this.btnAction2EtudiantSGM.Click += new System.EventHandler(this.btnAction2EtudiantSGM_Click);
             // 
             // txtNomSGM
             // 
+            this.txtNomSGM.Enabled = false;
             this.txtNomSGM.Location = new System.Drawing.Point(104, 45);
             this.txtNomSGM.Name = "txtNomSGM";
             this.txtNomSGM.Size = new System.Drawing.Size(139, 20);
@@ -492,6 +482,7 @@
             // 
             // txtCodePermanentSGM
             // 
+            this.txtCodePermanentSGM.Enabled = false;
             this.txtCodePermanentSGM.Location = new System.Drawing.Point(104, 19);
             this.txtCodePermanentSGM.Name = "txtCodePermanentSGM";
             this.txtCodePermanentSGM.Size = new System.Drawing.Size(139, 20);
@@ -514,6 +505,24 @@
             this.lblCodePermanentSGM.Size = new System.Drawing.Size(91, 13);
             this.lblCodePermanentSGM.TabIndex = 0;
             this.lblCodePermanentSGM.Text = "Code permanent :";
+            // 
+            // tabEmploye
+            // 
+            this.tabEmploye.Location = new System.Drawing.Point(4, 22);
+            this.tabEmploye.Name = "tabEmploye";
+            this.tabEmploye.Size = new System.Drawing.Size(824, 565);
+            this.tabEmploye.TabIndex = 5;
+            this.tabEmploye.Text = "Employé(s)";
+            this.tabEmploye.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(282, 433);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(137, 43);
+            this.listBox1.TabIndex = 2;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.lbEtudiantsSGM_SelectedIndexChanged);
             // 
             // MainPannelSGM
             // 

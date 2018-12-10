@@ -15,6 +15,7 @@ namespace Tp3InterfaceAnalyse
         public string Adresse { get; set; }
         public string Ville { get; set; }
         public string CodePermanent { get; set; }
+        public string Etat { get; set; }
 
         public Etudiant()
         {
