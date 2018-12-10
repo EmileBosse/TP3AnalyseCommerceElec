@@ -128,6 +128,7 @@ namespace Tp3InterfaceAnalyse
 
         #endregion
 
+        #region Employé université
         public  List<Entity> RetrieveEmployes()
         {
             var result = new List<Entity>();
@@ -149,7 +150,9 @@ namespace Tp3InterfaceAnalyse
                 return result;
             }
         }
+        #endregion
 
+        #region Étudiant
         public List<Entity> RetrieveEtudiants()
         {
             var result = new List<Entity>();
@@ -175,6 +178,33 @@ namespace Tp3InterfaceAnalyse
                 return result;
             }
         }
+
+        public void CreateEtudiant(Etudiant etudiant)
+        {
+            Entity etudEnti = new Entity("new_etudiantjkwe");
+            etudEnti["new_name"] = etudiant.Nom;
+            etudEnti["new_prenom"] = etudiant.Prenom;
+            etudEnti["new_adresse"] = etudiant.Adresse;
+            etudEnti["new_pays"] = etudiant.Pays;
+            etudEnti["new_ville"] = etudiant.Ville;
+            etudEnti["new_codepermanent"] = etudiant.CodePermanent;
+
+            Guid id = orgService.Create(etudEnti);
+            Console.WriteLine("Et voilà !! : " + id);
+        }
+
+        public void UpdateEtudiant(Entity etudiantEntity, Etudiant etudiant)
+        {
+            etudiantEntity["new_name"] = etudiant.Nom;
+            etudiantEntity["new_prenom"] = etudiant.Prenom;
+            etudiantEntity["new_adresse"] = etudiant.Adresse;
+            etudiantEntity["new_pays"] = etudiant.Pays;
+            etudiantEntity["new_ville"] = etudiant.Ville;
+            etudiantEntity["new_codepermanent"] = etudiant.CodePermanent;
+
+            orgService.Update(etudiantEntity);
+        }
+        #endregion
 
         public List<Entity> RetrieveMissions()
         {

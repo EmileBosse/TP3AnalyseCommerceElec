@@ -66,5 +66,10 @@ namespace Tp3InterfaceAnalyse
                 Console.WriteLine(ex);
             }
         }
+
+        private void btnAnnulerSignIn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

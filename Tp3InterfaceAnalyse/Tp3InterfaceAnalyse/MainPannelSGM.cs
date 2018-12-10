@@ -180,6 +180,7 @@ namespace Tp3InterfaceAnalyse
         private void clearEtudiantFields(bool clear)
         {
             if (clear)
+<<<<<<< HEAD
             {
                 txtCodePermanentSGM.Text = "";
                 txtNomSGM.Text = "";
@@ -191,6 +192,19 @@ namespace Tp3InterfaceAnalyse
             }
             else
             {
+=======
+            {
+                txtCodePermanentSGM.Text = "";
+                txtNomSGM.Text = "";
+                txtPrenomSGM.Text = "";
+                txtAdresseSGM.Text = "";
+                txtVilleSGM.Text = "";
+                txtPaysSGM.Text = "";
+                txtEtatSGM.Text = "";
+            }
+            else
+            {
+>>>>>>> 061878ca51d16cff2ed55230f0718efacdc3351a
                 foreach (Etudiant et in etudiants)
                 {
                     if (et.Nom + ", " + et.Prenom == lbEtudiantsSGM.SelectedItem.ToString())
@@ -225,7 +239,11 @@ namespace Tp3InterfaceAnalyse
                     break;
                 case Btn1State.confirmerAjout:
                     //throw the creation action to CRM
+<<<<<<< HEAD
 
+=======
+                    crm.CreateEtudiant(new Etudiant(txtNomSGM.Text, new Guid().ToString(), txtPrenomSGM.Text, txtAdresseSGM.Text, txtVilleSGM.Text, txtPaysSGM.Text, txtCodePermanentSGM.Text));
+>>>>>>> 061878ca51d16cff2ed55230f0718efacdc3351a
                     onloadEtudiantTab();
                     enableEtudiantFields(false);
                     //switch btn1 to ajouter
