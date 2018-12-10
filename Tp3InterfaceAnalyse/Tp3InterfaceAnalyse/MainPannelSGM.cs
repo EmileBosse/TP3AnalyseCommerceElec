@@ -53,6 +53,16 @@ namespace Tp3InterfaceAnalyse
                 var id = item.Attributes["new_missionjkweid"].ToString();
                 lbMissionsSGM.Items.Add(new ListItem(nom,id));
             }
+
+            //lbMissionsSGM.SelectedIndex = 0;
+
+
+        }
+
+        private void lbMissionsSGM_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (lbMissionsSGM.SelectedIndex != -1)
+                crm.RetrieveEtudiantForMission(((ListItem)lbMissionsSGM.SelectedItem).Value);
         }
     }
 }

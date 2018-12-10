@@ -125,16 +125,6 @@ namespace Tp3InterfaceAnalyse
             return entityRecord;
         }
 
-        public void getMissions()
-        {
-            Guid guidEmployeId = Guid.Empty;
-            Entity entity = RetrieveEntityById("", guidEmployeId);
-            if(entity.Attributes.Contains("name"))
-            {
-                string strEmployeName = entity.Attributes["name"].ToString();
-            }
-        }
-
         #endregion
 
         public List<Entity> RetrieveMissions()
@@ -157,6 +147,38 @@ namespace Tp3InterfaceAnalyse
             {
                 return result;
             }
+        }
+
+        public List<Entity> RetrieveEtudiantForMission(string idMission)
+        {
+            var result = new List<Entity>();
+
+            QueryExpression queryExp = new QueryExpression();
+            queryExp.EntityName = "new_etudiantjkwe";
+            queryExp.ColumnSet = new ColumnSet();
+            queryExp.ColumnSet.Columns.Add("new_name");
+            queryExp.ColumnSet.Columns.Add("new_prenom");
+            queryExp.ColumnSet.Columns.Add("new_adresse");
+            queryExp.ColumnSet.Columns.Add("new_pays");
+            queryExp.ColumnSet.Columns.Add("new_ville");
+            queryExp.ColumnSet.Columns.Add("new_codepermanent");
+            queryExp.ColumnSet.Columns.Add("new_etudiantjkweid");
+
+            queryExp.LinkEntities.Add(new LinkEntity("new_etudiantjkwe", "new_missionjkwe", "new_etudiantjkweId", "new_missionjkweid", JoinOperator.Inner));
+            queryExp.LinkEntities[0].Columns.AddColumns("new_name", "new_missionjkweid");
+            queryExp.LinkEntities[0].EntityAlias = "MissionsLiees";
+
+            ConditionExpression conExp1 = new ConditionExpression();
+            conExp1.AttributeName = "new_etudiantjkweid";
+            conExp1.Operator = ConditionOperator.Equal;
+            conExp1.Values.Add(idMission);
+
+            EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
+            if (contCollection.Entities.Count > 0)
+            {
+                result.AddRange(contCollection.Entities.ToList());
+            }
+            return result;
         }
 
     }

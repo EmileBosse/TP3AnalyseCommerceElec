@@ -8,7 +8,6 @@ namespace Tp3InterfaceAnalyse
 {
     class Mission
     {
-
         private string identifiant;
         private string nom;
         private string pays;

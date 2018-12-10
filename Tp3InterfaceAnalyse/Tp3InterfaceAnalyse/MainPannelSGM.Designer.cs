@@ -154,6 +154,7 @@
             this.lbMissionsSGM.Name = "lbMissionsSGM";
             this.lbMissionsSGM.Size = new System.Drawing.Size(120, 95);
             this.lbMissionsSGM.TabIndex = 1;
+            this.lbMissionsSGM.SelectedValueChanged += new System.EventHandler(this.lbMissionsSGM_SelectedValueChanged);
             // 
             // gbEtudiantSGM
             // 
