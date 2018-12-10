@@ -15,6 +15,7 @@ namespace Tp3InterfaceAnalyse
     {
         private SignIn previousWindow;
         private CRM crm;
+        private Employe employe;
 
         public MainPannelSGM()
         {
@@ -26,12 +27,18 @@ namespace Tp3InterfaceAnalyse
             previousWindow = window;
         }
 
-
         public void SetCrmGen(CRM crmGen)
         {
             crm = crmGen;
         }
 
+        public void setEmploye(string nom, string prenom, string id)
+        {
+            employe = new Employe();
+            employe.nom = nom;
+            employe.prenom = prenom;
+            employe.id = id;
+        }
 
         private void MainPannelSGM_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -43,6 +50,7 @@ namespace Tp3InterfaceAnalyse
 
         private void MainPannelSGM_Load(object sender, EventArgs e)
         {
+            this.Text += " ( "+this.employe.nom+", "+this.employe.prenom+" )";
             lbMissionsSGM.DisplayMember = "nom";
             lbMissionsSGM.ValueMember = "identifiant";
 
@@ -104,7 +112,7 @@ namespace Tp3InterfaceAnalyse
 
         private void gvEtudiant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            MessageBox.Show("on clique");
         }
     }
 }

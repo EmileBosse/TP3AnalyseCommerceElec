@@ -128,6 +128,28 @@ namespace Tp3InterfaceAnalyse
 
         #endregion
 
+        public  List<Entity> RetrieveEmployes()
+        {
+            var result = new List<Entity>();
+
+            QueryExpression queryExp = new QueryExpression();
+            queryExp.EntityName = "new_employeuniversietjkwe";
+            queryExp.ColumnSet = new ColumnSet();
+            queryExp.ColumnSet.Columns.Add("new_employeuniversietjkweid");
+            queryExp.ColumnSet.Columns.Add("new_name");
+            queryExp.ColumnSet.Columns.Add("new_prenom");
+            EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
+            if (contCollection.Entities.Count > 0)
+            {
+                result.AddRange(contCollection.Entities.ToList());
+                return result;
+            }
+            else
+            {
+                return result;
+            }
+        }
+
         public List<Entity> RetrieveMissions()
         {
             var result = new List<Entity>();

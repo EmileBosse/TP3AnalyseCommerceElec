@@ -37,20 +37,33 @@ namespace Tp3InterfaceAnalyse
             try
             {
                 crm.Connexion();
-                Guid maybe = crm.getEmployeID(txtNomSignIn.Text, txtPrenomSignIn.Text);
+                //Here we should getBy(name, lastname)
+                //but it's easyer to get a list :')
+                //Guid maybe = crm.getEmployeID(txtNomSignIn.Text, txtPrenomSignIn.Text);
+                bool trouve = false;
+                foreach (var item in crm.RetrieveEmployes())
+                {
+                    Console.WriteLine("  -> "+ item.Attributes["new_name"].ToString()+", "+ item.Attributes["new_prenom"].ToString());
+                    if (txtNomSignIn.Text == item.Attributes["new_name"].ToString() && txtPrenomSignIn.Text == item.Attributes["new_prenom"].ToString())
+                    {
+                        trouve = true;
+                        Employe employe = new Employe();
+                        employe.nom = txtNomSignIn.Text;
+                        employe.prenom = txtPrenomSignIn.Text;
+                        employe.id = item.Attributes["new_employeuniversietjkweid"].ToString();
+                        MainPannelSGM main = new MainPannelSGM();
+                        main.setPreviousWindow(this);
+                        main.SetCrmGen(crm);
+                        main.setEmploye(employe.nom, employe.prenom, employe.id);
+                        main.Show();
+                        this.Hide();
+                    }
+                }
+                if(!trouve) MessageBox.Show("Le nom que vous avez entré n'est pas un nom d'employé valide.");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-            }
-
-            if (txtNomSignIn.Text != "" && txtPrenomSignIn.Text != "")
-            {
-                MainPannelSGM main = new MainPannelSGM();
-                main.setPreviousWindow(this);
-                main.SetCrmGen(crm);
-                main.Show();
-                this.Hide();
             }
         }
     }
