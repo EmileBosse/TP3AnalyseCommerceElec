@@ -30,14 +30,18 @@
         {
             this.gbQuestionSGM = new System.Windows.Forms.GroupBox();
             this.gbGeneralSGM = new System.Windows.Forms.GroupBox();
+            this.lblEtudiantsAccueil = new System.Windows.Forms.Label();
+            this.gvEtudiant = new System.Windows.Forms.DataGridView();
+            this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnPaysOriginSGM = new System.Windows.Forms.Button();
             this.btnTrieCycleEtudeSGM = new System.Windows.Forms.Button();
             this.lblMissionListSGM = new System.Windows.Forms.Label();
+            this.lbMissionsSGM = new System.Windows.Forms.ListBox();
             this.lblEtudiantListSGM = new System.Windows.Forms.Label();
             this.lbEtudiantsSGM = new System.Windows.Forms.ListBox();
-            this.lbMissionsSGM = new System.Windows.Forms.ListBox();
             this.gbEtudiantSGM = new System.Windows.Forms.GroupBox();
             this.lblTypeEtudiantSGM = new System.Windows.Forms.Label();
             this.lblPaysEtudiantSGM = new System.Windows.Forms.Label();
@@ -57,26 +61,22 @@
             this.lblCodePermanentSGM = new System.Windows.Forms.Label();
             this.tabRecherche = new System.Windows.Forms.TabControl();
             this.tabAccueil = new System.Windows.Forms.TabPage();
+            this.lblQuestions = new System.Windows.Forms.Label();
+            this.gvQuestions = new System.Windows.Forms.DataGridView();
             this.tabMission = new System.Windows.Forms.TabPage();
             this.tabEtablissement = new System.Windows.Forms.TabPage();
             this.tabProgramme = new System.Windows.Forms.TabPage();
             this.tabEtudiant = new System.Windows.Forms.TabPage();
             this.tabEmploye = new System.Windows.Forms.TabPage();
-            this.gvQuestions = new System.Windows.Forms.DataGridView();
-            this.gvEtudiant = new System.Windows.Forms.DataGridView();
-            this.lblQuestions = new System.Windows.Forms.Label();
-            this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.lblEtudiantsAccueil = new System.Windows.Forms.Label();
             this.gbGeneralSGM.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvEtudiant)).BeginInit();
             this.gbEtudiantSGM.SuspendLayout();
             this.tabRecherche.SuspendLayout();
             this.tabAccueil.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvQuestions)).BeginInit();
             this.tabMission.SuspendLayout();
             this.tabEtudiant.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gvQuestions)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvEtudiant)).BeginInit();
             this.SuspendLayout();
             // 
             // gbQuestionSGM
@@ -104,6 +104,43 @@
             this.gbGeneralSGM.TabIndex = 2;
             this.gbGeneralSGM.TabStop = false;
             this.gbGeneralSGM.Text = "Sélection";
+            // 
+            // lblEtudiantsAccueil
+            // 
+            this.lblEtudiantsAccueil.AutoSize = true;
+            this.lblEtudiantsAccueil.Location = new System.Drawing.Point(385, 16);
+            this.lblEtudiantsAccueil.Name = "lblEtudiantsAccueil";
+            this.lblEtudiantsAccueil.Size = new System.Drawing.Size(57, 13);
+            this.lblEtudiantsAccueil.TabIndex = 10;
+            this.lblEtudiantsAccueil.Text = "Étudiant(s)";
+            // 
+            // gvEtudiant
+            // 
+            this.gvEtudiant.AllowUserToAddRows = false;
+            this.gvEtudiant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvEtudiant.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nom,
+            this.prenom});
+            this.gvEtudiant.Location = new System.Drawing.Point(147, 32);
+            this.gvEtudiant.Name = "gvEtudiant";
+            this.gvEtudiant.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gvEtudiant.Size = new System.Drawing.Size(516, 173);
+            this.gvEtudiant.TabIndex = 9;
+            this.gvEtudiant.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvEtudiant_CellContentClick);
+            // 
+            // nom
+            // 
+            this.nom.DataPropertyName = "nom";
+            this.nom.HeaderText = "Nom";
+            this.nom.Name = "nom";
+            this.nom.ReadOnly = true;
+            // 
+            // prenom
+            // 
+            this.prenom.DataPropertyName = "prenom";
+            this.prenom.HeaderText = "Prénom";
+            this.prenom.Name = "prenom";
+            this.prenom.ReadOnly = true;
             // 
             // button2
             // 
@@ -150,6 +187,15 @@
             this.lblMissionListSGM.TabIndex = 4;
             this.lblMissionListSGM.Text = "Missions";
             // 
+            // lbMissionsSGM
+            // 
+            this.lbMissionsSGM.FormattingEnabled = true;
+            this.lbMissionsSGM.Location = new System.Drawing.Point(6, 32);
+            this.lbMissionsSGM.Name = "lbMissionsSGM";
+            this.lbMissionsSGM.Size = new System.Drawing.Size(135, 173);
+            this.lbMissionsSGM.TabIndex = 1;
+            this.lbMissionsSGM.SelectedValueChanged += new System.EventHandler(this.lbMissionsSGM_SelectedValueChanged);
+            // 
             // lblEtudiantListSGM
             // 
             this.lblEtudiantListSGM.AutoSize = true;
@@ -168,15 +214,6 @@
             this.lbEtudiantsSGM.Size = new System.Drawing.Size(137, 95);
             this.lbEtudiantsSGM.TabIndex = 2;
             this.lbEtudiantsSGM.SelectedIndexChanged += new System.EventHandler(this.lbEtudiantsSGM_SelectedIndexChanged);
-            // 
-            // lbMissionsSGM
-            // 
-            this.lbMissionsSGM.FormattingEnabled = true;
-            this.lbMissionsSGM.Location = new System.Drawing.Point(6, 32);
-            this.lbMissionsSGM.Name = "lbMissionsSGM";
-            this.lbMissionsSGM.Size = new System.Drawing.Size(135, 173);
-            this.lbMissionsSGM.TabIndex = 1;
-            this.lbMissionsSGM.SelectedValueChanged += new System.EventHandler(this.lbMissionsSGM_SelectedValueChanged);
             // 
             // gbEtudiantSGM
             // 
@@ -361,6 +398,23 @@
             this.tabAccueil.UseVisualStyleBackColor = true;
             this.tabAccueil.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // lblQuestions
+            // 
+            this.lblQuestions.AutoSize = true;
+            this.lblQuestions.Location = new System.Drawing.Point(12, 248);
+            this.lblQuestions.Name = "lblQuestions";
+            this.lblQuestions.Size = new System.Drawing.Size(120, 13);
+            this.lblQuestions.TabIndex = 4;
+            this.lblQuestions.Text = "Question(s) de l\'étudiant";
+            // 
+            // gvQuestions
+            // 
+            this.gvQuestions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvQuestions.Location = new System.Drawing.Point(12, 264);
+            this.gvQuestions.Name = "gvQuestions";
+            this.gvQuestions.Size = new System.Drawing.Size(806, 295);
+            this.gvQuestions.TabIndex = 3;
+            // 
             // tabMission
             // 
             this.tabMission.Controls.Add(this.gbQuestionSGM);
@@ -368,7 +422,7 @@
             this.tabMission.Location = new System.Drawing.Point(4, 22);
             this.tabMission.Name = "tabMission";
             this.tabMission.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMission.Size = new System.Drawing.Size(824, 328);
+            this.tabMission.Size = new System.Drawing.Size(824, 565);
             this.tabMission.TabIndex = 1;
             this.tabMission.Text = "Mission(s)";
             this.tabMission.UseVisualStyleBackColor = true;
@@ -377,7 +431,7 @@
             // 
             this.tabEtablissement.Location = new System.Drawing.Point(4, 22);
             this.tabEtablissement.Name = "tabEtablissement";
-            this.tabEtablissement.Size = new System.Drawing.Size(824, 328);
+            this.tabEtablissement.Size = new System.Drawing.Size(824, 565);
             this.tabEtablissement.TabIndex = 2;
             this.tabEtablissement.Text = "Établissement(s)";
             this.tabEtablissement.UseVisualStyleBackColor = true;
@@ -386,7 +440,7 @@
             // 
             this.tabProgramme.Location = new System.Drawing.Point(4, 22);
             this.tabProgramme.Name = "tabProgramme";
-            this.tabProgramme.Size = new System.Drawing.Size(824, 328);
+            this.tabProgramme.Size = new System.Drawing.Size(824, 565);
             this.tabProgramme.TabIndex = 3;
             this.tabProgramme.Text = "Programme(s)";
             this.tabProgramme.UseVisualStyleBackColor = true;
@@ -397,7 +451,7 @@
             this.tabEtudiant.Controls.Add(this.lblEtudiantListSGM);
             this.tabEtudiant.Location = new System.Drawing.Point(4, 22);
             this.tabEtudiant.Name = "tabEtudiant";
-            this.tabEtudiant.Size = new System.Drawing.Size(824, 417);
+            this.tabEtudiant.Size = new System.Drawing.Size(824, 565);
             this.tabEtudiant.TabIndex = 4;
             this.tabEtudiant.Text = "Étudiant(s)";
             this.tabEtudiant.UseVisualStyleBackColor = true;
@@ -406,54 +460,10 @@
             // 
             this.tabEmploye.Location = new System.Drawing.Point(4, 22);
             this.tabEmploye.Name = "tabEmploye";
-            this.tabEmploye.Size = new System.Drawing.Size(824, 328);
+            this.tabEmploye.Size = new System.Drawing.Size(824, 565);
             this.tabEmploye.TabIndex = 5;
             this.tabEmploye.Text = "Employé(s)";
             this.tabEmploye.UseVisualStyleBackColor = true;
-            // 
-            // gvQuestions
-            // 
-            this.gvQuestions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvQuestions.Location = new System.Drawing.Point(12, 264);
-            this.gvQuestions.Name = "gvQuestions";
-            this.gvQuestions.Size = new System.Drawing.Size(806, 295);
-            this.gvQuestions.TabIndex = 3;
-            // 
-            // gvEtudiant
-            // 
-            this.gvEtudiant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvEtudiant.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nom,
-            this.prenom});
-            this.gvEtudiant.Location = new System.Drawing.Point(147, 32);
-            this.gvEtudiant.Name = "gvEtudiant";
-            this.gvEtudiant.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvEtudiant.Size = new System.Drawing.Size(516, 173);
-            this.gvEtudiant.TabIndex = 9;
-            this.gvEtudiant.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvEtudiant_CellContentClick);
-            // 
-            // lblQuestions
-            // 
-            this.lblQuestions.AutoSize = true;
-            this.lblQuestions.Location = new System.Drawing.Point(12, 248);
-            this.lblQuestions.Name = "lblQuestions";
-            this.lblQuestions.Size = new System.Drawing.Size(120, 13);
-            this.lblQuestions.TabIndex = 4;
-            this.lblQuestions.Text = "Question(s) de l\'étudiant";
-            // 
-            // nom
-            // 
-            this.nom.DataPropertyName = "nom";
-            this.nom.HeaderText = "Nom";
-            this.nom.Name = "nom";
-            this.nom.ReadOnly = true;
-            // 
-            // prenom
-            // 
-            this.prenom.DataPropertyName = "prenom";
-            this.prenom.HeaderText = "Prénom";
-            this.prenom.Name = "prenom";
-            this.prenom.ReadOnly = true;
             // 
             // listBox1
             // 
@@ -463,15 +473,6 @@
             this.listBox1.Size = new System.Drawing.Size(137, 43);
             this.listBox1.TabIndex = 2;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.lbEtudiantsSGM_SelectedIndexChanged);
-            // 
-            // lblEtudiantsAccueil
-            // 
-            this.lblEtudiantsAccueil.AutoSize = true;
-            this.lblEtudiantsAccueil.Location = new System.Drawing.Point(385, 16);
-            this.lblEtudiantsAccueil.Name = "lblEtudiantsAccueil";
-            this.lblEtudiantsAccueil.Size = new System.Drawing.Size(57, 13);
-            this.lblEtudiantsAccueil.TabIndex = 10;
-            this.lblEtudiantsAccueil.Text = "Étudiant(s)";
             // 
             // MainPannelSGM
             // 
@@ -486,16 +487,16 @@
             this.Load += new System.EventHandler(this.MainPannelSGM_Load);
             this.gbGeneralSGM.ResumeLayout(false);
             this.gbGeneralSGM.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvEtudiant)).EndInit();
             this.gbEtudiantSGM.ResumeLayout(false);
             this.gbEtudiantSGM.PerformLayout();
             this.tabRecherche.ResumeLayout(false);
             this.tabAccueil.ResumeLayout(false);
             this.tabAccueil.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvQuestions)).EndInit();
             this.tabMission.ResumeLayout(false);
             this.tabEtudiant.ResumeLayout(false);
             this.tabEtudiant.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gvQuestions)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvEtudiant)).EndInit();
             this.ResumeLayout(false);
 
         }

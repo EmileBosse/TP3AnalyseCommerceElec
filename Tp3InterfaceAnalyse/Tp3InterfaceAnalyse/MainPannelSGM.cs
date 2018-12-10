@@ -75,9 +75,8 @@ namespace Tp3InterfaceAnalyse
                 }
 
                 gvEtudiant.AutoGenerateColumns = true;
-                var source = new BindingSource();
-                source.DataSource = result;
-                gvEtudiant.DataSource = source;
+                var bindinList = new BindingList<Etudiant>(result);
+                gvEtudiant.DataSource = new BindingSource(bindinList, null);
             }
         }
 

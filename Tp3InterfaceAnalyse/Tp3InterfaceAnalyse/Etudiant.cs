@@ -8,13 +8,13 @@ namespace Tp3InterfaceAnalyse
 {
     public class Etudiant
     {
-        private string identifiant;
-        private string nom;
-        private string pays;
-        private string prenom;
-        private string adresse;
-        private string ville;
-        private string codePermanent;
+        public string identifiant { get; set; }
+        public string nom { get; set; }
+        public string pays { get; set; }
+        public string prenom { get; set; }
+        public string adresse { get; set; }
+        public string ville { get; set; }
+        public string codePermanent { get; set; }
 
         public Etudiant()
         {
