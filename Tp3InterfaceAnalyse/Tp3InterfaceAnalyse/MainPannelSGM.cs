@@ -74,6 +74,7 @@ namespace Tp3InterfaceAnalyse
                     result.Add(new Etudiant(nom, id));
                 }
 
+                gvEtudiant.AutoGenerateColumns = true;
                 var source = new BindingSource();
                 source.DataSource = result;
                 gvEtudiant.DataSource = source;
@@ -85,5 +86,19 @@ namespace Tp3InterfaceAnalyse
 
         }
 
+        private void lbEtudiantsSGM_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblEtudiantListSGM_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gvEtudiant_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
