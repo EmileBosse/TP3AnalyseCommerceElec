@@ -12,11 +12,11 @@ namespace Tp3InterfaceAnalyse
         public string Cycle { get; set; }
         public string Departement { get; set; }
         public string Nom { get; set; }
-        public string Identifiant { get; set; }
+        public Guid Identifiant { get; set; }
 
         public Programme() { }
 
-        public Programme(string id, string code, string nom, string cycle, string departement)
+        public Programme(Guid id, string code, string nom, string cycle, string departement)
         {
             this.Code = code;
             this.Identifiant = id;

@@ -279,8 +279,15 @@ namespace Tp3InterfaceAnalyse
             Guid id = orgService.Create(progEntity);
         }
 
-        public void UpdateProgramme(Entity progEntity, Programme programme)
+        private Entity findProgrammeEntity(Programme programme)
         {
+            return orgService.Retrieve("new_programme_etude_jkwe", programme.Identifiant, new ColumnSet(true));
+        }
+
+        public void UpdateProgramme(Programme programme)
+        {
+            Entity progEntity = findProgrammeEntity(programme);
+
             progEntity["new_name"] = programme.Nom;
             progEntity["new_code"] = programme.Code;
             progEntity["new_cycle"] = programme.Cycle;

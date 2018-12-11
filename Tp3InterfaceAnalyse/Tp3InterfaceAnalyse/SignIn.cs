@@ -50,7 +50,7 @@ namespace Tp3InterfaceAnalyse
                         Employe employe = new Employe();
                         employe.nom = txtNomSignIn.Text;
                         employe.prenom = txtPrenomSignIn.Text;
-                        employe.id = item.Attributes["new_employeuniversietjkweid"].ToString();
+                        employe.id = (Guid)item.Attributes["new_employeuniversietjkweid"];
                         MainPannelSGM main = new MainPannelSGM();
                         main.setPreviousWindow(this);
                         main.SetCrmGen(crm);

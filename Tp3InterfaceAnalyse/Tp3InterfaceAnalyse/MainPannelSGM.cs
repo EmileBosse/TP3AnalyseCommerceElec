@@ -543,8 +543,10 @@ namespace Tp3InterfaceAnalyse
 
 
         #endregion tabEmploye
-        
+
         #region tabProgramme
+
+        private Guid selectedProgrammeId;
 
         private void lbProgrammesSGM_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -581,6 +583,8 @@ namespace Tp3InterfaceAnalyse
                         txtNomProgrammeSGM.Text = prog.Nom;
                         txtCycleProgrammeSGM.Text = prog.Cycle;
                         txtDepartementProgrammeSGM.Text = prog.Departement;
+
+                        selectedProgrammeId = prog.Identifiant;
                     }
                 }
             }
@@ -602,7 +606,7 @@ namespace Tp3InterfaceAnalyse
                     btnAction2ProgrammeSGM.Text = "Annuler";
                     break;
                 case Btn1State.confirmerAjout:
-                    crm.CreateProgramme(new Programme(new Guid().ToString(), txtCodeProgrammeSGM.Text, txtNomProgrammeSGM.Text,  txtCycleProgrammeSGM.Text, txtDepartementProgrammeSGM.Text));
+                    crm.CreateProgramme(new Programme(new Guid(), txtCodeProgrammeSGM.Text, txtNomProgrammeSGM.Text,  txtCycleProgrammeSGM.Text, txtDepartementProgrammeSGM.Text));
                     onloadProgrammeTab();
                     enableProgrammeFields(false);
                     //switch btn1 to ajouter
@@ -614,7 +618,7 @@ namespace Tp3InterfaceAnalyse
                     break;
                 case Btn1State.confirmerModif:
                     //throw the modification action to CRM
-                //crm.UpdateProgramme();
+                    crm.UpdateProgramme(new Programme(selectedProgrammeId, txtCodeProgrammeSGM.Text, txtNomProgrammeSGM.Text, txtCycleProgrammeSGM.Text, txtDepartementProgrammeSGM.Text));
                     onloadProgrammeTab();
                     enableProgrammeFields(false);
                     //switch btn1 to ajouter
@@ -682,13 +686,13 @@ namespace Tp3InterfaceAnalyse
             lbProgrammesSGM.Items.Clear();
             foreach (var item in crm.RetrieveProgrammes())
             {
-                var id = item.Attributes["new_programme_etude_jkweid"].ToString();
+                var id = item.Attributes["new_programme_etude_jkweid"];
                 var nom = item.Attributes["new_name"].ToString();
                 var cycle = item.Attributes["new_cycle"].ToString();
                 var code = item.Attributes["new_code"].ToString();
                 var departement = item.Attributes["new_departement"].ToString();
-                lbProgrammesSGM.Items.Add(new ListItem(nom + ", " + code, id));
-                programmes.Add(new Programme(id, code, nom, cycle, departement));
+                lbProgrammesSGM.Items.Add(new ListItem(nom + ", " + code));
+                programmes.Add(new Programme((Guid)id, code, nom, cycle, departement));
             }
         }
 
