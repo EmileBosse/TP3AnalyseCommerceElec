@@ -9,12 +9,12 @@ namespace Tp3InterfaceAnalyse
     public class Etudiant
     {
         public string Identifiant { get; set; }
-        public string Nom { get; set; }
-        public string Pays { get; set; }
         public string Prenom { get; set; }
+        public string Nom { get; set; }
         public string Adresse { get; set; }
         public string Ville { get; set; }
         public string CodePermanent { get; set; }
+        public string Pays { get; set; }
         public string Etat { get; set; }
 
         public Etudiant()
