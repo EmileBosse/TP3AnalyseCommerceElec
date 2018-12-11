@@ -283,6 +283,38 @@ namespace Tp3InterfaceAnalyse
 
         }
 
+        public List<Entity> RetrieveEtudiantForEtablissement(string idEtablissement)
+        {
+            var result = new List<Entity>();
+            QueryExpression queryExp = new QueryExpression();
+            queryExp.EntityName = "new_etudiantjkwe";
+            queryExp.ColumnSet = new ColumnSet();
+            queryExp.ColumnSet.Columns.Add("new_name");
+            queryExp.ColumnSet.Columns.Add("new_prenom");
+            queryExp.ColumnSet.Columns.Add("new_adresse");
+            queryExp.ColumnSet.Columns.Add("new_pays");
+            queryExp.ColumnSet.Columns.Add("new_ville");
+            queryExp.ColumnSet.Columns.Add("new_codepermanent");
+            queryExp.ColumnSet.Columns.Add("new_etudiantjkweid");
+            queryExp.ColumnSet.Columns.Add("new_origineid");
+
+            ConditionExpression conExp1 = new ConditionExpression();
+            conExp1.AttributeName = "new_origineid";
+            conExp1.Operator = ConditionOperator.Equal;
+            conExp1.Values.Add(idEtablissement);
+
+            FilterExpression fep = new FilterExpression();
+            fep.Conditions.Add(conExp1);
+            queryExp.Criteria.AddFilter(fep);
+
+            EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
+            if (contCollection.Entities.Count > 0)
+            {
+                result.AddRange(contCollection.Entities.ToList());
+            }
+            return result;
+        }
+
         public List<Entity> RetrieveQuestionForEtudiant(string idEtudiant)
         {
             var result = new List<Entity>();
@@ -322,7 +354,6 @@ namespace Tp3InterfaceAnalyse
             queryExp.ColumnSet.Columns.Add("new_etablissementjkweid");
 
             LinkEntity link = queryExp.AddLink("new_new_etablissementjkwe_new_missionjkwe", "new_etablissementjkweid", "new_etablissementjkweid", JoinOperator.Inner);
-            //link.Columns.AddColumn("new_new_etablissementjkwe_new_missionjkwe");
             link.Columns.AddColumn("new_missionjkweid");
             link.EntityAlias = "etablissementsliees";
             queryExp.Criteria = new FilterExpression();

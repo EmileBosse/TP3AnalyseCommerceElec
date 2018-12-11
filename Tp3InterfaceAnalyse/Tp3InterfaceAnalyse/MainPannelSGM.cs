@@ -522,8 +522,51 @@ namespace Tp3InterfaceAnalyse
 
 
 
+
         #endregion tabEmploye
 
+        private void lbEtablissement_SelectedValueChanged(object sender, EventArgs e)
+        {
+            List<Etudiant> result = new List<Etudiant>();
 
+            if (lbEtablissement.SelectedIndex != -1)
+            {
+
+                // Étudiants
+                //lbEtablissement.DisplayMember = "nom";
+                //lbEtablissement.ValueMember = "identifiant";
+
+                //lbEtudiantsSGM.Items.Clear();
+                foreach (var item in crm.RetrieveEtudiantForEtablissement(((ListItem)lbEtablissement.SelectedItem).Value))
+                {
+                    var id = item.Attributes["new_etudiantjkweid"].ToString();
+                    var nom = item.Attributes["new_name"].ToString();
+                    var pays = item.Attributes["new_pays"].ToString();
+                    var prenom = item.Attributes["new_prenom"].ToString();
+                    var adresse = item.Attributes["new_adresse"].ToString();
+                    var ville = item.Attributes["new_ville"].ToString();
+                    var codepermanent = item.Attributes["new_codepermanent"].ToString();
+                    lbEtudiantsSGM.Items.Add(new ListItem(nom, id));
+                    result.Add(new Etudiant(nom, id, prenom, adresse, ville, pays, codepermanent));
+                }
+
+                gvEtudiant.AutoGenerateColumns = true;
+                gvEtudiant.Columns.Clear();
+                var bindinList = new BindingList<Etudiant>(result);
+                gvEtudiant.DataSource = new BindingSource(bindinList, null);
+                gvEtudiant.Columns["Identifiant"].Visible = false;
+
+                ////Établissements
+                //List<Etablissement> resultEta = new List<Etablissement>();
+                //lbEtablissement.Items.Clear();
+                //foreach (var item in crm.RetrieveEtablissementForMisson(((ListItem)lbMissionsSGM.SelectedItem).Value))
+                //{
+                //    var id = item.Attributes["new_etablissementjkweid"].ToString();
+                //    var nom = item.Attributes["new_name"].ToString();
+                //    lbEtablissement.Items.Add(new ListItem(nom, id));
+                //    resultEta.Add(new Etablissement(nom, id));
+                //}
+            }
+        }
     }
 }
