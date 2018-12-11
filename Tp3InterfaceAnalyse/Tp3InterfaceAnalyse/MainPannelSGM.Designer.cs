@@ -152,6 +152,7 @@
             this.lbEtablissement.Name = "lbEtablissement";
             this.lbEtablissement.Size = new System.Drawing.Size(369, 199);
             this.lbEtablissement.TabIndex = 12;
+            this.lbEtablissement.SelectedValueChanged += new System.EventHandler(this.lbEtablissement_SelectedValueChanged);
             // 
             // lblMissionListSGM
             // 
