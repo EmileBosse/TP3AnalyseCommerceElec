@@ -94,3 +94,27 @@ C:\Users\EmileBosse\Desktop\Analyse commerce electronique\TP3\TP3AnalyseCommerce
 C:\Users\EmileBosse\Desktop\Analyse commerce electronique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\obj\Debug\Tp3InterfaceAnalyse.csproj.CopyComplete
 C:\Users\EmileBosse\Desktop\Analyse commerce electronique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\obj\Debug\Tp3InterfaceAnalyse.exe
 C:\Users\EmileBosse\Desktop\Analyse commerce electronique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\obj\Debug\Tp3InterfaceAnalyse.pdb
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\bin\Debug\Tp3InterfaceAnalyse.exe.config
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\bin\Debug\Tp3InterfaceAnalyse.exe
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\bin\Debug\Tp3InterfaceAnalyse.pdb
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\bin\Debug\AntiXSSLibrary.dll
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\bin\Debug\Microsoft.IdentityModel.dll
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\bin\Debug\Microsoft.Xrm.Client.CodeGeneration.dll
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\bin\Debug\Microsoft.Xrm.Client.dll
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\bin\Debug\Microsoft.Xrm.Portal.dll
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\bin\Debug\Microsoft.Xrm.Portal.Files.dll
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\bin\Debug\Microsoft.Xrm.Sdk.Deployment.dll
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\bin\Debug\Microsoft.Xrm.Sdk.dll
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\bin\Debug\Microsoft.Crm.Sdk.Proxy.xml
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\bin\Debug\Microsoft.Xrm.Sdk.xml
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\bin\Debug\Microsoft.Xrm.Sdk.Deployment.xml
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\obj\Debug\Tp3InterfaceAnalyse.csprojAssemblyReference.cache
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\obj\Debug\Tp3InterfaceAnalyse.MainPannelSGM.resources
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\obj\Debug\Tp3InterfaceAnalyse.Properties.Resources.resources
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\obj\Debug\Tp3InterfaceAnalyse.SignIn.resources
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\obj\Debug\Tp3InterfaceAnalyse.csproj.GenerateResource.cache
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\obj\Debug\Tp3InterfaceAnalyse.csproj.CoreCompileInputs.cache
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\obj\Debug\Tp3InterfaceAnalyse.csproj.CopyComplete
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\obj\Debug\Tp3InterfaceAnalyse.exe
+D:\Jean\Documents\Cours\2018-A\Analyse des applications en commerce electonique\TP3\TP3AnalyseCommerceElec\Tp3InterfaceAnalyse\Tp3InterfaceAnalyse\obj\Debug\Tp3InterfaceAnalyse.pdb

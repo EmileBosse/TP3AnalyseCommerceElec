@@ -259,3 +259,10 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+Tp3InterfaceAnalyse/Tp3InterfaceAnalyse/obj/Debug/Tp3InterfaceAnalyse.csprojAssemblyReference.cache
+Tp3InterfaceAnalyse/Tp3InterfaceAnalyse/obj/Debug/Tp3InterfaceAnalyse.csproj.CoreCompileInputs.cache
+Tp3InterfaceAnalyse/.vs/Tp3InterfaceAnalyse/v15/Server/sqlite3/storage.ide-wal
+Tp3InterfaceAnalyse/.vs/Tp3InterfaceAnalyse/v15/Server/sqlite3/storage.ide-shm
+Tp3InterfaceAnalyse/.vs/Tp3InterfaceAnalyse/v15/Server/sqlite3/storage.ide
+Tp3InterfaceAnalyse/.vs/Tp3InterfaceAnalyse/v15/.suo
+Tp3InterfaceAnalyse/.vs/Tp3InterfaceAnalyse/v15/.suo
