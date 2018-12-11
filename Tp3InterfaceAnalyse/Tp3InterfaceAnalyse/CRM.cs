@@ -213,11 +213,17 @@ namespace Tp3InterfaceAnalyse
             etudEnti["new_codepermanent"] = etudiant.CodePermanent;
 
             Guid id = orgService.Create(etudEnti);
-            Console.WriteLine("Et voilà !! : " + id);
         }
 
-        public void UpdateEtudiant(Entity etudiantEntity, Etudiant etudiant)
+        private Entity findEtudiantEntity(Etudiant etudiant)
         {
+            return orgService.Retrieve("new_etudiantjkwe", etudiant.Identifiant, new ColumnSet(true));
+        }
+
+        public void UpdateEtudiant(Etudiant etudiant)
+        {
+            Entity etudiantEntity = findEtudiantEntity(etudiant);
+
             etudiantEntity["new_name"] = etudiant.Nom;
             etudiantEntity["new_prenom"] = etudiant.Prenom;
             etudiantEntity["new_adresse"] = etudiant.Adresse;

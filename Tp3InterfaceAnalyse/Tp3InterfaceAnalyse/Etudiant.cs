@@ -8,7 +8,7 @@ namespace Tp3InterfaceAnalyse
 {
     public class Etudiant
     {
-        public string Identifiant { get; set; }
+        public Guid Identifiant { get; set; }
         public string Prenom { get; set; }
         public string Nom { get; set; }
         public string Adresse { get; set; }
@@ -21,13 +21,13 @@ namespace Tp3InterfaceAnalyse
         {
         }
 
-        public Etudiant(string pNom, string id)
+        public Etudiant(string pNom, Guid id)
         {
             Nom = pNom;
             Identifiant = id;
         }
 
-        public Etudiant(string pNom, string id, string pPrenom, string pAdresse, string pVille, string pPays, string pCodePermanent)
+        public Etudiant(string pNom, Guid id, string pPrenom, string pAdresse, string pVille, string pPays, string pCodePermanent)
         {
             Nom = pNom;
             Identifiant = id;

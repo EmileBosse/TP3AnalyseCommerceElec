@@ -84,15 +84,15 @@ namespace Tp3InterfaceAnalyse
                 lbEtudiantsSGM.Items.Clear();
                 foreach (var item in crm.RetrieveEtudiantForMission(((ListItem)lbMissionsSGM.SelectedItem).Value))
                 {
-                    var id = item.Attributes["new_etudiantjkweid"].ToString();
+                    var id = item.Attributes["new_etudiantjkweid"];
                     var nom = item.Attributes["new_name"].ToString();
                     var pays = item.Attributes["new_pays"].ToString();
                     var prenom = item.Attributes["new_prenom"].ToString();
                     var adresse = item.Attributes["new_adresse"].ToString();
                     var ville = item.Attributes["new_ville"].ToString();
                     var codepermanent = item.Attributes["new_codepermanent"].ToString();
-                    lbEtudiantsSGM.Items.Add(new ListItem(nom, id));
-                    result.Add(new Etudiant(nom, id, prenom, adresse, ville, pays, codepermanent));
+                    lbEtudiantsSGM.Items.Add(new ListItem(nom));
+                    result.Add(new Etudiant(nom, (Guid)id, prenom, adresse, ville, pays, codepermanent));
                 }
 
                 gvEtudiant.AutoGenerateColumns = true;
@@ -159,10 +159,13 @@ namespace Tp3InterfaceAnalyse
         }
 
         #region tabEtudiant
+
         private enum Btn1State { ajouter, confirmerAjout, confirmerModif};
         private Btn1State btn1State = Btn1State.ajouter;
         private enum Btn2State { modifier, annulerAjout, annulerModif };
         private Btn2State btn2State = Btn2State.modifier;
+
+        private Guid selectedEtudiantId;
 
         private void lbEtudiantsSGM_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -209,6 +212,8 @@ namespace Tp3InterfaceAnalyse
                         txtPaysSGM.Text = et.Pays;
                         //this one should be added in CRM
                         //txtEtatSGM.Text = et.Etat;
+
+                        selectedEtudiantId = et.Identifiant;
                     }
                 }
             }
@@ -230,7 +235,7 @@ namespace Tp3InterfaceAnalyse
                     btnAction2EtudiantSGM.Text = "Annuler";
                     break;
                 case Btn1State.confirmerAjout:
-                    crm.CreateEtudiant(new Etudiant(txtNomProgrammeSGM.Text, new Guid().ToString(), txtCycleProgrammeSGM.Text, txtDepartementProgrammeSGM.Text, txtVilleSGM.Text, txtPaysSGM.Text, txtCodeProgrammeSGM.Text));
+                    crm.CreateEtudiant(new Etudiant(txtNomSGM.Text, new Guid(), txtPrenomSGM.Text, txtAdresseSGM.Text, txtVilleSGM.Text, txtPaysSGM.Text, txtCodeProgrammeSGM.Text));
                     onloadEtudiantTab();
                     enableEtudiantFields(false);
                     //switch btn1 to ajouter
@@ -242,7 +247,7 @@ namespace Tp3InterfaceAnalyse
                     break;
                 case Btn1State.confirmerModif:
                     //throw the modification action to CRM
-//update tabarn**!! just a reminder
+                    crm.UpdateEtudiant(new Etudiant(txtNomSGM.Text, selectedEtudiantId, txtPrenomSGM.Text, txtAdresseSGM.Text, txtVilleSGM.Text, txtPaysSGM.Text, txtCodePermanentSGM.Text));
                     onloadEtudiantTab();
                     enableEtudiantFields(false);
                     //switch btn1 to ajouter
@@ -311,15 +316,15 @@ namespace Tp3InterfaceAnalyse
             lbEtudiantsSGM.Items.Clear();
             foreach (var item in crm.RetrieveEtudiants())
             {
-                var id = item.Attributes["new_etudiantjkweid"].ToString();
+                var id = item.Attributes["new_etudiantjkweid"];
                 var nom = item.Attributes["new_name"].ToString();
                 var pays = item.Attributes["new_pays"].ToString();
                 var prenom = item.Attributes["new_prenom"].ToString();
                 var adresse = item.Attributes["new_adresse"].ToString();
                 var ville = item.Attributes["new_ville"].ToString();
                 var codepermanent = item.Attributes["new_codepermanent"].ToString();
-                lbEtudiantsSGM.Items.Add(new ListItem(nom + ", " + prenom, id));
-                etudiants.Add(new Etudiant(nom, id, prenom, adresse, ville, pays, codepermanent));
+                lbEtudiantsSGM.Items.Add(new ListItem(nom + ", " + prenom));
+                etudiants.Add(new Etudiant(nom, (Guid)id, prenom, adresse, ville, pays, codepermanent));
             }
         }
 
@@ -704,15 +709,15 @@ namespace Tp3InterfaceAnalyse
                 //lbEtudiantsSGM.Items.Clear();
                 foreach (var item in crm.RetrieveEtudiantForEtablissement(((ListItem)lbEtablissement.SelectedItem).Value))
                 {
-                    var id = item.Attributes["new_etudiantjkweid"].ToString();
+                    var id = item.Attributes["new_etudiantjkweid"];
                     var nom = item.Attributes["new_name"].ToString();
                     var pays = item.Attributes["new_pays"].ToString();
                     var prenom = item.Attributes["new_prenom"].ToString();
                     var adresse = item.Attributes["new_adresse"].ToString();
                     var ville = item.Attributes["new_ville"].ToString();
                     var codepermanent = item.Attributes["new_codepermanent"].ToString();
-                    lbEtudiantsSGM.Items.Add(new ListItem(nom, id));
-                    result.Add(new Etudiant(nom, id, prenom, adresse, ville, pays, codepermanent));
+                    lbEtudiantsSGM.Items.Add(new ListItem(nom));
+                    result.Add(new Etudiant(nom, (Guid)id, prenom, adresse, ville, pays, codepermanent));
                 }
 
                 gvEtudiant.AutoGenerateColumns = true;
