@@ -8,17 +8,21 @@ namespace Tp3InterfaceAnalyse
 {
     public class Etablissement
     {
-        public string Identifiant { get; set; }
+        public Guid Identifiant { get; set; }
         public string Nom { get; set; }
+        public string Pays { get; set; }
+        public string Ville { get; set; }
 
         public Etablissement()
         {
         }
 
-        public Etablissement(string pNom, string id)
+        public Etablissement(string pNom, Guid id, string pPays, string pVille)
         {
             Nom = pNom;
             Identifiant = id;
+            Pays = pPays;
+            Ville = pVille;
         }
     }
 }

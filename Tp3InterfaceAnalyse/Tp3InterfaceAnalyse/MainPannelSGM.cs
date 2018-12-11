@@ -106,10 +106,12 @@ namespace Tp3InterfaceAnalyse
                 lbEtablissement.Items.Clear();
                 foreach(var item in crm.RetrieveEtablissementForMisson(((ListItem)lbMissionsSGM.SelectedItem).Value))
                 {
-                    var id = item.Attributes["new_etablissementjkweid"].ToString();
+                    var id = item.Attributes["new_etablissementjkweid"];
                     var nom = item.Attributes["new_name"].ToString();
-                    lbEtablissement.Items.Add(new ListItem(nom, id));
-                    resultEta.Add(new Etablissement(nom, id));
+                    var pays = item.Attributes["new_pays"].ToString();
+                    var ville = item.Attributes["new_ville"].ToString();
+                    lbEtablissement.Items.Add(new ListItem(nom));
+                    resultEta.Add(new Etablissement(nom, (Guid)id, pays, ville));
                 }
             }
         }
