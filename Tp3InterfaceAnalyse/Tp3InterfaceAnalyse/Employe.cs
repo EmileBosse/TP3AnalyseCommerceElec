@@ -6,11 +6,22 @@ using System.Threading.Tasks;
 
 namespace Tp3InterfaceAnalyse
 {
-    class Employe
+    public class Employe
     {
         public string id { get; set; }
         public string prenom { get; set; }
         public string nom { get; set; }
 
+        public string adresse { get; set; }
+
+        public Employe(string pId, string pPrenom, string pNom, string pAdresse)
+        {
+            id = pId;
+            prenom = pPrenom;
+            nom = pNom;
+            adresse = pAdresse;            
+        }
+
+        public Employe() { }
     }
 }

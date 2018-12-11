@@ -76,6 +76,17 @@
             this.lblNomEtudiantSGM = new System.Windows.Forms.Label();
             this.lblCodePermanentSGM = new System.Windows.Forms.Label();
             this.tabEmploye = new System.Windows.Forms.TabPage();
+            this.gbEmployeSGM = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbAdresseEmployeSGM = new System.Windows.Forms.TextBox();
+            this.tbPrenomEmployeSGM = new System.Windows.Forms.TextBox();
+            this.btnAction1EmployeSGM = new System.Windows.Forms.Button();
+            this.btnAction2EmployeSGM = new System.Windows.Forms.Button();
+            this.tbNomEmployeSGM = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbEmployesSGM = new System.Windows.Forms.ListBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.gbGeneralSGM.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvEtudiant)).BeginInit();
@@ -85,6 +96,8 @@
             this.tabMission.SuspendLayout();
             this.tabEtudiant.SuspendLayout();
             this.gbEtudiantSGM.SuspendLayout();
+            this.tabEmploye.SuspendLayout();
+            this.gbEmployeSGM.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbQuestionSGM
@@ -545,12 +558,121 @@
             // 
             // tabEmploye
             // 
+            this.tabEmploye.Controls.Add(this.gbEmployeSGM);
+            this.tabEmploye.Controls.Add(this.lbEmployesSGM);
+            this.tabEmploye.Controls.Add(this.label8);
             this.tabEmploye.Location = new System.Drawing.Point(4, 22);
             this.tabEmploye.Name = "tabEmploye";
             this.tabEmploye.Size = new System.Drawing.Size(824, 659);
             this.tabEmploye.TabIndex = 5;
             this.tabEmploye.Text = "Employé(s)";
             this.tabEmploye.UseVisualStyleBackColor = true;
+            // 
+            // gbEmployeSGM
+            // 
+            this.gbEmployeSGM.Controls.Add(this.label4);
+            this.gbEmployeSGM.Controls.Add(this.label5);
+            this.gbEmployeSGM.Controls.Add(this.tbAdresseEmployeSGM);
+            this.gbEmployeSGM.Controls.Add(this.tbPrenomEmployeSGM);
+            this.gbEmployeSGM.Controls.Add(this.btnAction1EmployeSGM);
+            this.gbEmployeSGM.Controls.Add(this.btnAction2EmployeSGM);
+            this.gbEmployeSGM.Controls.Add(this.tbNomEmployeSGM);
+            this.gbEmployeSGM.Controls.Add(this.label6);
+            this.gbEmployeSGM.Location = new System.Drawing.Point(450, 31);
+            this.gbEmployeSGM.Name = "gbEmployeSGM";
+            this.gbEmployeSGM.Size = new System.Drawing.Size(331, 129);
+            this.gbEmployeSGM.TabIndex = 7;
+            this.gbEmployeSGM.TabStop = false;
+            this.gbEmployeSGM.Text = "Employé";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 73);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Adresse :";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 47);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Prénom :";
+            // 
+            // tbAdresseEmployeSGM
+            // 
+            this.tbAdresseEmployeSGM.Enabled = false;
+            this.tbAdresseEmployeSGM.Location = new System.Drawing.Point(104, 70);
+            this.tbAdresseEmployeSGM.Name = "tbAdresseEmployeSGM";
+            this.tbAdresseEmployeSGM.Size = new System.Drawing.Size(139, 20);
+            this.tbAdresseEmployeSGM.TabIndex = 7;
+            // 
+            // tbPrenomEmployeSGM
+            // 
+            this.tbPrenomEmployeSGM.Enabled = false;
+            this.tbPrenomEmployeSGM.Location = new System.Drawing.Point(104, 44);
+            this.tbPrenomEmployeSGM.Name = "tbPrenomEmployeSGM";
+            this.tbPrenomEmployeSGM.Size = new System.Drawing.Size(139, 20);
+            this.tbPrenomEmployeSGM.TabIndex = 6;
+            // 
+            // btnAction1EmployeSGM
+            // 
+            this.btnAction1EmployeSGM.Location = new System.Drawing.Point(249, 16);
+            this.btnAction1EmployeSGM.Name = "btnAction1EmployeSGM";
+            this.btnAction1EmployeSGM.Size = new System.Drawing.Size(75, 23);
+            this.btnAction1EmployeSGM.TabIndex = 5;
+            this.btnAction1EmployeSGM.Text = "Ajouter";
+            this.btnAction1EmployeSGM.UseVisualStyleBackColor = true;
+            this.btnAction1EmployeSGM.Click += new System.EventHandler(this.btnAction1EmployeSGM_Click);
+            // 
+            // btnAction2EmployeSGM
+            // 
+            this.btnAction2EmployeSGM.Location = new System.Drawing.Point(249, 45);
+            this.btnAction2EmployeSGM.Name = "btnAction2EmployeSGM";
+            this.btnAction2EmployeSGM.Size = new System.Drawing.Size(75, 23);
+            this.btnAction2EmployeSGM.TabIndex = 4;
+            this.btnAction2EmployeSGM.Text = "Modifier";
+            this.btnAction2EmployeSGM.UseVisualStyleBackColor = true;
+            this.btnAction2EmployeSGM.Click += new System.EventHandler(this.btnAction2EmployeSGM_Click);
+            // 
+            // tbNomEmployeSGM
+            // 
+            this.tbNomEmployeSGM.Enabled = false;
+            this.tbNomEmployeSGM.Location = new System.Drawing.Point(104, 18);
+            this.tbNomEmployeSGM.Name = "tbNomEmployeSGM";
+            this.tbNomEmployeSGM.Size = new System.Drawing.Size(139, 20);
+            this.tbNomEmployeSGM.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Nom :";
+            // 
+            // lbEmployesSGM
+            // 
+            this.lbEmployesSGM.FormattingEnabled = true;
+            this.lbEmployesSGM.Location = new System.Drawing.Point(52, 65);
+            this.lbEmployesSGM.Name = "lbEmployesSGM";
+            this.lbEmployesSGM.Size = new System.Drawing.Size(137, 95);
+            this.lbEmployesSGM.TabIndex = 5;
+            this.lbEmployesSGM.SelectedIndexChanged += new System.EventHandler(this.lbEmployesSGM_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(49, 47);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 13);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Employés";
             // 
             // listBox1
             // 
@@ -584,6 +706,10 @@
             this.tabEtudiant.PerformLayout();
             this.gbEtudiantSGM.ResumeLayout(false);
             this.gbEtudiantSGM.PerformLayout();
+            this.tabEmploye.ResumeLayout(false);
+            this.tabEmploye.PerformLayout();
+            this.gbEmployeSGM.ResumeLayout(false);
+            this.gbEmployeSGM.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -638,6 +764,17 @@
         private System.Windows.Forms.Label lblEtablissementAccueil;
         private System.Windows.Forms.ListBox lbEtablissement;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomQueston;
+        private System.Windows.Forms.GroupBox gbEmployeSGM;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tbAdresseEmployeSGM;
+        private System.Windows.Forms.TextBox tbPrenomEmployeSGM;
+        private System.Windows.Forms.Button btnAction1EmployeSGM;
+        private System.Windows.Forms.Button btnAction2EmployeSGM;
+        private System.Windows.Forms.TextBox tbNomEmployeSGM;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ListBox lbEmployesSGM;
+        private System.Windows.Forms.Label label8;
     }
 }
 

@@ -17,11 +17,13 @@ namespace Tp3InterfaceAnalyse
         private CRM crm;
         private Employe employe;
         private List<Etudiant> etudiants;
+        private List<Employe> employes;
 
         public MainPannelSGM()
         {
             InitializeComponent();
             etudiants = new List<Etudiant>();
+            employes = new List<Employe>();
         }
 
         public void setPreviousWindow(SignIn window)
@@ -326,6 +328,11 @@ namespace Tp3InterfaceAnalyse
             {
                 onloadEtudiantTab();
             }
+
+            if (tabRecherche.SelectedTab.Name.ToString() == "tabEmploye")
+            {
+                onloadEmployeTab();
+            }
         }
 
         private void btnPaysOriginSGM_Click(object sender, EventArgs e)
@@ -357,5 +364,166 @@ namespace Tp3InterfaceAnalyse
         {
 
         }
+
+
+        #region tabEmploye
+
+
+        private void lbEmployesSGM_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //here we need to fill the info box to the right
+            clearEmployeFields(false);
+        }
+
+        private void enableEmployeFields(bool enable)
+        {
+            tbNomEmployeSGM.Enabled = enable;
+            tbPrenomEmployeSGM.Enabled = enable;
+            tbAdresseEmployeSGM.Enabled = enable;
+
+
+            lbEmployesSGM.Enabled = !enable;
+        }
+
+        private void clearEmployeFields(bool clear)
+        {
+            if (clear)
+            {
+                
+                tbNomEmployeSGM.Text = "";
+                tbPrenomEmployeSGM.Text = "";
+                tbAdresseEmployeSGM.Text = "";
+            }
+            else
+            {
+                foreach (Employe em in employes)
+                {
+                    if (em.nom + ", " + em.prenom == lbEmployesSGM.SelectedItem.ToString())
+                    {
+                        
+                        tbNomEmployeSGM.Text = em.nom;
+                        tbPrenomEmployeSGM.Text = em.prenom;
+                        tbAdresseEmployeSGM.Text = em.adresse;
+                    }
+                }
+            }
+        }
+
+        private void btnAction1EmployeSGM_Click(object sender, EventArgs e)
+        {
+            switch (btn1State)
+            {
+                case Btn1State.ajouter:
+                    //clear all the fields
+                    enableEmployeFields(true);
+                    clearEmployeFields(true);
+                    //switch btn1 to confirmerAjout
+                    btn1State = Btn1State.confirmerAjout;
+                    btnAction1EmployeSGM.Text = "Confirmer";
+                    //switch btn2 to annulerAjout
+                    btn2State = Btn2State.annulerAjout;
+                    btnAction2EmployeSGM.Text = "Annuler";
+                    break;
+                case Btn1State.confirmerAjout:
+                    crm.CreateEmploye(new Employe(new Guid().ToString(), tbPrenomEmployeSGM.Text, tbNomEmployeSGM.Text, tbAdresseEmployeSGM.Text));
+                    onloadEmployeTab();
+                    enableEmployeFields(false);
+                    //switch btn1 to ajouter
+                    btn1State = Btn1State.ajouter;
+                    btnAction1EmployeSGM.Text = "Ajouter";
+                    //switch btn2 to modifier
+                    btn2State = Btn2State.modifier;
+                    btnAction2EmployeSGM.Text = "Modifier";
+                    break;
+                case Btn1State.confirmerModif:
+                    //throw the modification action to CRM
+
+                    onloadEmployeTab();
+                    enableEmployeFields(false);
+                    //switch btn1 to ajouter
+                    btn1State = Btn1State.ajouter;
+                    btnAction1EmployeSGM.Text = "Ajouter";
+                    //switch btn2 to modifier
+                    btn2State = Btn2State.modifier;
+                    btnAction2EmployeSGM.Text = "Modifier";
+                    break;
+            }
+        }
+
+        //private void btnAction2EtudiantSGM_Click(object sender, EventArgs e)
+        //{
+
+        //}
+
+        private void btnAction2EmployeSGM_Click(object sender, EventArgs e)
+        {
+            switch (btn2State)
+            {
+                case Btn2State.modifier:
+                    //Enable the fields
+                    enableEmployeFields(true);
+                    //switch btn2 to annulerModif
+                    btn2State = Btn2State.annulerModif;
+                    btnAction2EmployeSGM.Text = "Annuler";
+                    //switch btn1 to confirmerModif
+                    btn1State = Btn1State.confirmerModif;
+                    btnAction1EmployeSGM.Text = "Confirmer";
+                    break;
+                case Btn2State.annulerAjout:
+                    //messagebox of validation
+                    DialogResult dialogResult1 = MessageBox.Show("Êtes-vous certain de vouloir annuler l'ajout?", "SGM", MessageBoxButtons.YesNo);
+                    //if yes fill the field with the initial state
+                    if (dialogResult1 == DialogResult.Yes)
+                    {
+                        enableEmployeFields(false);
+                        clearEmployeFields(false);
+                        //switch btn2 to modifier
+                        btn2State = Btn2State.modifier;
+                        btnAction2EmployeSGM.Text = "Modifier";
+                        //switch btn1 to ajouter
+                        btn1State = Btn1State.ajouter;
+                        btnAction1EmployeSGM.Text = "Ajouter";
+                    }
+                    //else do nothing
+                    break;
+                case Btn2State.annulerModif:
+                    //messagebox of validation
+                    DialogResult dialogResult2 = MessageBox.Show("Êtes-vous certain de vouloir annuler les modifications?", "SGM", MessageBoxButtons.YesNo);
+                    //if yes fill the field with the initial state
+                    if (dialogResult2 == DialogResult.Yes)
+                    {
+                        enableEmployeFields(false);
+                        clearEmployeFields(false);
+                        //switch btn2 to modifier
+                        btn2State = Btn2State.modifier;
+                        btnAction2EmployeSGM.Text = "Modifier";
+                        //switch btn1 to ajouter
+                        btn1State = Btn1State.ajouter;
+                        btnAction1EmployeSGM.Text = "Ajouter";
+                    }
+                    //else do nothing
+                    break;
+            }
+        }
+
+        private void onloadEmployeTab()
+        {
+            lbEmployesSGM.Items.Clear();
+            foreach (var item in crm.RetrieveEmployes())
+            {
+                var id = item.Attributes["new_employeuniversietjkweid"].ToString();
+                var nom = item.Attributes["new_name"].ToString();
+                var prenom = item.Attributes["new_prenom"].ToString();
+                var adresse = item.Attributes["new_adresse"].ToString();
+                lbEmployesSGM.Items.Add(new ListItem(nom + ", " + prenom, id));
+                employes.Add(new Employe(id, prenom, nom, adresse));
+            }
+        }
+
+
+
+        #endregion tabEmploye
+
+
     }
 }

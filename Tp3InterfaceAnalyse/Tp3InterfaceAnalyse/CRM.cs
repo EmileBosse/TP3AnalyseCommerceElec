@@ -129,7 +129,7 @@ namespace Tp3InterfaceAnalyse
         #endregion
 
         #region Employé université
-        public  List<Entity> RetrieveEmployes()
+        public List<Entity> RetrieveEmployes()
         {
             var result = new List<Entity>();
 
@@ -139,6 +139,7 @@ namespace Tp3InterfaceAnalyse
             queryExp.ColumnSet.Columns.Add("new_employeuniversietjkweid");
             queryExp.ColumnSet.Columns.Add("new_name");
             queryExp.ColumnSet.Columns.Add("new_prenom");
+            queryExp.ColumnSet.Columns.Add("new_adresse");
             EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
             if (contCollection.Entities.Count > 0)
             {
@@ -150,6 +151,28 @@ namespace Tp3InterfaceAnalyse
                 return result;
             }
         }
+
+        public void CreateEmploye(Employe employe)
+        {
+            Entity employeEntity = new Entity("new_employeuniversietjkwe");
+            employeEntity["new_name"] = employe.nom;
+            employeEntity["new_prenom"] = employe.prenom;
+            employeEntity["new_adresse"] = employe.adresse;
+
+            Guid id = orgService.Create(employeEntity);
+            Console.WriteLine("Et voilà !! : " + id);
+        }
+
+        public void UpdateEmploye(Entity employeEntity, Employe employe)
+        {
+            employeEntity["new_name"] = employe.nom;
+            employeEntity["new_prenom"] = employe.prenom;
+            employeEntity["new_adresse"] = employe.adresse;
+
+            orgService.Update(employeEntity);
+        }
+
+
         #endregion
 
         #region Étudiant
