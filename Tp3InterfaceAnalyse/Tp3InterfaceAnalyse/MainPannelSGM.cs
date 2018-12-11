@@ -347,11 +347,8 @@ namespace Tp3InterfaceAnalyse
             if(tabRecherche.SelectedTab.Name.ToString() == "tabProgramme")
             {
                 onloadProgrammeTab();
-            }
-
-            if (tabRecherche.SelectedTab.Name.ToString() == "tabEmploye")
-            {
-                onloadEmployeTab();
+                tabRecherche.Height = 192;
+                this.Height = 254;
             }
         }
 
