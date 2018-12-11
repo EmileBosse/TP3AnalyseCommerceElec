@@ -163,8 +163,15 @@ namespace Tp3InterfaceAnalyse
             Console.WriteLine("Et voilà !! : " + id);
         }
 
-        public void UpdateEmploye(Entity employeEntity, Employe employe)
+        private Entity findEmployeEntity(Employe employe)
         {
+            return orgService.Retrieve("new_employeuniversietjkwe", employe.id, new ColumnSet(true));
+        }
+
+        public void UpdateEmploye(Employe employe)
+        {
+            Entity employeEntity = findEmployeEntity(employe);
+
             employeEntity["new_name"] = employe.nom;
             employeEntity["new_prenom"] = employe.prenom;
             employeEntity["new_adresse"] = employe.adresse;

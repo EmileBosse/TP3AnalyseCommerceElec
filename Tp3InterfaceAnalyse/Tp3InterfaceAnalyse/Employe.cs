@@ -8,13 +8,13 @@ namespace Tp3InterfaceAnalyse
 {
     public class Employe
     {
-        public string id { get; set; }
+        public Guid id { get; set; }
         public string prenom { get; set; }
         public string nom { get; set; }
 
         public string adresse { get; set; }
 
-        public Employe(string pId, string pPrenom, string pNom, string pAdresse)
+        public Employe(Guid pId, string pPrenom, string pNom, string pAdresse)
         {
             id = pId;
             prenom = pPrenom;

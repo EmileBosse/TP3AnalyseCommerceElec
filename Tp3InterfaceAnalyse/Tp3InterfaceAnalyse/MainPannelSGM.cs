@@ -39,7 +39,7 @@ namespace Tp3InterfaceAnalyse
             crm = crmGen;
         }
 
-        public void setEmploye(string nom, string prenom, string id)
+        public void setEmploye(string nom, string prenom, Guid id)
         {
             employe = new Employe();
             employe.nom = nom;
@@ -390,6 +390,7 @@ namespace Tp3InterfaceAnalyse
 
         #region tabEmploye
 
+        private Guid selectedEmployeId;
 
         private void lbEmployesSGM_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -426,6 +427,8 @@ namespace Tp3InterfaceAnalyse
                         tbNomEmployeSGM.Text = em.nom;
                         tbPrenomEmployeSGM.Text = em.prenom;
                         tbAdresseEmployeSGM.Text = em.adresse;
+
+                        selectedEmployeId = em.id;
                     }
                 }
             }
@@ -447,7 +450,7 @@ namespace Tp3InterfaceAnalyse
                     btnAction2EmployeSGM.Text = "Annuler";
                     break;
                 case Btn1State.confirmerAjout:
-                    crm.CreateEmploye(new Employe(new Guid().ToString(), tbPrenomEmployeSGM.Text, tbNomEmployeSGM.Text, tbAdresseEmployeSGM.Text));
+                    crm.CreateEmploye(new Employe(new Guid(), tbPrenomEmployeSGM.Text, tbNomEmployeSGM.Text, tbAdresseEmployeSGM.Text));
                     onloadEmployeTab();
                     enableEmployeFields(false);
                     //switch btn1 to ajouter
@@ -459,7 +462,7 @@ namespace Tp3InterfaceAnalyse
                     break;
                 case Btn1State.confirmerModif:
                     //throw the modification action to CRM
-
+                    crm.UpdateEmploye(new Employe(selectedEmployeId, tbPrenomEmployeSGM.Text, tbNomEmployeSGM.Text, tbAdresseEmployeSGM.Text));
                     onloadEmployeTab();
                     enableEmployeFields(false);
                     //switch btn1 to ajouter
@@ -471,11 +474,6 @@ namespace Tp3InterfaceAnalyse
                     break;
             }
         }
-
-        //private void btnAction2EtudiantSGM_Click(object sender, EventArgs e)
-        //{
-
-        //}
 
         private void btnAction2EmployeSGM_Click(object sender, EventArgs e)
         {
@@ -533,12 +531,12 @@ namespace Tp3InterfaceAnalyse
             lbEmployesSGM.Items.Clear();
             foreach (var item in crm.RetrieveEmployes())
             {
-                var id = item.Attributes["new_employeuniversietjkweid"].ToString();
+                var id = item.Attributes["new_employeuniversietjkweid"];
                 var nom = item.Attributes["new_name"].ToString();
                 var prenom = item.Attributes["new_prenom"].ToString();
                 var adresse = item.Attributes["new_adresse"].ToString();
-                lbEmployesSGM.Items.Add(new ListItem(nom + ", " + prenom, id));
-                employes.Add(new Employe(id, prenom, nom, adresse));
+                lbEmployesSGM.Items.Add(new ListItem(nom + ", " + prenom));
+                employes.Add(new Employe((Guid)id, prenom, nom, adresse));
             }
         }
 
