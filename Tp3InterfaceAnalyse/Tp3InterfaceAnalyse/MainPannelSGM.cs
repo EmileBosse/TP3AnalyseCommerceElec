@@ -153,8 +153,9 @@ namespace Tp3InterfaceAnalyse
             gvQuestions.Columns.Clear();
             var bindingList = new BindingList<Question>(result);
             gvQuestions.DataSource = new BindingSource(bindingList, null);
-                
-            
+            gvQuestions.Columns["Identifiant"].Visible = false;
+
+
         }
 
         #region tabEtudiant
