@@ -229,6 +229,55 @@ namespace Tp3InterfaceAnalyse
         }
         #endregion
 
+        #region Programme étude
+        public List<Entity> RetrieveProgrammes()
+        {
+            var result = new List<Entity>();
+
+            QueryExpression queryExp = new QueryExpression();
+            queryExp.EntityName = "new_programme_etude_jkwe";
+            queryExp.ColumnSet = new ColumnSet();
+            queryExp.ColumnSet.Columns.Add("new_name");
+            queryExp.ColumnSet.Columns.Add("new_code");
+            queryExp.ColumnSet.Columns.Add("new_cycle");
+            queryExp.ColumnSet.Columns.Add("new_departement");
+            queryExp.ColumnSet.Columns.Add("new_programme_etude_jkweid");
+            EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
+            if (contCollection.Entities.Count > 0)
+            {
+                result.AddRange(contCollection.Entities.ToList());
+                return result;
+            }
+            else
+            {
+                return result;
+            }
+        }
+
+        public void CreateProgramme(Programme programme)
+        {
+            Entity progEntity = new Entity("new_programme_etude_jkwe");
+            progEntity["new_name"] = programme.Nom;
+            progEntity["new_code"] = programme.Code;
+            progEntity["new_cycle"] = programme.Cycle;
+            progEntity["new_departement"] = programme.Departement;
+            progEntity["new_programme_etude_jkweid"] = programme.Identifiant;
+
+            Guid id = orgService.Create(progEntity);
+        }
+
+        public void UpdateProgramme(Entity progEntity, Programme programme)
+        {
+            progEntity["new_name"] = programme.Nom;
+            progEntity["new_code"] = programme.Code;
+            progEntity["new_cycle"] = programme.Cycle;
+            progEntity["new_departement"] = programme.Departement;
+            progEntity["new_programme_etude_jkweid"] = programme.Identifiant;
+
+            orgService.Update(progEntity);
+        }
+        #endregion
+
         public List<Entity> RetrieveMissions()
         {
             var result = new List<Entity>();
