@@ -57,13 +57,26 @@
             this.tabMission = new System.Windows.Forms.TabPage();
             this.tabEtablissement = new System.Windows.Forms.TabPage();
             this.tabProgramme = new System.Windows.Forms.TabPage();
-            this.tabEtudiant = new System.Windows.Forms.TabPage();
+            this.lblProgrammeSGM = new System.Windows.Forms.Label();
+            this.lbProgrammesSGM = new System.Windows.Forms.ListBox();
             this.gbEtudiantSGM = new System.Windows.Forms.GroupBox();
-            this.lblTypeEtudiantSGM = new System.Windows.Forms.Label();
-            this.lblPaysEtudiantSGM = new System.Windows.Forms.Label();
-            this.lblVilleEtudiantSGM = new System.Windows.Forms.Label();
             this.lblAdresseEtudiantSGM = new System.Windows.Forms.Label();
             this.lblPrenomEtudiantSGM = new System.Windows.Forms.Label();
+            this.txtDepartementProgrammeSGM = new System.Windows.Forms.TextBox();
+            this.txtCycleProgrammeSGM = new System.Windows.Forms.TextBox();
+            this.btnAction1ProgrammeSGM = new System.Windows.Forms.Button();
+            this.btnAction2ProgrammeSGM = new System.Windows.Forms.Button();
+            this.txtNomProgrammeSGM = new System.Windows.Forms.TextBox();
+            this.txtCodeProgrammeSGM = new System.Windows.Forms.TextBox();
+            this.lblNomEtudiantSGM = new System.Windows.Forms.Label();
+            this.lblCodePermanentSGM = new System.Windows.Forms.Label();
+            this.tabEtudiant = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.txtEtatSGM = new System.Windows.Forms.TextBox();
             this.txtPaysSGM = new System.Windows.Forms.TextBox();
             this.txtVilleSGM = new System.Windows.Forms.TextBox();
@@ -73,8 +86,8 @@
             this.btnAction2EtudiantSGM = new System.Windows.Forms.Button();
             this.txtNomSGM = new System.Windows.Forms.TextBox();
             this.txtCodePermanentSGM = new System.Windows.Forms.TextBox();
-            this.lblNomEtudiantSGM = new System.Windows.Forms.Label();
-            this.lblCodePermanentSGM = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.tabEmploye = new System.Windows.Forms.TabPage();
             this.gbEmployeSGM = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -87,15 +100,21 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lbEmployesSGM = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
+
             this.listBox1 = new System.Windows.Forms.ListBox();
+
             this.gbGeneralSGM.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvEtudiant)).BeginInit();
             this.tabRecherche.SuspendLayout();
             this.tabAccueil.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvQuestions)).BeginInit();
             this.tabMission.SuspendLayout();
-            this.tabEtudiant.SuspendLayout();
+            this.tabProgramme.SuspendLayout();
             this.gbEtudiantSGM.SuspendLayout();
+
+            this.tabEtudiant.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+
             this.tabEmploye.SuspendLayout();
             this.gbEmployeSGM.SuspendLayout();
             this.SuspendLayout();
@@ -138,6 +157,7 @@
             this.lbEtablissement.Name = "lbEtablissement";
             this.lbEtablissement.Size = new System.Drawing.Size(369, 199);
             this.lbEtablissement.TabIndex = 12;
+            this.lbEtablissement.SelectedValueChanged += new System.EventHandler(this.lbEtablissement_SelectedValueChanged);
             // 
             // lblMissionListSGM
             // 
@@ -373,6 +393,9 @@
             // 
             // tabProgramme
             // 
+            this.tabProgramme.Controls.Add(this.lblProgrammeSGM);
+            this.tabProgramme.Controls.Add(this.lbProgrammesSGM);
+            this.tabProgramme.Controls.Add(this.gbEtudiantSGM);
             this.tabProgramme.Location = new System.Drawing.Point(4, 22);
             this.tabProgramme.Name = "tabProgramme";
             this.tabProgramme.Size = new System.Drawing.Size(824, 659);
@@ -380,9 +403,134 @@
             this.tabProgramme.Text = "Programme(s)";
             this.tabProgramme.UseVisualStyleBackColor = true;
             // 
+            // lblProgrammeSGM
+            // 
+            this.lblProgrammeSGM.AutoSize = true;
+            this.lblProgrammeSGM.Location = new System.Drawing.Point(86, 29);
+            this.lblProgrammeSGM.Name = "lblProgrammeSGM";
+            this.lblProgrammeSGM.Size = new System.Drawing.Size(65, 13);
+            this.lblProgrammeSGM.TabIndex = 8;
+            this.lblProgrammeSGM.Text = "Programmes";
+            // 
+            // lbProgrammesSGM
+            // 
+            this.lbProgrammesSGM.FormattingEnabled = true;
+            this.lbProgrammesSGM.Location = new System.Drawing.Point(62, 45);
+            this.lbProgrammesSGM.Name = "lbProgrammesSGM";
+            this.lbProgrammesSGM.Size = new System.Drawing.Size(120, 95);
+            this.lbProgrammesSGM.TabIndex = 7;
+            this.lbProgrammesSGM.SelectedIndexChanged += new System.EventHandler(this.lbProgrammesSGM_SelectedIndexChanged);
+            // 
+            // gbEtudiantSGM
+            // 
+            this.gbEtudiantSGM.Controls.Add(this.lblAdresseEtudiantSGM);
+            this.gbEtudiantSGM.Controls.Add(this.lblPrenomEtudiantSGM);
+            this.gbEtudiantSGM.Controls.Add(this.txtDepartementProgrammeSGM);
+            this.gbEtudiantSGM.Controls.Add(this.txtCycleProgrammeSGM);
+            this.gbEtudiantSGM.Controls.Add(this.btnAction1ProgrammeSGM);
+            this.gbEtudiantSGM.Controls.Add(this.btnAction2ProgrammeSGM);
+            this.gbEtudiantSGM.Controls.Add(this.txtNomProgrammeSGM);
+            this.gbEtudiantSGM.Controls.Add(this.txtCodeProgrammeSGM);
+            this.gbEtudiantSGM.Controls.Add(this.lblNomEtudiantSGM);
+            this.gbEtudiantSGM.Controls.Add(this.lblCodePermanentSGM);
+            this.gbEtudiantSGM.Location = new System.Drawing.Point(437, 23);
+            this.gbEtudiantSGM.Name = "gbEtudiantSGM";
+            this.gbEtudiantSGM.Size = new System.Drawing.Size(331, 129);
+            this.gbEtudiantSGM.TabIndex = 6;
+            this.gbEtudiantSGM.TabStop = false;
+            this.gbEtudiantSGM.Text = "Programme";
+            // 
+            // lblAdresseEtudiantSGM
+            // 
+            this.lblAdresseEtudiantSGM.AutoSize = true;
+            this.lblAdresseEtudiantSGM.Location = new System.Drawing.Point(7, 100);
+            this.lblAdresseEtudiantSGM.Name = "lblAdresseEtudiantSGM";
+            this.lblAdresseEtudiantSGM.Size = new System.Drawing.Size(74, 13);
+            this.lblAdresseEtudiantSGM.TabIndex = 12;
+            this.lblAdresseEtudiantSGM.Text = "Département :";
+            // 
+            // lblPrenomEtudiantSGM
+            // 
+            this.lblPrenomEtudiantSGM.AutoSize = true;
+            this.lblPrenomEtudiantSGM.Location = new System.Drawing.Point(7, 74);
+            this.lblPrenomEtudiantSGM.Name = "lblPrenomEtudiantSGM";
+            this.lblPrenomEtudiantSGM.Size = new System.Drawing.Size(39, 13);
+            this.lblPrenomEtudiantSGM.TabIndex = 11;
+            this.lblPrenomEtudiantSGM.Text = "Cycle :";
+            // 
+            // txtDepartementProgrammeSGM
+            // 
+            this.txtDepartementProgrammeSGM.Enabled = false;
+            this.txtDepartementProgrammeSGM.Location = new System.Drawing.Point(104, 97);
+            this.txtDepartementProgrammeSGM.Name = "txtDepartementProgrammeSGM";
+            this.txtDepartementProgrammeSGM.Size = new System.Drawing.Size(139, 20);
+            this.txtDepartementProgrammeSGM.TabIndex = 7;
+            // 
+            // txtCycleProgrammeSGM
+            // 
+            this.txtCycleProgrammeSGM.Enabled = false;
+            this.txtCycleProgrammeSGM.Location = new System.Drawing.Point(104, 71);
+            this.txtCycleProgrammeSGM.Name = "txtCycleProgrammeSGM";
+            this.txtCycleProgrammeSGM.Size = new System.Drawing.Size(139, 20);
+            this.txtCycleProgrammeSGM.TabIndex = 6;
+            // 
+            // btnAction1ProgrammeSGM
+            // 
+            this.btnAction1ProgrammeSGM.Location = new System.Drawing.Point(249, 16);
+            this.btnAction1ProgrammeSGM.Name = "btnAction1ProgrammeSGM";
+            this.btnAction1ProgrammeSGM.Size = new System.Drawing.Size(75, 23);
+            this.btnAction1ProgrammeSGM.TabIndex = 5;
+            this.btnAction1ProgrammeSGM.Text = "Ajouter";
+            this.btnAction1ProgrammeSGM.UseVisualStyleBackColor = true;
+            this.btnAction1ProgrammeSGM.Click += new System.EventHandler(this.btnAction1ProgrammeSGM_Click);
+            // 
+            // btnAction2ProgrammeSGM
+            // 
+            this.btnAction2ProgrammeSGM.Location = new System.Drawing.Point(249, 45);
+            this.btnAction2ProgrammeSGM.Name = "btnAction2ProgrammeSGM";
+            this.btnAction2ProgrammeSGM.Size = new System.Drawing.Size(75, 23);
+            this.btnAction2ProgrammeSGM.TabIndex = 4;
+            this.btnAction2ProgrammeSGM.Text = "Modifier";
+            this.btnAction2ProgrammeSGM.UseVisualStyleBackColor = true;
+            this.btnAction2ProgrammeSGM.Click += new System.EventHandler(this.btnAction2ProgrammeSGM_Click);
+            // 
+            // txtNomProgrammeSGM
+            // 
+            this.txtNomProgrammeSGM.Enabled = false;
+            this.txtNomProgrammeSGM.Location = new System.Drawing.Point(104, 45);
+            this.txtNomProgrammeSGM.Name = "txtNomProgrammeSGM";
+            this.txtNomProgrammeSGM.Size = new System.Drawing.Size(139, 20);
+            this.txtNomProgrammeSGM.TabIndex = 3;
+            // 
+            // txtCodeProgrammeSGM
+            // 
+            this.txtCodeProgrammeSGM.Enabled = false;
+            this.txtCodeProgrammeSGM.Location = new System.Drawing.Point(104, 19);
+            this.txtCodeProgrammeSGM.Name = "txtCodeProgrammeSGM";
+            this.txtCodeProgrammeSGM.Size = new System.Drawing.Size(139, 20);
+            this.txtCodeProgrammeSGM.TabIndex = 2;
+            // 
+            // lblNomEtudiantSGM
+            // 
+            this.lblNomEtudiantSGM.AutoSize = true;
+            this.lblNomEtudiantSGM.Location = new System.Drawing.Point(7, 48);
+            this.lblNomEtudiantSGM.Name = "lblNomEtudiantSGM";
+            this.lblNomEtudiantSGM.Size = new System.Drawing.Size(35, 13);
+            this.lblNomEtudiantSGM.TabIndex = 1;
+            this.lblNomEtudiantSGM.Text = "Nom :";
+            // 
+            // lblCodePermanentSGM
+            // 
+            this.lblCodePermanentSGM.AutoSize = true;
+            this.lblCodePermanentSGM.Location = new System.Drawing.Point(7, 22);
+            this.lblCodePermanentSGM.Name = "lblCodePermanentSGM";
+            this.lblCodePermanentSGM.Size = new System.Drawing.Size(38, 13);
+            this.lblCodePermanentSGM.TabIndex = 0;
+            this.lblCodePermanentSGM.Text = "Code :";
+            // 
             // tabEtudiant
             // 
-            this.tabEtudiant.Controls.Add(this.gbEtudiantSGM);
+            this.tabEtudiant.Controls.Add(this.groupBox1);
             this.tabEtudiant.Controls.Add(this.lbEtudiantsSGM);
             this.tabEtudiant.Controls.Add(this.lblEtudiantListSGM);
             this.tabEtudiant.Location = new System.Drawing.Point(4, 22);
@@ -392,75 +540,75 @@
             this.tabEtudiant.Text = "Étudiant(s)";
             this.tabEtudiant.UseVisualStyleBackColor = true;
             // 
-            // gbEtudiantSGM
+            // groupBox1
             // 
-            this.gbEtudiantSGM.Controls.Add(this.lblTypeEtudiantSGM);
-            this.gbEtudiantSGM.Controls.Add(this.lblPaysEtudiantSGM);
-            this.gbEtudiantSGM.Controls.Add(this.lblVilleEtudiantSGM);
-            this.gbEtudiantSGM.Controls.Add(this.lblAdresseEtudiantSGM);
-            this.gbEtudiantSGM.Controls.Add(this.lblPrenomEtudiantSGM);
-            this.gbEtudiantSGM.Controls.Add(this.txtEtatSGM);
-            this.gbEtudiantSGM.Controls.Add(this.txtPaysSGM);
-            this.gbEtudiantSGM.Controls.Add(this.txtVilleSGM);
-            this.gbEtudiantSGM.Controls.Add(this.txtAdresseSGM);
-            this.gbEtudiantSGM.Controls.Add(this.txtPrenomSGM);
-            this.gbEtudiantSGM.Controls.Add(this.btnAction1EtudiantSGM);
-            this.gbEtudiantSGM.Controls.Add(this.btnAction2EtudiantSGM);
-            this.gbEtudiantSGM.Controls.Add(this.txtNomSGM);
-            this.gbEtudiantSGM.Controls.Add(this.txtCodePermanentSGM);
-            this.gbEtudiantSGM.Controls.Add(this.lblNomEtudiantSGM);
-            this.gbEtudiantSGM.Controls.Add(this.lblCodePermanentSGM);
-            this.gbEtudiantSGM.Location = new System.Drawing.Point(450, 31);
-            this.gbEtudiantSGM.Name = "gbEtudiantSGM";
-            this.gbEtudiantSGM.Size = new System.Drawing.Size(331, 204);
-            this.gbEtudiantSGM.TabIndex = 4;
-            this.gbEtudiantSGM.TabStop = false;
-            this.gbEtudiantSGM.Text = "Étudiant";
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.txtEtatSGM);
+            this.groupBox1.Controls.Add(this.txtPaysSGM);
+            this.groupBox1.Controls.Add(this.txtVilleSGM);
+            this.groupBox1.Controls.Add(this.txtAdresseSGM);
+            this.groupBox1.Controls.Add(this.txtPrenomSGM);
+            this.groupBox1.Controls.Add(this.btnAction1EtudiantSGM);
+            this.groupBox1.Controls.Add(this.btnAction2EtudiantSGM);
+            this.groupBox1.Controls.Add(this.txtNomSGM);
+            this.groupBox1.Controls.Add(this.txtCodePermanentSGM);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Location = new System.Drawing.Point(441, 20);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(331, 204);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Étudiants";
             // 
-            // lblTypeEtudiantSGM
+            // label1
             // 
-            this.lblTypeEtudiantSGM.AutoSize = true;
-            this.lblTypeEtudiantSGM.Location = new System.Drawing.Point(7, 178);
-            this.lblTypeEtudiantSGM.Name = "lblTypeEtudiantSGM";
-            this.lblTypeEtudiantSGM.Size = new System.Drawing.Size(32, 13);
-            this.lblTypeEtudiantSGM.TabIndex = 15;
-            this.lblTypeEtudiantSGM.Text = "État :";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 178);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "État :";
             // 
-            // lblPaysEtudiantSGM
+            // label2
             // 
-            this.lblPaysEtudiantSGM.AutoSize = true;
-            this.lblPaysEtudiantSGM.Location = new System.Drawing.Point(7, 152);
-            this.lblPaysEtudiantSGM.Name = "lblPaysEtudiantSGM";
-            this.lblPaysEtudiantSGM.Size = new System.Drawing.Size(36, 13);
-            this.lblPaysEtudiantSGM.TabIndex = 14;
-            this.lblPaysEtudiantSGM.Text = "Pays :";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 152);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Pays :";
             // 
-            // lblVilleEtudiantSGM
+            // label3
             // 
-            this.lblVilleEtudiantSGM.AutoSize = true;
-            this.lblVilleEtudiantSGM.Location = new System.Drawing.Point(7, 126);
-            this.lblVilleEtudiantSGM.Name = "lblVilleEtudiantSGM";
-            this.lblVilleEtudiantSGM.Size = new System.Drawing.Size(32, 13);
-            this.lblVilleEtudiantSGM.TabIndex = 13;
-            this.lblVilleEtudiantSGM.Text = "Ville :";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 126);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Ville :";
             // 
-            // lblAdresseEtudiantSGM
+            // label7
             // 
-            this.lblAdresseEtudiantSGM.AutoSize = true;
-            this.lblAdresseEtudiantSGM.Location = new System.Drawing.Point(7, 100);
-            this.lblAdresseEtudiantSGM.Name = "lblAdresseEtudiantSGM";
-            this.lblAdresseEtudiantSGM.Size = new System.Drawing.Size(51, 13);
-            this.lblAdresseEtudiantSGM.TabIndex = 12;
-            this.lblAdresseEtudiantSGM.Text = "Adresse :";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 100);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Adresse :";
             // 
-            // lblPrenomEtudiantSGM
+            // label9
             // 
-            this.lblPrenomEtudiantSGM.AutoSize = true;
-            this.lblPrenomEtudiantSGM.Location = new System.Drawing.Point(7, 74);
-            this.lblPrenomEtudiantSGM.Name = "lblPrenomEtudiantSGM";
-            this.lblPrenomEtudiantSGM.Size = new System.Drawing.Size(49, 13);
-            this.lblPrenomEtudiantSGM.TabIndex = 11;
-            this.lblPrenomEtudiantSGM.Text = "Prénom :";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(7, 74);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(49, 13);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Prénom :";
             // 
             // txtEtatSGM
             // 
@@ -538,23 +686,23 @@
             this.txtCodePermanentSGM.Size = new System.Drawing.Size(139, 20);
             this.txtCodePermanentSGM.TabIndex = 2;
             // 
-            // lblNomEtudiantSGM
+            // label10
             // 
-            this.lblNomEtudiantSGM.AutoSize = true;
-            this.lblNomEtudiantSGM.Location = new System.Drawing.Point(7, 48);
-            this.lblNomEtudiantSGM.Name = "lblNomEtudiantSGM";
-            this.lblNomEtudiantSGM.Size = new System.Drawing.Size(35, 13);
-            this.lblNomEtudiantSGM.TabIndex = 1;
-            this.lblNomEtudiantSGM.Text = "Nom :";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 48);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Nom :";
             // 
-            // lblCodePermanentSGM
+            // label11
             // 
-            this.lblCodePermanentSGM.AutoSize = true;
-            this.lblCodePermanentSGM.Location = new System.Drawing.Point(7, 22);
-            this.lblCodePermanentSGM.Name = "lblCodePermanentSGM";
-            this.lblCodePermanentSGM.Size = new System.Drawing.Size(91, 13);
-            this.lblCodePermanentSGM.TabIndex = 0;
-            this.lblCodePermanentSGM.Text = "Code permanent :";
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(7, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(91, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Code permanent :";
             // 
             // tabEmploye
             // 
@@ -673,6 +821,7 @@
             this.label8.Size = new System.Drawing.Size(52, 13);
             this.label8.TabIndex = 6;
             this.label8.Text = "Employés";
+
             // 
             // listBox1
             // 
@@ -682,6 +831,7 @@
             this.listBox1.Size = new System.Drawing.Size(137, 43);
             this.listBox1.TabIndex = 2;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.lbEtudiantsSGM_SelectedIndexChanged);
+
             // 
             // MainPannelSGM
             // 
@@ -689,7 +839,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(851, 709);
             this.Controls.Add(this.tabRecherche);
-            this.Controls.Add(this.listBox1);
             this.Name = "MainPannelSGM";
             this.Text = "Systeme de Gestion de Mission";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainPannelSGM_FormClosing);
@@ -702,10 +851,16 @@
             this.tabAccueil.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvQuestions)).EndInit();
             this.tabMission.ResumeLayout(false);
-            this.tabEtudiant.ResumeLayout(false);
-            this.tabEtudiant.PerformLayout();
+            this.tabProgramme.ResumeLayout(false);
+            this.tabProgramme.PerformLayout();
             this.gbEtudiantSGM.ResumeLayout(false);
             this.gbEtudiantSGM.PerformLayout();
+
+            this.tabEtudiant.ResumeLayout(false);
+            this.tabEtudiant.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+
             this.tabEmploye.ResumeLayout(false);
             this.tabEmploye.PerformLayout();
             this.gbEmployeSGM.ResumeLayout(false);
@@ -735,7 +890,6 @@
         private System.Windows.Forms.DataGridView gvQuestions;
         private System.Windows.Forms.DataGridView gvEtudiant;
         private System.Windows.Forms.Label lblQuestions;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label lblEtudiantsAccueil;
         private System.Windows.Forms.DataGridViewTextBoxColumn nom;
         private System.Windows.Forms.DataGridViewTextBoxColumn prenom;
@@ -744,23 +898,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VIle;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodePermanent;
         private System.Windows.Forms.Label lblTrierPar;
-        private System.Windows.Forms.GroupBox gbEtudiantSGM;
-        private System.Windows.Forms.Label lblTypeEtudiantSGM;
-        private System.Windows.Forms.Label lblPaysEtudiantSGM;
-        private System.Windows.Forms.Label lblVilleEtudiantSGM;
-        private System.Windows.Forms.Label lblAdresseEtudiantSGM;
-        private System.Windows.Forms.Label lblPrenomEtudiantSGM;
-        private System.Windows.Forms.TextBox txtEtatSGM;
-        private System.Windows.Forms.TextBox txtPaysSGM;
-        private System.Windows.Forms.TextBox txtVilleSGM;
-        private System.Windows.Forms.TextBox txtAdresseSGM;
-        private System.Windows.Forms.TextBox txtPrenomSGM;
-        private System.Windows.Forms.Button btnAction1EtudiantSGM;
-        private System.Windows.Forms.Button btnAction2EtudiantSGM;
-        private System.Windows.Forms.TextBox txtNomSGM;
-        private System.Windows.Forms.TextBox txtCodePermanentSGM;
-        private System.Windows.Forms.Label lblNomEtudiantSGM;
-        private System.Windows.Forms.Label lblCodePermanentSGM;
         private System.Windows.Forms.Label lblEtablissementAccueil;
         private System.Windows.Forms.ListBox lbEtablissement;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomQueston;
@@ -775,6 +912,51 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListBox lbEmployesSGM;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.GroupBox gbEtudiantSGM;
+        private System.Windows.Forms.Label lblAdresseEtudiantSGM;
+        private System.Windows.Forms.Label lblPrenomEtudiantSGM;
+        private System.Windows.Forms.TextBox txtDepartementProgrammeSGM;
+        private System.Windows.Forms.TextBox txtCycleProgrammeSGM;
+        private System.Windows.Forms.Button btnAction1ProgrammeSGM;
+        private System.Windows.Forms.Button btnAction2ProgrammeSGM;
+        private System.Windows.Forms.TextBox txtNomProgrammeSGM;
+        private System.Windows.Forms.TextBox txtCodeProgrammeSGM;
+        private System.Windows.Forms.Label lblNomEtudiantSGM;
+        private System.Windows.Forms.Label lblCodePermanentSGM;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtEtatSGM;
+        private System.Windows.Forms.TextBox txtPaysSGM;
+        private System.Windows.Forms.TextBox txtVilleSGM;
+        private System.Windows.Forms.TextBox txtAdresseSGM;
+        private System.Windows.Forms.TextBox txtPrenomSGM;
+        private System.Windows.Forms.Button btnAction1EtudiantSGM;
+        private System.Windows.Forms.Button btnAction2EtudiantSGM;
+        private System.Windows.Forms.TextBox txtNomSGM;
+        private System.Windows.Forms.TextBox txtCodePermanentSGM;
+        private System.Windows.Forms.ListBox listBox1;
+
+        //private System.Windows.Forms.Label lblCodePermanentSGM;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn NomQueston;
+        //private System.Windows.Forms.GroupBox gbEmployeSGM;
+        //private System.Windows.Forms.Label label4;
+        //private System.Windows.Forms.Label label5;
+        //private System.Windows.Forms.TextBox tbAdresseEmployeSGM;
+        //private System.Windows.Forms.TextBox tbPrenomEmployeSGM;
+        //private System.Windows.Forms.Button btnAction1EmployeSGM;
+        //private System.Windows.Forms.Button btnAction2EmployeSGM;
+        //private System.Windows.Forms.Label label6;
+        //private System.Windows.Forms.ListBox lbEmployesSGM;
+        //private System.Windows.Forms.Label label8;
+
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblProgrammeSGM;
+        private System.Windows.Forms.ListBox lbProgrammesSGM;
     }
 }
 

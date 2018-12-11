@@ -18,12 +18,15 @@ namespace Tp3InterfaceAnalyse
         private Employe employe;
         private List<Etudiant> etudiants;
         private List<Employe> employes;
+        private List<Programme> programmes;
+
 
         public MainPannelSGM()
         {
             InitializeComponent();
             etudiants = new List<Etudiant>();
             employes = new List<Employe>();
+            programmes = new List<Programme>();
         }
 
         public void setPreviousWindow(SignIn window)
@@ -226,7 +229,7 @@ namespace Tp3InterfaceAnalyse
                     btnAction2EtudiantSGM.Text = "Annuler";
                     break;
                 case Btn1State.confirmerAjout:
-                    crm.CreateEtudiant(new Etudiant(txtNomSGM.Text, new Guid().ToString(), txtPrenomSGM.Text, txtAdresseSGM.Text, txtVilleSGM.Text, txtPaysSGM.Text, txtCodePermanentSGM.Text));
+                    crm.CreateEtudiant(new Etudiant(txtNomProgrammeSGM.Text, new Guid().ToString(), txtCycleProgrammeSGM.Text, txtDepartementProgrammeSGM.Text, txtVilleSGM.Text, txtPaysSGM.Text, txtCodeProgrammeSGM.Text));
                     onloadEtudiantTab();
                     enableEtudiantFields(false);
                     //switch btn1 to ajouter
@@ -238,7 +241,7 @@ namespace Tp3InterfaceAnalyse
                     break;
                 case Btn1State.confirmerModif:
                     //throw the modification action to CRM
-
+//update tabarn**!! just a reminder
                     onloadEtudiantTab();
                     enableEtudiantFields(false);
                     //switch btn1 to ajouter
@@ -323,10 +326,26 @@ namespace Tp3InterfaceAnalyse
 
         private void tabRecherche_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.Height = 748;
+            tabRecherche.Height = 685;
+            btn1State = Btn1State.ajouter;
+            btn2State = Btn2State.modifier;
             //you can add your tab change here if you want to do an onload thing
             if (tabRecherche.SelectedTab.Name.ToString() == "tabEtudiant")
             {
                 onloadEtudiantTab();
+                tabRecherche.Height = 273;
+                this.Height = 330;
+            }
+
+            if (tabRecherche.SelectedTab.Name.ToString() == "tabEmploye")
+            {
+                onloadEmployeTab();
+            }
+
+            if(tabRecherche.SelectedTab.Name.ToString() == "tabProgramme")
+            {
+                onloadProgrammeTab();
             }
 
             if (tabRecherche.SelectedTab.Name.ToString() == "tabEmploye")
@@ -523,7 +542,198 @@ namespace Tp3InterfaceAnalyse
 
 
         #endregion tabEmploye
+        
+        #region tabProgramme
 
+        private void lbProgrammesSGM_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //here we need to fill the info box to the right
+            clearProgrammeFields(false);
+        }
 
+        private void enableProgrammeFields(bool enable)
+        {
+            txtCodeProgrammeSGM.Enabled = enable;
+            txtNomProgrammeSGM.Enabled = enable;
+            txtCycleProgrammeSGM.Enabled = enable;
+            txtDepartementProgrammeSGM.Enabled = enable;
+
+            lbProgrammesSGM.Enabled = !enable;
+        }
+
+        private void clearProgrammeFields(bool clear)
+        {
+            if (clear)
+            {
+                txtCodeProgrammeSGM.Text = "";
+                txtNomProgrammeSGM.Text = "";
+                txtCycleProgrammeSGM.Text = "";
+                txtDepartementProgrammeSGM.Text = "";
+            }
+            else
+            {
+                foreach (Programme prog in programmes)
+                {
+                    if (prog.Nom + ", " + prog.Code == lbProgrammesSGM.SelectedItem.ToString())
+                    {
+                        txtCodeProgrammeSGM.Text = prog.Code;
+                        txtNomProgrammeSGM.Text = prog.Nom;
+                        txtCycleProgrammeSGM.Text = prog.Cycle;
+                        txtDepartementProgrammeSGM.Text = prog.Departement;
+                    }
+                }
+            }
+        }
+
+        private void btnAction1ProgrammeSGM_Click(object sender, EventArgs e)
+        {
+            switch (btn1State)
+            {
+                case Btn1State.ajouter:
+                    //clear all the fields
+                    enableProgrammeFields(true);
+                    clearProgrammeFields(true);
+                    //switch btn1 to confirmerAjout
+                    btn1State = Btn1State.confirmerAjout;
+                    btnAction1ProgrammeSGM.Text = "Confirmer";
+                    //switch btn2 to annulerAjout
+                    btn2State = Btn2State.annulerAjout;
+                    btnAction2ProgrammeSGM.Text = "Annuler";
+                    break;
+                case Btn1State.confirmerAjout:
+                    crm.CreateProgramme(new Programme(new Guid().ToString(), txtCodeProgrammeSGM.Text, txtNomProgrammeSGM.Text,  txtCycleProgrammeSGM.Text, txtDepartementProgrammeSGM.Text));
+                    onloadProgrammeTab();
+                    enableProgrammeFields(false);
+                    //switch btn1 to ajouter
+                    btn1State = Btn1State.ajouter;
+                    btnAction1ProgrammeSGM.Text = "Ajouter";
+                    //switch btn2 to modifier
+                    btn2State = Btn2State.modifier;
+                    btnAction2ProgrammeSGM.Text = "Modifier";
+                    break;
+                case Btn1State.confirmerModif:
+                    //throw the modification action to CRM
+                //crm.UpdateProgramme();
+                    onloadProgrammeTab();
+                    enableProgrammeFields(false);
+                    //switch btn1 to ajouter
+                    btn1State = Btn1State.ajouter;
+                    btnAction1ProgrammeSGM.Text = "Ajouter";
+                    //switch btn2 to modifier
+                    btn2State = Btn2State.modifier;
+                    btnAction1ProgrammeSGM.Text = "Modifier";
+                    break;
+            }
+        }
+        private void btnAction2ProgrammeSGM_Click(object sender, EventArgs e)
+        {
+            switch (btn2State)
+            {
+                case Btn2State.modifier:
+                    //Enable the fields
+                    enableProgrammeFields(true);
+                    //switch btn2 to annulerModif
+                    btn2State = Btn2State.annulerModif;
+                    btnAction2ProgrammeSGM.Text = "Annuler";
+                    //switch btn1 to confirmerModif
+                    btn1State = Btn1State.confirmerModif;
+                    btnAction1ProgrammeSGM.Text = "Confirmer";
+                    break;
+                case Btn2State.annulerAjout:
+                    //messagebox of validation
+                    DialogResult dialogResult1 = MessageBox.Show("Êtes-vous certain de vouloir annuler l'ajout?", "SGM", MessageBoxButtons.YesNo);
+                    //if yes fill the field with the initial state
+                    if (dialogResult1 == DialogResult.Yes)
+                    {
+                        enableProgrammeFields(false);
+                        clearProgrammeFields(false);
+                        //switch btn2 to modifier
+                        btn2State = Btn2State.modifier;
+                        btnAction2ProgrammeSGM.Text = "Modifier";
+                        //switch btn1 to ajouter
+                        btn1State = Btn1State.ajouter;
+                        btnAction1ProgrammeSGM.Text = "Ajouter";
+                    }
+                    //else do nothing
+                    break;
+                case Btn2State.annulerModif:
+                    //messagebox of validation
+                    DialogResult dialogResult2 = MessageBox.Show("Êtes-vous certain de vouloir annuler les modifications?", "SGM", MessageBoxButtons.YesNo);
+                    //if yes fill the field with the initial state
+                    if (dialogResult2 == DialogResult.Yes)
+                    {
+                        enableProgrammeFields(false);
+                        clearProgrammeFields(false);
+                        //switch btn2 to modifier
+                        btn2State = Btn2State.modifier;
+                        btnAction2ProgrammeSGM.Text = "Modifier";
+                        //switch btn1 to ajouter
+                        btn1State = Btn1State.ajouter;
+                        btnAction1ProgrammeSGM.Text = "Ajouter";
+                    }
+                    //else do nothing
+                    break;
+            }
+        }
+
+        private void onloadProgrammeTab()
+        {
+            lbProgrammesSGM.Items.Clear();
+            foreach (var item in crm.RetrieveProgrammes())
+            {
+                var id = item.Attributes["new_programme_etude_jkweid"].ToString();
+                var nom = item.Attributes["new_name"].ToString();
+                var cycle = item.Attributes["new_cycle"].ToString();
+                var code = item.Attributes["new_code"].ToString();
+                var departement = item.Attributes["new_departement"].ToString();
+                lbProgrammesSGM.Items.Add(new ListItem(nom + ", " + code, id));
+                programmes.Add(new Programme(id, code, nom, cycle, departement));
+            }
+        }
+
+        #endregion
+
+        private void lbEtablissement_SelectedValueChanged(object sender, EventArgs e)
+        {
+            List<Etudiant> result = new List<Etudiant>();
+
+            if (lbEtablissement.SelectedIndex != -1)
+            {
+
+                // Étudiants
+                //lbEtablissement.DisplayMember = "nom";
+                //lbEtablissement.ValueMember = "identifiant";
+                //lbEtudiantsSGM.Items.Clear();
+                foreach (var item in crm.RetrieveEtudiantForEtablissement(((ListItem)lbEtablissement.SelectedItem).Value))
+                {
+                    var id = item.Attributes["new_etudiantjkweid"].ToString();
+                    var nom = item.Attributes["new_name"].ToString();
+                    var pays = item.Attributes["new_pays"].ToString();
+                    var prenom = item.Attributes["new_prenom"].ToString();
+                    var adresse = item.Attributes["new_adresse"].ToString();
+                    var ville = item.Attributes["new_ville"].ToString();
+                    var codepermanent = item.Attributes["new_codepermanent"].ToString();
+                    lbEtudiantsSGM.Items.Add(new ListItem(nom, id));
+                    result.Add(new Etudiant(nom, id, prenom, adresse, ville, pays, codepermanent));
+                }
+
+                gvEtudiant.AutoGenerateColumns = true;
+                gvEtudiant.Columns.Clear();
+                var bindinList = new BindingList<Etudiant>(result);
+                gvEtudiant.DataSource = new BindingSource(bindinList, null);
+                gvEtudiant.Columns["Identifiant"].Visible = false;
+
+                ////Établissements
+                //List<Etablissement> resultEta = new List<Etablissement>();
+                //lbEtablissement.Items.Clear();
+                //foreach (var item in crm.RetrieveEtablissementForMisson(((ListItem)lbMissionsSGM.SelectedItem).Value))
+                //{
+                //    var id = item.Attributes["new_etablissementjkweid"].ToString();
+                //    var nom = item.Attributes["new_name"].ToString();
+                //    lbEtablissement.Items.Add(new ListItem(nom, id));
+                //    resultEta.Add(new Etablissement(nom, id));
+                //}
+            }
+        }
     }
 }
