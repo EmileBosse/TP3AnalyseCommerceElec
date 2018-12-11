@@ -332,8 +332,6 @@ namespace Tp3InterfaceAnalyse
 
         private void tabRecherche_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.Height = 748;
-            tabRecherche.Height = 685;
             btn1State = Btn1State.ajouter;
             btn2State = Btn2State.modifier;
             //you can add your tab change here if you want to do an onload thing
@@ -342,18 +340,26 @@ namespace Tp3InterfaceAnalyse
                 onloadEtudiantTab();
                 tabRecherche.Height = 273;
                 this.Height = 330;
+                lbEtudiantsSGM.SelectedIndex = 0;
             }
-
-            if (tabRecherche.SelectedTab.Name.ToString() == "tabEmploye")
+            else if (tabRecherche.SelectedTab.Name.ToString() == "tabEmploye")
             {
                 onloadEmployeTab();
+                tabRecherche.Height = 206;
+                this.Height = 268;
+                lbEmployesSGM.SelectedIndex = 0;
             }
-
-            if(tabRecherche.SelectedTab.Name.ToString() == "tabProgramme")
+            else if(tabRecherche.SelectedTab.Name.ToString() == "tabProgramme")
             {
                 onloadProgrammeTab();
                 tabRecherche.Height = 192;
                 this.Height = 254;
+                lbProgrammesSGM.SelectedIndex = 0;
+            }
+            else
+            {
+                this.Height = 748;
+                tabRecherche.Height = 685;
             }
         }
 

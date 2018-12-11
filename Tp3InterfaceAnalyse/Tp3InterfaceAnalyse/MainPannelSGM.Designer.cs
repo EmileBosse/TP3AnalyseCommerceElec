@@ -37,6 +37,12 @@
             this.lblTrierPar = new System.Windows.Forms.Label();
             this.lblEtudiantsAccueil = new System.Windows.Forms.Label();
             this.gvEtudiant = new System.Windows.Forms.DataGridView();
+            this.prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Adresse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VIle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodePermanent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pays = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnPaysOriginSGM = new System.Windows.Forms.Button();
@@ -47,6 +53,8 @@
             this.tabAccueil = new System.Windows.Forms.TabPage();
             this.lblQuestions = new System.Windows.Forms.Label();
             this.gvQuestions = new System.Windows.Forms.DataGridView();
+            this.NomQueston = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Libelle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabMission = new System.Windows.Forms.TabPage();
             this.tabEtablissement = new System.Windows.Forms.TabPage();
             this.tabProgramme = new System.Windows.Forms.TabPage();
@@ -94,14 +102,6 @@
             this.lbEmployesSGM = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.NomQueston = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Libelle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Adresse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VIle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodePermanent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pays = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbGeneralSGM.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvEtudiant)).BeginInit();
             this.tabRecherche.SuspendLayout();
@@ -210,6 +210,40 @@
             this.gvEtudiant.TabIndex = 9;
             this.gvEtudiant.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvEtudiant_CellContentClick);
             this.gvEtudiant.SelectionChanged += new System.EventHandler(this.gvEtudiant_SelectionChanged);
+            // 
+            // prenom
+            // 
+            this.prenom.DataPropertyName = "prenom";
+            this.prenom.HeaderText = "Prénom";
+            this.prenom.Name = "prenom";
+            this.prenom.ReadOnly = true;
+            // 
+            // nom
+            // 
+            this.nom.DataPropertyName = "nom";
+            this.nom.HeaderText = "Nom";
+            this.nom.Name = "nom";
+            this.nom.ReadOnly = true;
+            // 
+            // Adresse
+            // 
+            this.Adresse.HeaderText = "Adresse";
+            this.Adresse.Name = "Adresse";
+            // 
+            // VIle
+            // 
+            this.VIle.HeaderText = "Vile";
+            this.VIle.Name = "VIle";
+            // 
+            // CodePermanent
+            // 
+            this.CodePermanent.HeaderText = "CodePermanent";
+            this.CodePermanent.Name = "CodePermanent";
+            // 
+            // Pays
+            // 
+            this.Pays.HeaderText = "Pays";
+            this.Pays.Name = "Pays";
             // 
             // button2
             // 
@@ -328,6 +362,18 @@
             this.gvQuestions.Size = new System.Drawing.Size(806, 179);
             this.gvQuestions.TabIndex = 3;
             this.gvQuestions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvQuestions_CellContentClick);
+            // 
+            // NomQueston
+            // 
+            this.NomQueston.DataPropertyName = "Nom";
+            this.NomQueston.HeaderText = "Nom";
+            this.NomQueston.Name = "NomQueston";
+            this.NomQueston.ReadOnly = true;
+            // 
+            // Libelle
+            // 
+            this.Libelle.HeaderText = "Libelle";
+            this.Libelle.Name = "Libelle";
             // 
             // tabMission
             // 
@@ -788,52 +834,6 @@
             this.listBox1.Size = new System.Drawing.Size(137, 43);
             this.listBox1.TabIndex = 2;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.lbEtudiantsSGM_SelectedIndexChanged);
-            // 
-            // NomQueston
-            // 
-            this.NomQueston.DataPropertyName = "Nom";
-            this.NomQueston.HeaderText = "Nom";
-            this.NomQueston.Name = "NomQueston";
-            this.NomQueston.ReadOnly = true;
-            // 
-            // Libelle
-            // 
-            this.Libelle.HeaderText = "Libelle";
-            this.Libelle.Name = "Libelle";
-            // 
-            // prenom
-            // 
-            this.prenom.DataPropertyName = "prenom";
-            this.prenom.HeaderText = "Prénom";
-            this.prenom.Name = "prenom";
-            this.prenom.ReadOnly = true;
-            // 
-            // nom
-            // 
-            this.nom.DataPropertyName = "nom";
-            this.nom.HeaderText = "Nom";
-            this.nom.Name = "nom";
-            this.nom.ReadOnly = true;
-            // 
-            // Adresse
-            // 
-            this.Adresse.HeaderText = "Adresse";
-            this.Adresse.Name = "Adresse";
-            // 
-            // VIle
-            // 
-            this.VIle.HeaderText = "Vile";
-            this.VIle.Name = "VIle";
-            // 
-            // CodePermanent
-            // 
-            this.CodePermanent.HeaderText = "CodePermanent";
-            this.CodePermanent.Name = "CodePermanent";
-            // 
-            // Pays
-            // 
-            this.Pays.HeaderText = "Pays";
-            this.Pays.Name = "Pays";
             // 
             // MainPannelSGM
             // 
