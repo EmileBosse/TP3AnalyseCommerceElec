@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPannelSGM));
             this.gbQuestionSGM = new System.Windows.Forms.GroupBox();
             this.gbGeneralSGM = new System.Windows.Forms.GroupBox();
             this.lblEtablissementAccueil = new System.Windows.Forms.Label();
@@ -963,6 +964,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(851, 709);
             this.Controls.Add(this.tabRecherche);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainPannelSGM";
             this.Text = "Systeme de Gestion de Mission";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainPannelSGM_FormClosing);
