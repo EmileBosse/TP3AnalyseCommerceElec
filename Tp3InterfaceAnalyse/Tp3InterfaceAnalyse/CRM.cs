@@ -209,6 +209,120 @@ namespace Tp3InterfaceAnalyse
             }
         }
 
+        public void CreateEtudiant(Etudiant etudiant)
+        {
+            Entity etudEnti = new Entity("new_etudiantjkwe");
+            etudEnti["new_name"] = etudiant.Nom;
+            etudEnti["new_prenom"] = etudiant.Prenom;
+            etudEnti["new_adresse"] = etudiant.Adresse;
+            etudEnti["new_pays"] = etudiant.Pays;
+            etudEnti["new_ville"] = etudiant.Ville;
+            etudEnti["new_codepermanent"] = etudiant.CodePermanent;
+
+            Guid id = orgService.Create(etudEnti);
+        }
+
+        private Entity findEtudiantEntity(Etudiant etudiant)
+        {
+            return orgService.Retrieve("new_etudiantjkwe", etudiant.Identifiant, new ColumnSet(true));
+        }
+
+        public void UpdateEtudiant(Etudiant etudiant)
+        {
+            Entity etudiantEntity = findEtudiantEntity(etudiant);
+
+            etudiantEntity["new_name"] = etudiant.Nom;
+            etudiantEntity["new_prenom"] = etudiant.Prenom;
+            etudiantEntity["new_adresse"] = etudiant.Adresse;
+            etudiantEntity["new_pays"] = etudiant.Pays;
+            etudiantEntity["new_ville"] = etudiant.Ville;
+            etudiantEntity["new_codepermanent"] = etudiant.CodePermanent;
+
+            orgService.Update(etudiantEntity);
+        }
+        #endregion
+
+        #region Programme étude
+        public List<Entity> RetrieveProgrammes()
+        {
+            var result = new List<Entity>();
+
+            QueryExpression queryExp = new QueryExpression();
+            queryExp.EntityName = "new_programme_etude_jkwe";
+            queryExp.ColumnSet = new ColumnSet();
+            queryExp.ColumnSet.Columns.Add("new_name");
+            queryExp.ColumnSet.Columns.Add("new_code");
+            queryExp.ColumnSet.Columns.Add("new_cycle");
+            queryExp.ColumnSet.Columns.Add("new_departement");
+            queryExp.ColumnSet.Columns.Add("new_programme_etude_jkweid");
+            EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
+            if (contCollection.Entities.Count > 0)
+            {
+                result.AddRange(contCollection.Entities.ToList());
+                return result;
+            }
+            else
+            {
+                return result;
+            }
+        }
+
+        public void CreateProgramme(Programme programme)
+        {
+            Entity progEntity = new Entity("new_programme_etude_jkwe");
+            progEntity["new_name"] = programme.Nom;
+            progEntity["new_code"] = programme.Code;
+            progEntity["new_cycle"] = programme.Cycle;
+            progEntity["new_departement"] = programme.Departement;
+            progEntity["new_programme_etude_jkweid"] = programme.Identifiant;
+
+            Guid id = orgService.Create(progEntity);
+        }
+
+        private Entity findProgrammeEntity(Programme programme)
+        {
+            return orgService.Retrieve("new_programme_etude_jkwe", programme.Identifiant, new ColumnSet(true));
+        }
+
+        public void UpdateProgramme(Programme programme)
+        {
+            Entity progEntity = findProgrammeEntity(programme);
+
+            progEntity["new_name"] = programme.Nom;
+            progEntity["new_code"] = programme.Code;
+            progEntity["new_cycle"] = programme.Cycle;
+            progEntity["new_departement"] = programme.Departement;
+            progEntity["new_programme_etude_jkweid"] = programme.Identifiant;
+
+            orgService.Update(progEntity);
+        }
+        #endregion
+
+        #region Établissement
+
+        public List<Entity> RetrieveEtablissements()
+        {
+            var result = new List<Entity>();
+
+            QueryExpression queryExp = new QueryExpression();
+            queryExp.EntityName = "new_etablissementjkwe";
+            queryExp.ColumnSet = new ColumnSet();
+            queryExp.ColumnSet.Columns.Add("new_name");
+            queryExp.ColumnSet.Columns.Add("new_pays");
+            queryExp.ColumnSet.Columns.Add("new_ville");
+            queryExp.ColumnSet.Columns.Add("new_etablissementjkweid");
+            EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
+            if (contCollection.Entities.Count > 0)
+            {
+                result.AddRange(contCollection.Entities.ToList());
+                return result;
+            }
+            else
+            {
+                return result;
+            }
+        }
+
         #region ÉtudiantOrderByPays
         public List<Entity> RetrieveEtudiantsOrderByPays()
         {
@@ -339,120 +453,6 @@ namespace Tp3InterfaceAnalyse
         }
         #endregion
 
-        public void CreateEtudiant(Etudiant etudiant)
-        {
-            Entity etudEnti = new Entity("new_etudiantjkwe");
-            etudEnti["new_name"] = etudiant.Nom;
-            etudEnti["new_prenom"] = etudiant.Prenom;
-            etudEnti["new_adresse"] = etudiant.Adresse;
-            etudEnti["new_pays"] = etudiant.Pays;
-            etudEnti["new_ville"] = etudiant.Ville;
-            etudEnti["new_codepermanent"] = etudiant.CodePermanent;
-
-            Guid id = orgService.Create(etudEnti);
-        }
-
-        private Entity findEtudiantEntity(Etudiant etudiant)
-        {
-            return orgService.Retrieve("new_etudiantjkwe", etudiant.Identifiant, new ColumnSet(true));
-        }
-
-        public void UpdateEtudiant(Etudiant etudiant)
-        {
-            Entity etudiantEntity = findEtudiantEntity(etudiant);
-
-            etudiantEntity["new_name"] = etudiant.Nom;
-            etudiantEntity["new_prenom"] = etudiant.Prenom;
-            etudiantEntity["new_adresse"] = etudiant.Adresse;
-            etudiantEntity["new_pays"] = etudiant.Pays;
-            etudiantEntity["new_ville"] = etudiant.Ville;
-            etudiantEntity["new_codepermanent"] = etudiant.CodePermanent;
-
-            orgService.Update(etudiantEntity);
-        }
-        #endregion
-
-        #region Programme étude
-        public List<Entity> RetrieveProgrammes()
-        {
-            var result = new List<Entity>();
-
-            QueryExpression queryExp = new QueryExpression();
-            queryExp.EntityName = "new_programme_etude_jkwe";
-            queryExp.ColumnSet = new ColumnSet();
-            queryExp.ColumnSet.Columns.Add("new_name");
-            queryExp.ColumnSet.Columns.Add("new_code");
-            queryExp.ColumnSet.Columns.Add("new_cycle");
-            queryExp.ColumnSet.Columns.Add("new_departement");
-            queryExp.ColumnSet.Columns.Add("new_programme_etude_jkweid");
-            EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
-            if (contCollection.Entities.Count > 0)
-            {
-                result.AddRange(contCollection.Entities.ToList());
-                return result;
-            }
-            else
-            {
-                return result;
-            }
-        }
-
-        public void CreateProgramme(Programme programme)
-        {
-            Entity progEntity = new Entity("new_programme_etude_jkwe");
-            progEntity["new_name"] = programme.Nom;
-            progEntity["new_code"] = programme.Code;
-            progEntity["new_cycle"] = programme.Cycle;
-            progEntity["new_departement"] = programme.Departement;
-            progEntity["new_programme_etude_jkweid"] = programme.Identifiant;
-
-            Guid id = orgService.Create(progEntity);
-        }
-
-        private Entity findProgrammeEntity(Programme programme)
-        {
-            return orgService.Retrieve("new_programme_etude_jkwe", programme.Identifiant, new ColumnSet(true));
-        }
-
-        public void UpdateProgramme(Programme programme)
-        {
-            Entity progEntity = findProgrammeEntity(programme);
-
-            progEntity["new_name"] = programme.Nom;
-            progEntity["new_code"] = programme.Code;
-            progEntity["new_cycle"] = programme.Cycle;
-            progEntity["new_departement"] = programme.Departement;
-            progEntity["new_programme_etude_jkweid"] = programme.Identifiant;
-
-            orgService.Update(progEntity);
-        }
-        #endregion
-
-        #region Établissement
-
-        public List<Entity> RetrieveEtablissements()
-        {
-            var result = new List<Entity>();
-
-            QueryExpression queryExp = new QueryExpression();
-            queryExp.EntityName = "new_etablissementjkwe";
-            queryExp.ColumnSet = new ColumnSet();
-            queryExp.ColumnSet.Columns.Add("new_name");
-            queryExp.ColumnSet.Columns.Add("new_pays");
-            queryExp.ColumnSet.Columns.Add("new_ville");
-            queryExp.ColumnSet.Columns.Add("new_etablissementjkweid");
-            EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
-            if (contCollection.Entities.Count > 0)
-            {
-                result.AddRange(contCollection.Entities.ToList());
-                return result;
-            }
-            else
-            {
-                return result;
-            }
-        }
-
         public void CreateEtablissement(Etablissement etablissement)
         {
             Entity etablissementEntity = new Entity("new_etablissementjkwe");
@@ -483,6 +483,7 @@ namespace Tp3InterfaceAnalyse
 
         #endregion
 
+        #region Mission
         public List<Entity> RetrieveMissions()
         {
             var result = new List<Entity>();
@@ -492,6 +493,9 @@ namespace Tp3InterfaceAnalyse
             queryExp.ColumnSet = new ColumnSet();
             queryExp.ColumnSet.Columns.Add("new_missionjkweid");
             queryExp.ColumnSet.Columns.Add("new_name");
+            queryExp.ColumnSet.Columns.Add("new_pays");
+            queryExp.ColumnSet.Columns.Add("new_datededebut");
+            queryExp.ColumnSet.Columns.Add("new_datedefin");
             EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
             if (contCollection.Entities.Count > 0)
             {
@@ -504,6 +508,41 @@ namespace Tp3InterfaceAnalyse
                 return result;
             }
         }
+
+        public void CreateMission(Mission mission)
+        {
+            Entity missionEntity = new Entity("new_missionjkwe");
+            missionEntity["new_name"] = mission.Nom;
+            missionEntity["new_pays"] = mission.Pays;
+            missionEntity["new_datededebut"] = mission.DateDebut;
+            missionEntity["new_datedefin"] = mission.DateFin;
+
+            Guid id = orgService.Create(missionEntity);
+        }
+
+        private Entity findMissionEntity(Mission mission)
+        {
+            return orgService.Retrieve("new_missionjkwe", mission.Id, new ColumnSet(true));
+        }
+
+        public void UpdateMission(Mission mission)
+        {
+            Entity missionEntity = findMissionEntity(mission);
+
+            missionEntity["new_name"] = mission.Nom;
+            missionEntity["new_pays"] = mission.Pays;
+            missionEntity["new_datededebut"] = mission.DateDebut;
+            missionEntity["new_datedefin"] = mission.DateFin;
+
+            orgService.Update(missionEntity);
+        }
+
+
+        #endregion Mission
+
+
+
+
 
         public List<Entity> RetrieveEtudiantForMission(string idMission)
         {

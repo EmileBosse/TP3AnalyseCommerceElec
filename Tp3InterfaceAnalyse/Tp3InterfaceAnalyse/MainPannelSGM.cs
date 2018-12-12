@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,8 @@ namespace Tp3InterfaceAnalyse
         private List<Etudiant> etudiants;
         private List<Employe> employes;
         private List<Programme> programmes;
+        private List<Etablissement> etablissements;
+        private List<Mission> missions;
 
 
         public MainPannelSGM()
@@ -27,6 +30,8 @@ namespace Tp3InterfaceAnalyse
             etudiants = new List<Etudiant>();
             employes = new List<Employe>();
             programmes = new List<Programme>();
+            etablissements = new List<Etablissement>();
+            missions = new List<Mission>();
         }
 
         public void setPreviousWindow(SignIn window)
@@ -106,17 +111,17 @@ namespace Tp3InterfaceAnalyse
                 lbEtablissement.Items.Clear();
                 foreach(var item in crm.RetrieveEtablissementForMisson(((ListItem)lbMissionsSGM.SelectedItem).Value))
                 {
-                    var id = item.Attributes["new_etablissementjkweid"].ToString();
+                    var id = item.Attributes["new_etablissementjkweid"];
                     var nom = item.Attributes["new_name"].ToString();
-                    lbEtablissement.Items.Add(new ListItem(nom, id));
-                    resultEta.Add(new Etablissement(nom, id));
+                    lbEtablissement.Items.Add(new ListItem(nom, id.ToString()));
+                    resultEta.Add(new Etablissement(nom, (Guid)id));
                 }
             }
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void lblEtudiantListSGM_Click(object sender, EventArgs e)
@@ -158,9 +163,309 @@ namespace Tp3InterfaceAnalyse
 
         }
 
+        private void btnPaysOriginSGM_Click(object sender, EventArgs e)
+        {
+            List<Etudiant> result = new List<Etudiant>();
+            lbEtudiantsSGM.Items.Clear();
+            foreach (var item in crm.RetrieveEtudiantsOrderByPays())
+            {
+                var id = item.Attributes["new_etudiantjkweid"];
+                var nom = item.Attributes["new_name"].ToString();
+                var pays = item.Attributes["new_pays"].ToString();
+                var prenom = item.Attributes["new_prenom"].ToString();
+                var adresse = item.Attributes["new_adresse"].ToString();
+                var ville = item.Attributes["new_ville"].ToString();
+                var codepermanent = item.Attributes["new_codepermanent"].ToString();
+                lbEtudiantsSGM.Items.Add(new ListItem(nom));
+                result.Add(new Etudiant(nom, (Guid)id, prenom, adresse, ville, pays, codepermanent));
+            }
+
+            gvEtudiant.Columns.Clear();
+            var bindinList = new BindingList<Etudiant>(result);
+            gvEtudiant.DataSource = new BindingSource(bindinList, null);
+            gvEtudiant.Columns["Identifiant"].Visible = false;
+        }
+
+        private void btnTrieCycleEtudeSGM_Click(object sender, EventArgs e)
+        {
+            List<Etudiant> result = new List<Etudiant>();
+            lbEtudiantsSGM.Items.Clear();
+            foreach (var item in crm.RetrieveEtudiantsOrderByCycle())
+            {
+                var id = item.Attributes["new_etudiantjkweid"];
+                var nom = item.Attributes["new_name"].ToString();
+                var pays = item.Attributes["new_pays"].ToString();
+                var prenom = item.Attributes["new_prenom"].ToString();
+                var adresse = item.Attributes["new_adresse"].ToString();
+                var ville = item.Attributes["new_ville"].ToString();
+                var codepermanent = item.Attributes["new_codepermanent"].ToString();
+                lbEtudiantsSGM.Items.Add(new ListItem(nom));
+                result.Add(new Etudiant(nom, (Guid)id, prenom, adresse, ville, pays, codepermanent));
+            }
+
+            gvEtudiant.Columns.Clear();
+            var bindinList = new BindingList<Etudiant>(result);
+            gvEtudiant.DataSource = new BindingSource(bindinList, null);
+            gvEtudiant.Columns["Identifiant"].Visible = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            List<Etudiant> result = new List<Etudiant>();
+            lbEtudiantsSGM.Items.Clear();
+            foreach (var item in crm.RetrieveEtudiantsOrderByProgramme())
+            {
+                var id = item.Attributes["new_etudiantjkweid"];
+                var nom = item.Attributes["new_name"].ToString();
+                var pays = item.Attributes["new_pays"].ToString();
+                var prenom = item.Attributes["new_prenom"].ToString();
+                var adresse = item.Attributes["new_adresse"].ToString();
+                var ville = item.Attributes["new_ville"].ToString();
+                var codepermanent = item.Attributes["new_codepermanent"].ToString();
+                lbEtudiantsSGM.Items.Add(new ListItem(nom));
+                result.Add(new Etudiant(nom, (Guid)id, prenom, adresse, ville, pays, codepermanent));
+            }
+
+            gvEtudiant.Columns.Clear();
+            var bindinList = new BindingList<Etudiant>(result);
+            gvEtudiant.DataSource = new BindingSource(bindinList, null);
+            gvEtudiant.Columns["Identifiant"].Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<Etudiant> result = new List<Etudiant>();
+            lbEtudiantsSGM.Items.Clear();
+            foreach (var item in crm.RetrieveEtudiantsOrderByCycle())
+            {
+                var id = item.Attributes["new_etudiantjkweid"];
+                var nom = item.Attributes["new_name"].ToString();
+                var pays = item.Attributes["new_pays"].ToString();
+                var prenom = item.Attributes["new_prenom"].ToString();
+                var adresse = item.Attributes["new_adresse"].ToString();
+                var ville = item.Attributes["new_ville"].ToString();
+                var codepermanent = item.Attributes["new_codepermanent"].ToString();
+                lbEtudiantsSGM.Items.Add(new ListItem(nom));
+                result.Add(new Etudiant(nom, (Guid)id, prenom, adresse, ville, pays, codepermanent));
+            }
+
+            gvEtudiant.Columns.Clear();
+            var bindinList = new BindingList<Etudiant>(result);
+            gvEtudiant.DataSource = new BindingSource(bindinList, null);
+            gvEtudiant.Columns["Identifiant"].Visible = false;
+        }
+
+        private void gvQuestions_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void lblQuestions_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabRecherche_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btn1State = Btn1State.ajouter;
+            btn2State = Btn2State.modifier;
+            //you can add your tab change here if you want to do an onload thing
+            if (tabRecherche.SelectedTab.Name.ToString() == "tabEtudiant")
+            {
+                onloadEtudiantTab();
+                tabRecherche.Height = 273;
+                this.Height = 330;
+                lbEtudiantsSGM.SelectedIndex = 0;
+            }
+            else if (tabRecherche.SelectedTab.Name.ToString() == "tabEmploye")
+            {
+                onloadEmployeTab();
+                tabRecherche.Height = 206;
+                this.Height = 268;
+                lbEmployesSGM.SelectedIndex = 0;
+            }
+            else if (tabRecherche.SelectedTab.Name.ToString() == "tabProgramme")
+            {
+                onloadProgrammeTab();
+                tabRecherche.Height = 192;
+                this.Height = 254;
+                lbProgrammesSGM.SelectedIndex = 0;
+            }
+            else if (tabRecherche.SelectedTab.Name.ToString() == "tabEtablissement")
+            {
+                onloadEtablissementTab();
+                tabRecherche.Height = 172;
+                this.Height = 233;
+                lbEtablissementsSGM.SelectedIndex = 0;
+            }
+            else if (tabRecherche.SelectedTab.Name.ToString() == "tabMission")
+            {
+                onloadMissionTab();
+                tabRecherche.Height = 212;
+                this.Height = 273;
+                lbMissionsTabMissionsSGM.SelectedIndex = 0;
+            }
+
+            else
+            {
+                this.Height = 748;
+                tabRecherche.Height = 685;
+            }
+        }
+
+        #region tabEtablissement
+
+        private Guid selectedEtablissementId;
+
+        private void lbEtablissementsSGM_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //here we need to fill the info box to the right
+            clearEtablissementFields(false);
+        }
+
+        private void enableEtablissementFields(bool enable)
+        {
+            txtNomEtablissementSGM.Enabled = enable;
+            txtPaysEtablissementSGM.Enabled = enable;
+            txtVilleEtablissementSGM.Enabled = enable;
+
+            lbEtablissementsSGM.Enabled = !enable;
+        }
+
+        private void clearEtablissementFields(bool clear)
+        {
+            if (clear)
+            {
+                txtNomEtablissementSGM.Text = "";
+                txtPaysEtablissementSGM.Text = "";
+                txtVilleEtablissementSGM.Text = "";
+            }
+            else
+            {
+                foreach (Etablissement et in etablissements)
+                {
+                    if (et.Nom == lbEtablissementsSGM.SelectedItem.ToString())
+                    {
+                        txtNomEtablissementSGM.Text = et.Nom;
+                        txtPaysEtablissementSGM.Text = et.Pays;
+                        txtVilleEtablissementSGM.Text = et.Ville;
+
+                        selectedEtablissementId = et.Identifiant;
+                    }
+                }
+            }
+        }
+
+        private void btnAction1EtablissementSGM_Click(object sender, EventArgs e)
+        {
+            switch (btn1State)
+            {
+                case Btn1State.ajouter:
+                    //clear all the fields
+                    enableEtablissementFields(true);
+                    clearEtablissementFields(true);
+                    //switch btn1 to confirmerAjout
+                    btn1State = Btn1State.confirmerAjout;
+                    btnAction1EtablissementSGM.Text = "Confirmer";
+                    //switch btn2 to annulerAjout
+                    btn2State = Btn2State.annulerAjout;
+                    btnAction2EtablissementSGM.Text = "Annuler";
+                    break;
+                case Btn1State.confirmerAjout:
+                    crm.CreateEtablissement(new Etablissement(txtNomEtablissementSGM.Text, new Guid(), txtPaysEtablissementSGM.Text, txtVilleEtablissementSGM.Text));
+                    onloadEtablissementTab();
+                    enableEtablissementFields(false);
+                    //switch btn1 to ajouter
+                    btn1State = Btn1State.ajouter;
+                    btnAction1EtablissementSGM.Text = "Ajouter";
+                    //switch btn2 to modifier
+                    btn2State = Btn2State.modifier;
+                    btnAction2EtablissementSGM.Text = "Modifier";
+                    break;
+                case Btn1State.confirmerModif:
+                    //throw the modification action to CRM
+                    crm.UpdateEtablissement(new Etablissement(txtNomEtablissementSGM.Text, selectedEtablissementId, txtPaysEtablissementSGM.Text, txtVilleEtablissementSGM.Text));
+                    onloadEtablissementTab();
+                    enableEtablissementFields(false);
+                    //switch btn1 to ajouter
+                    btn1State = Btn1State.ajouter;
+                    btnAction1EtablissementSGM.Text = "Ajouter";
+                    //switch btn2 to modifier
+                    btn2State = Btn2State.modifier;
+                    btnAction1EtablissementSGM.Text = "Modifier";
+                    break;
+            }
+        }
+
+        private void btnAction2EtablissementSGM_Click(object sender, EventArgs e)
+        {
+            switch (btn2State)
+            {
+                case Btn2State.modifier:
+                    //Enable the fields
+                    enableEtablissementFields(true);
+                    //switch btn2 to annulerModif
+                    btn2State = Btn2State.annulerModif;
+                    btnAction2EtablissementSGM.Text = "Annuler";
+                    //switch btn1 to confirmerModif
+                    btn1State = Btn1State.confirmerModif;
+                    btnAction1EtablissementSGM.Text = "Confirmer";
+                    break;
+                case Btn2State.annulerAjout:
+                    //messagebox of validation
+                    DialogResult dialogResult1 = MessageBox.Show("Êtes-vous certain de vouloir annuler l'ajout?", "SGM", MessageBoxButtons.YesNo);
+                    //if yes fill the field with the initial state
+                    if (dialogResult1 == DialogResult.Yes)
+                    {
+                        enableEtablissementFields(false);
+                        clearEtablissementFields(false);
+                        //switch btn2 to modifier
+                        btn2State = Btn2State.modifier;
+                        btnAction2EtablissementSGM.Text = "Modifier";
+                        //switch btn1 to ajouter
+                        btn1State = Btn1State.ajouter;
+                        btnAction1EtablissementSGM.Text = "Ajouter";
+                    }
+                    //else do nothing
+                    break;
+                case Btn2State.annulerModif:
+                    //messagebox of validation
+                    DialogResult dialogResult2 = MessageBox.Show("Êtes-vous certain de vouloir annuler les modifications?", "SGM", MessageBoxButtons.YesNo);
+                    //if yes fill the field with the initial state
+                    if (dialogResult2 == DialogResult.Yes)
+                    {
+                        enableEtablissementFields(false);
+                        clearEtablissementFields(false);
+                        //switch btn2 to modifier
+                        btn2State = Btn2State.modifier;
+                        btnAction2EtablissementSGM.Text = "Modifier";
+                        //switch btn1 to ajouter
+                        btn1State = Btn1State.ajouter;
+                        btnAction1EtablissementSGM.Text = "Ajouter";
+                    }
+                    //else do nothing
+                    break;
+            }
+        }
+
+        private void onloadEtablissementTab()
+        {
+            lbEtablissementsSGM.Items.Clear();
+            foreach (var item in crm.RetrieveEtablissements())
+            {
+                var id = item.Attributes["new_etablissementjkweid"];
+                var nom = item.Attributes["new_name"].ToString();
+                var pays = item.Attributes["new_pays"].ToString();
+                var ville = item.Attributes["new_ville"].ToString();
+                lbEtablissementsSGM.Items.Add(new ListItem(nom));
+                etablissements.Add(new Etablissement(nom, (Guid)id, pays, ville));
+            }
+        }
+        #endregion
+
         #region tabEtudiant
 
-        private enum Btn1State { ajouter, confirmerAjout, confirmerModif};
+        private enum Btn1State { ajouter, confirmerAjout, confirmerModif };
         private Btn1State btn1State = Btn1State.ajouter;
         private enum Btn2State { modifier, annulerAjout, annulerModif };
         private Btn2State btn2State = Btn2State.modifier;
@@ -329,142 +634,6 @@ namespace Tp3InterfaceAnalyse
         }
 
         #endregion
-
-        private void tabRecherche_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            btn1State = Btn1State.ajouter;
-            btn2State = Btn2State.modifier;
-            //you can add your tab change here if you want to do an onload thing
-            if (tabRecherche.SelectedTab.Name.ToString() == "tabEtudiant")
-            {
-                onloadEtudiantTab();
-                tabRecherche.Height = 273;
-                this.Height = 330;
-                lbEtudiantsSGM.SelectedIndex = 0;
-            }
-            else if (tabRecherche.SelectedTab.Name.ToString() == "tabEmploye")
-            {
-                onloadEmployeTab();
-                tabRecherche.Height = 206;
-                this.Height = 268;
-                lbEmployesSGM.SelectedIndex = 0;
-            }
-            else if(tabRecherche.SelectedTab.Name.ToString() == "tabProgramme")
-            {
-                onloadProgrammeTab();
-                tabRecherche.Height = 192;
-                this.Height = 254;
-                lbProgrammesSGM.SelectedIndex = 0;
-            }
-            else
-            {
-                this.Height = 748;
-                tabRecherche.Height = 685;
-            }
-        }
-
-        private void btnPaysOriginSGM_Click(object sender, EventArgs e)
-        {
-            List<Etudiant> result = new List<Etudiant>();
-            lbEtudiantsSGM.Items.Clear();
-            foreach (var item in crm.RetrieveEtudiantsOrderByPays())
-            {
-                var id = item.Attributes["new_etudiantjkweid"];
-                var nom = item.Attributes["new_name"].ToString();
-                var pays = item.Attributes["new_pays"].ToString();
-                var prenom = item.Attributes["new_prenom"].ToString();
-                var adresse = item.Attributes["new_adresse"].ToString();
-                var ville = item.Attributes["new_ville"].ToString();
-                var codepermanent = item.Attributes["new_codepermanent"].ToString();
-                lbEtudiantsSGM.Items.Add(new ListItem(nom));
-                result.Add(new Etudiant(nom, (Guid)id, prenom, adresse, ville, pays, codepermanent));
-            }
-
-            gvEtudiant.Columns.Clear();
-            var bindinList = new BindingList<Etudiant>(result);
-            gvEtudiant.DataSource = new BindingSource(bindinList, null);
-            gvEtudiant.Columns["Identifiant"].Visible = false;
-        }
-
-        private void btnTrieCycleEtudeSGM_Click(object sender, EventArgs e)
-        {
-            List<Etudiant> result = new List<Etudiant>();
-            lbEtudiantsSGM.Items.Clear();
-            foreach (var item in crm.RetrieveEtudiantsOrderByCycle())
-            {
-                var id = item.Attributes["new_etudiantjkweid"];
-                var nom = item.Attributes["new_name"].ToString();
-                var pays = item.Attributes["new_pays"].ToString();
-                var prenom = item.Attributes["new_prenom"].ToString();
-                var adresse = item.Attributes["new_adresse"].ToString();
-                var ville = item.Attributes["new_ville"].ToString();
-                var codepermanent = item.Attributes["new_codepermanent"].ToString();
-                lbEtudiantsSGM.Items.Add(new ListItem(nom));
-                result.Add(new Etudiant(nom, (Guid)id, prenom, adresse, ville, pays, codepermanent));
-            }
-
-            gvEtudiant.Columns.Clear();
-            var bindinList = new BindingList<Etudiant>(result);
-            gvEtudiant.DataSource = new BindingSource(bindinList, null);
-            gvEtudiant.Columns["Identifiant"].Visible = false;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            List<Etudiant> result = new List<Etudiant>();
-            lbEtudiantsSGM.Items.Clear();
-            foreach (var item in crm.RetrieveEtudiantsOrderByProgramme())
-            {
-                var id = item.Attributes["new_etudiantjkweid"];
-                var nom = item.Attributes["new_name"].ToString();
-                var pays = item.Attributes["new_pays"].ToString();
-                var prenom = item.Attributes["new_prenom"].ToString();
-                var adresse = item.Attributes["new_adresse"].ToString();
-                var ville = item.Attributes["new_ville"].ToString();
-                var codepermanent = item.Attributes["new_codepermanent"].ToString();
-                lbEtudiantsSGM.Items.Add(new ListItem(nom));
-                result.Add(new Etudiant(nom, (Guid)id, prenom, adresse, ville, pays, codepermanent));
-            }
-
-            gvEtudiant.Columns.Clear();
-            var bindinList = new BindingList<Etudiant>(result);
-            gvEtudiant.DataSource = new BindingSource(bindinList, null);
-            gvEtudiant.Columns["Identifiant"].Visible = false;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            List<Etudiant> result = new List<Etudiant>();
-            lbEtudiantsSGM.Items.Clear();
-            foreach (var item in crm.RetrieveEtudiantsOrderByCycle())
-            {
-                var id = item.Attributes["new_etudiantjkweid"];
-                var nom = item.Attributes["new_name"].ToString();
-                var pays = item.Attributes["new_pays"].ToString();
-                var prenom = item.Attributes["new_prenom"].ToString();
-                var adresse = item.Attributes["new_adresse"].ToString();
-                var ville = item.Attributes["new_ville"].ToString();
-                var codepermanent = item.Attributes["new_codepermanent"].ToString();
-                lbEtudiantsSGM.Items.Add(new ListItem(nom));
-                result.Add(new Etudiant(nom, (Guid)id, prenom, adresse, ville, pays, codepermanent));
-            }
-
-            gvEtudiant.Columns.Clear();
-            var bindinList = new BindingList<Etudiant>(result);
-            gvEtudiant.DataSource = new BindingSource(bindinList, null);
-            gvEtudiant.Columns["Identifiant"].Visible = false;
-        }
-
-        private void gvQuestions_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void lblQuestions_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         #region tabEmploye
 
@@ -648,7 +817,7 @@ namespace Tp3InterfaceAnalyse
             {
                 txtCodeProgrammeSGM.Text = "";
                 txtNomProgrammeSGM.Text = "";
-                txtCycleProgrammeSGM.Text = "";
+                //txtCycleProgrammeSGM.Text = "";
                 txtDepartementProgrammeSGM.Text = "";
             }
             else
@@ -659,7 +828,7 @@ namespace Tp3InterfaceAnalyse
                     {
                         txtCodeProgrammeSGM.Text = prog.Code;
                         txtNomProgrammeSGM.Text = prog.Nom;
-                        txtCycleProgrammeSGM.Text = prog.Cycle;
+                        //txtCycleProgrammeSGM.Text = prog.Cycle;
                         txtDepartementProgrammeSGM.Text = prog.Departement;
 
                         selectedProgrammeId = prog.Identifiant;
@@ -776,6 +945,160 @@ namespace Tp3InterfaceAnalyse
 
         #endregion
 
+        #region tabMission
+
+        private Guid selectedMissionId;
+
+        private void lbMissionsTabMissionsSGM_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //here we need to fill the info box to the right
+            clearMissionFields(false);
+        }
+
+        private void enableMissionFields(bool enable)
+        {
+            tbNomMissionSGM.Enabled = enable;
+            tbPaysMissionSGM.Enabled = enable;
+            tbDateDebutMissionSGM.Enabled = enable;
+            tbDateFinMissionSGM.Enabled = enable;
+
+            lbMissionsTabMissionsSGM.Enabled = !enable;
+        }
+
+        private void clearMissionFields(bool clear)
+        {
+            if (clear)
+            {
+                tbNomMissionSGM.Text = "";
+                tbPaysMissionSGM.Text = "";
+                tbDateDebutMissionSGM.Text = "";
+                tbDateFinMissionSGM.Text = "";
+            }
+            else
+            {
+                foreach (Mission mi in missions)
+                {
+                    if (mi.Nom == lbMissionsTabMissionsSGM.SelectedItem.ToString())
+                    {
+                        tbNomMissionSGM.Text = mi.Nom;
+                        tbPaysMissionSGM.Text = mi.Pays;
+                        tbDateDebutMissionSGM.Text = mi.DateDebut.ToString("yyyy-MM-dd");
+                        tbDateFinMissionSGM.Text = mi.DateFin.ToString("yyyy-MM-dd");
+                        selectedMissionId = mi.Id;
+                    }
+                }
+            }
+        }
+
+        private void btnAction1MissionSGM_Click(object sender, EventArgs e)
+        {
+            switch (btn1State)
+            {
+                case Btn1State.ajouter:
+                    //clear all the fields
+                    enableMissionFields(true);
+                    clearMissionFields(true);
+                    //switch btn1 to confirmerAjout
+                    btn1State = Btn1State.confirmerAjout;
+                    btnAction1MissionSGM.Text = "Confirmer";
+                    //switch btn2 to annulerAjout
+                    btn2State = Btn2State.annulerAjout;
+                    btnAction2MissionSGM.Text = "Annuler";
+                    break;
+                case Btn1State.confirmerAjout:
+                    crm.CreateMission(new Mission(new Guid(),tbNomMissionSGM.Text, tbPaysMissionSGM.Text, DateTime.ParseExact(tbDateDebutMissionSGM.Text,"yyyy-MM-dd", CultureInfo.InvariantCulture), DateTime.ParseExact(tbDateFinMissionSGM.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture)));
+                    onloadMissionTab();
+                    enableMissionFields(false);
+                    //switch btn1 to ajouter
+                    btn1State = Btn1State.ajouter;
+                    btnAction1MissionSGM.Text = "Ajouter";
+                    //switch btn2 to modifier
+                    btn2State = Btn2State.modifier;
+                    btnAction2MissionSGM.Text = "Modifier";
+                    break;
+                case Btn1State.confirmerModif:
+                    //throw the modification action to CRM
+                    crm.UpdateMission(new Mission(new Guid(), tbNomMissionSGM.Text, tbPaysMissionSGM.Text, DateTime.ParseExact(tbDateDebutMissionSGM.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture), DateTime.ParseExact(tbDateFinMissionSGM.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture)));
+                    onloadMissionTab();
+                    enableMissionFields(false);
+                    //switch btn1 to ajouter
+                    btn1State = Btn1State.ajouter;
+                    btnAction1MissionSGM.Text = "Ajouter";
+                    //switch btn2 to modifier
+                    btn2State = Btn2State.modifier;
+                    btnAction1MissionSGM.Text = "Modifier";
+                    break;
+            }
+        }
+
+        private void btnAction2MissionSGM_Click(object sender, EventArgs e)
+        {
+            switch (btn2State)
+            {
+                case Btn2State.modifier:
+                    //Enable the fields
+                    enableMissionFields(true);
+                    //switch btn2 to annulerModif
+                    btn2State = Btn2State.annulerModif;
+                    btnAction2MissionSGM.Text = "Annuler";
+                    //switch btn1 to confirmerModif
+                    btn1State = Btn1State.confirmerModif;
+                    btnAction1MissionSGM.Text = "Confirmer";
+                    break;
+                case Btn2State.annulerAjout:
+                    //messagebox of validation
+                    DialogResult dialogResult1 = MessageBox.Show("Êtes-vous certain de vouloir annuler l'ajout?", "SGM", MessageBoxButtons.YesNo);
+                    //if yes fill the field with the initial state
+                    if (dialogResult1 == DialogResult.Yes)
+                    {
+                        enableMissionFields(false);
+                        clearMissionFields(false);
+                        //switch btn2 to modifier
+                        btn2State = Btn2State.modifier;
+                        btnAction2MissionSGM.Text = "Modifier";
+                        //switch btn1 to ajouter
+                        btn1State = Btn1State.ajouter;
+                        btnAction1MissionSGM.Text = "Ajouter";
+                    }
+                    //else do nothing
+                    break;
+                case Btn2State.annulerModif:
+                    //messagebox of validation
+                    DialogResult dialogResult2 = MessageBox.Show("Êtes-vous certain de vouloir annuler les modifications?", "SGM", MessageBoxButtons.YesNo);
+                    //if yes fill the field with the initial state
+                    if (dialogResult2 == DialogResult.Yes)
+                    {
+                        enableMissionFields(false);
+                        clearMissionFields(false);
+                        //switch btn2 to modifier
+                        btn2State = Btn2State.modifier;
+                        btnAction2MissionSGM.Text = "Modifier";
+                        //switch btn1 to ajouter
+                        btn1State = Btn1State.ajouter;
+                        btnAction1MissionSGM.Text = "Ajouter";
+                    }
+                    //else do nothing
+                    break;
+            }
+
+        }
+
+        private void onloadMissionTab()
+        {
+            lbMissionsTabMissionsSGM.Items.Clear();
+            foreach (var item in crm.RetrieveMissions())
+            {
+                var id = item.Attributes["new_missionjkweid"];
+                var nom = item.Attributes["new_name"].ToString();
+                var pays = item.Attributes["new_pays"].ToString();
+                var dateDebut = item.Attributes["new_datededebut"].ToString();
+                var dateFin = item.Attributes["new_datedefin"].ToString();
+                lbMissionsTabMissionsSGM.Items.Add(new ListItem(nom));                
+                missions.Add(new Mission((Guid)id, nom, pays, DateTime.Parse(dateDebut), DateTime.Parse(dateFin)));
+            }
+        }
+        #endregion tabMission
+
         private void lbEtablissement_SelectedValueChanged(object sender, EventArgs e)
         {
             List<Etudiant> result = new List<Etudiant>();
@@ -818,5 +1141,7 @@ namespace Tp3InterfaceAnalyse
                 //}
             }
         }
+
+
     }
 }

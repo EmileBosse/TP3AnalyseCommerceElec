@@ -8,20 +8,29 @@ namespace Tp3InterfaceAnalyse
 {
     public class Mission
     {
-        private string identifiant;
-        private string nom;
-        private string pays;
-        private DateTime dateDebut;
-        private DateTime dateFin;
+        public Guid Id { get; set; }
+        public string Nom { get; set; }
+        public string Pays { get; set; }
+        public DateTime DateDebut { get; set; }
+        public DateTime DateFin { get; set; }
 
         public Mission()
         {
         }
 
-        public Mission(string pNom, string id)
+        public Mission(string pNom, Guid pId)
         {
-            nom = pNom;
-            identifiant = id;
+            Nom = pNom;
+            Id = pId;
+        }
+
+        public Mission(Guid pId, string pNom, string pPays, DateTime pDateDebut, DateTime pDateFin)
+        {
+            Id = pId;
+            Nom = pNom;
+            Pays = pPays;
+            DateDebut = pDateDebut;
+            DateFin = pDateFin;
         }
 
     }

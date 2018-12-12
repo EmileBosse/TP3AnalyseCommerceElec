@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPannelSGM));
-            this.gbQuestionSGM = new System.Windows.Forms.GroupBox();
             this.gbGeneralSGM = new System.Windows.Forms.GroupBox();
             this.lblEtablissementAccueil = new System.Windows.Forms.Label();
             this.lbEtablissement = new System.Windows.Forms.ListBox();
@@ -57,6 +56,19 @@
             this.NomQueston = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Libelle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabMission = new System.Windows.Forms.TabPage();
+            this.gbMission = new System.Windows.Forms.GroupBox();
+            this.tbDateFinMissionSGM = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.btnAction2MissionSGM = new System.Windows.Forms.Button();
+            this.tbDateDebutMissionSGM = new System.Windows.Forms.TextBox();
+            this.btnAction1MissionSGM = new System.Windows.Forms.Button();
+            this.tbPaysMissionSGM = new System.Windows.Forms.TextBox();
+            this.tbNomMissionSGM = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.lbMissionsTabMissionsSGM = new System.Windows.Forms.ListBox();
             this.tabEtablissement = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnAction2EtablissementSGM = new System.Windows.Forms.Button();
@@ -120,6 +132,7 @@
             this.tabAccueil.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvQuestions)).BeginInit();
             this.tabMission.SuspendLayout();
+            this.gbMission.SuspendLayout();
             this.tabEtablissement.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabProgramme.SuspendLayout();
@@ -129,15 +142,6 @@
             this.tabEmploye.SuspendLayout();
             this.gbEmployeSGM.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // gbQuestionSGM
-            // 
-            this.gbQuestionSGM.Location = new System.Drawing.Point(6, 6);
-            this.gbQuestionSGM.Name = "gbQuestionSGM";
-            this.gbQuestionSGM.Size = new System.Drawing.Size(321, 135);
-            this.gbQuestionSGM.TabIndex = 4;
-            this.gbQuestionSGM.TabStop = false;
-            this.gbQuestionSGM.Text = "Questions";
             // 
             // gbGeneralSGM
             // 
@@ -391,7 +395,9 @@
             // 
             // tabMission
             // 
-            this.tabMission.Controls.Add(this.gbQuestionSGM);
+            this.tabMission.Controls.Add(this.gbMission);
+            this.tabMission.Controls.Add(this.label19);
+            this.tabMission.Controls.Add(this.lbMissionsTabMissionsSGM);
             this.tabMission.Location = new System.Drawing.Point(4, 22);
             this.tabMission.Name = "tabMission";
             this.tabMission.Padding = new System.Windows.Forms.Padding(3);
@@ -399,6 +405,131 @@
             this.tabMission.TabIndex = 1;
             this.tabMission.Text = "Mission(s)";
             this.tabMission.UseVisualStyleBackColor = true;
+            // 
+            // gbMission
+            // 
+            this.gbMission.Controls.Add(this.tbDateFinMissionSGM);
+            this.gbMission.Controls.Add(this.label20);
+            this.gbMission.Controls.Add(this.btnAction2MissionSGM);
+            this.gbMission.Controls.Add(this.tbDateDebutMissionSGM);
+            this.gbMission.Controls.Add(this.btnAction1MissionSGM);
+            this.gbMission.Controls.Add(this.tbPaysMissionSGM);
+            this.gbMission.Controls.Add(this.tbNomMissionSGM);
+            this.gbMission.Controls.Add(this.label16);
+            this.gbMission.Controls.Add(this.label17);
+            this.gbMission.Controls.Add(this.label18);
+            this.gbMission.Location = new System.Drawing.Point(301, 30);
+            this.gbMission.Name = "gbMission";
+            this.gbMission.Size = new System.Drawing.Size(351, 137);
+            this.gbMission.TabIndex = 5;
+            this.gbMission.TabStop = false;
+            this.gbMission.Text = "Mission";
+            // 
+            // tbDateFinMissionSGM
+            // 
+            this.tbDateFinMissionSGM.Enabled = false;
+            this.tbDateFinMissionSGM.Location = new System.Drawing.Point(102, 98);
+            this.tbDateFinMissionSGM.Name = "tbDateFinMissionSGM";
+            this.tbDateFinMissionSGM.Size = new System.Drawing.Size(150, 20);
+            this.tbDateFinMissionSGM.TabIndex = 7;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(15, 101);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(65, 13);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "Date de fin :";
+            // 
+            // btnAction2MissionSGM
+            // 
+            this.btnAction2MissionSGM.Location = new System.Drawing.Point(270, 48);
+            this.btnAction2MissionSGM.Name = "btnAction2MissionSGM";
+            this.btnAction2MissionSGM.Size = new System.Drawing.Size(75, 23);
+            this.btnAction2MissionSGM.TabIndex = 4;
+            this.btnAction2MissionSGM.Text = "Modifier";
+            this.btnAction2MissionSGM.UseVisualStyleBackColor = true;
+            this.btnAction2MissionSGM.Click += new System.EventHandler(this.btnAction2MissionSGM_Click);
+            // 
+            // tbDateDebutMissionSGM
+            // 
+            this.tbDateDebutMissionSGM.Enabled = false;
+            this.tbDateDebutMissionSGM.Location = new System.Drawing.Point(102, 72);
+            this.tbDateDebutMissionSGM.Name = "tbDateDebutMissionSGM";
+            this.tbDateDebutMissionSGM.Size = new System.Drawing.Size(150, 20);
+            this.tbDateDebutMissionSGM.TabIndex = 5;
+            // 
+            // btnAction1MissionSGM
+            // 
+            this.btnAction1MissionSGM.Location = new System.Drawing.Point(270, 19);
+            this.btnAction1MissionSGM.Name = "btnAction1MissionSGM";
+            this.btnAction1MissionSGM.Size = new System.Drawing.Size(75, 23);
+            this.btnAction1MissionSGM.TabIndex = 3;
+            this.btnAction1MissionSGM.Text = "Ajouter";
+            this.btnAction1MissionSGM.UseVisualStyleBackColor = true;
+            this.btnAction1MissionSGM.Click += new System.EventHandler(this.btnAction1MissionSGM_Click);
+            // 
+            // tbPaysMissionSGM
+            // 
+            this.tbPaysMissionSGM.Enabled = false;
+            this.tbPaysMissionSGM.Location = new System.Drawing.Point(102, 46);
+            this.tbPaysMissionSGM.Name = "tbPaysMissionSGM";
+            this.tbPaysMissionSGM.Size = new System.Drawing.Size(150, 20);
+            this.tbPaysMissionSGM.TabIndex = 4;
+            // 
+            // tbNomMissionSGM
+            // 
+            this.tbNomMissionSGM.Enabled = false;
+            this.tbNomMissionSGM.Location = new System.Drawing.Point(102, 20);
+            this.tbNomMissionSGM.Name = "tbNomMissionSGM";
+            this.tbNomMissionSGM.Size = new System.Drawing.Size(150, 20);
+            this.tbNomMissionSGM.TabIndex = 3;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(15, 75);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(81, 13);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "Date de début :";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(15, 49);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(36, 13);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "Pays :";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(15, 23);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(35, 13);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Nom :";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(50, 30);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(47, 13);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "Missions";
+            // 
+            // lbMissionsTabMissionsSGM
+            // 
+            this.lbMissionsTabMissionsSGM.FormattingEnabled = true;
+            this.lbMissionsTabMissionsSGM.Location = new System.Drawing.Point(31, 46);
+            this.lbMissionsTabMissionsSGM.Name = "lbMissionsTabMissionsSGM";
+            this.lbMissionsTabMissionsSGM.Size = new System.Drawing.Size(120, 95);
+            this.lbMissionsTabMissionsSGM.TabIndex = 3;
+            this.lbMissionsTabMissionsSGM.SelectedIndexChanged += new System.EventHandler(this.lbMissionsTabMissionsSGM_SelectedIndexChanged);
             // 
             // tabEtablissement
             // 
@@ -978,6 +1109,9 @@
             this.tabAccueil.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvQuestions)).EndInit();
             this.tabMission.ResumeLayout(false);
+            this.tabMission.PerformLayout();
+            this.gbMission.ResumeLayout(false);
+            this.gbMission.PerformLayout();
             this.tabEtablissement.ResumeLayout(false);
             this.tabEtablissement.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -999,7 +1133,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox gbQuestionSGM;
         private System.Windows.Forms.GroupBox gbGeneralSGM;
         private System.Windows.Forms.Label lblMissionListSGM;
         private System.Windows.Forms.Label lblEtudiantListSGM;
@@ -1098,6 +1231,19 @@
         private System.Windows.Forms.TextBox txtVilleEtablissementSGM;
         private System.Windows.Forms.TextBox txtPaysEtablissementSGM;
         private System.Windows.Forms.TextBox txtNomEtablissementSGM;
+        private System.Windows.Forms.GroupBox gbMission;
+        private System.Windows.Forms.Button btnAction2MissionSGM;
+        private System.Windows.Forms.TextBox tbDateDebutMissionSGM;
+        private System.Windows.Forms.Button btnAction1MissionSGM;
+        private System.Windows.Forms.TextBox tbPaysMissionSGM;
+        private System.Windows.Forms.TextBox tbNomMissionSGM;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ListBox lbMissionsTabMissionsSGM;
+        private System.Windows.Forms.TextBox tbDateFinMissionSGM;
+        private System.Windows.Forms.Label label20;
     }
 }
 
