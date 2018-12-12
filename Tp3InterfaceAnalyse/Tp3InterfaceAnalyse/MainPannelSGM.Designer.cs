@@ -600,6 +600,7 @@
             this.txtCycleProgrammeSGM.Name = "txtCycleProgrammeSGM";
             this.txtCycleProgrammeSGM.Size = new System.Drawing.Size(139, 20);
             this.txtCycleProgrammeSGM.TabIndex = 6;
+            this.txtCycleProgrammeSGM.Text = "1er";
             // 
             // btnAction1ProgrammeSGM
             // 

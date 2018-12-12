@@ -734,7 +734,7 @@ namespace Tp3InterfaceAnalyse
             {
                 txtCodeProgrammeSGM.Text = "";
                 txtNomProgrammeSGM.Text = "";
-                txtCycleProgrammeSGM.Text = "";
+                //txtCycleProgrammeSGM.Text = "";
                 txtDepartementProgrammeSGM.Text = "";
             }
             else
@@ -745,7 +745,7 @@ namespace Tp3InterfaceAnalyse
                     {
                         txtCodeProgrammeSGM.Text = prog.Code;
                         txtNomProgrammeSGM.Text = prog.Nom;
-                        txtCycleProgrammeSGM.Text = prog.Cycle;
+                        //txtCycleProgrammeSGM.Text = prog.Cycle;
                         txtDepartementProgrammeSGM.Text = prog.Departement;
 
                         selectedProgrammeId = prog.Identifiant;
