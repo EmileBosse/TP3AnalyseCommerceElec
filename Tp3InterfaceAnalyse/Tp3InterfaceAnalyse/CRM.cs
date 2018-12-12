@@ -428,6 +428,61 @@ namespace Tp3InterfaceAnalyse
         }
         #endregion
 
+        #region Établissement
+
+        public List<Entity> RetrieveEtablissements()
+        {
+            var result = new List<Entity>();
+
+            QueryExpression queryExp = new QueryExpression();
+            queryExp.EntityName = "new_etablissementjkwe";
+            queryExp.ColumnSet = new ColumnSet();
+            queryExp.ColumnSet.Columns.Add("new_name");
+            queryExp.ColumnSet.Columns.Add("new_pays");
+            queryExp.ColumnSet.Columns.Add("new_ville");
+            queryExp.ColumnSet.Columns.Add("new_etablissementjkweid");
+            EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
+            if (contCollection.Entities.Count > 0)
+            {
+                result.AddRange(contCollection.Entities.ToList());
+                return result;
+            }
+            else
+            {
+                return result;
+            }
+        }
+
+        public void CreateEtablissement(Etablissement etablissement)
+        {
+            Entity etablissementEntity = new Entity("new_etablissementjkwe");
+            etablissementEntity["new_name"] = etablissement.Nom;
+            etablissementEntity["new_pays"] = etablissement.Pays;
+            etablissementEntity["new_ville"] = etablissement.Ville;
+            etablissementEntity["new_etablissementjkweid"] = etablissement.Identifiant;
+
+            Guid id = orgService.Create(etablissementEntity);
+        }
+
+        private Entity findEtablissementEntity(Etablissement etablissement)
+        {
+            return orgService.Retrieve("new_etablissementjkwe", etablissement.Identifiant, new ColumnSet(true));
+        }
+
+        public void UpdateEtablissement(Etablissement etablissement)
+        {
+            Entity progEntity = findEtablissementEntity(etablissement);
+
+            progEntity["new_name"] = etablissement.Nom;
+            progEntity["new_pays"] = etablissement.Pays;
+            progEntity["new_ville"] = etablissement.Ville;
+            progEntity["new_etablissementjkweid"] = etablissement.Identifiant;
+
+            orgService.Update(progEntity);
+        }
+
+        #endregion
+
         public List<Entity> RetrieveMissions()
         {
             var result = new List<Entity>();

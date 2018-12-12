@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPannelSGM));
             this.gbQuestionSGM = new System.Windows.Forms.GroupBox();
             this.gbGeneralSGM = new System.Windows.Forms.GroupBox();
             this.lblEtablissementAccueil = new System.Windows.Forms.Label();
@@ -57,6 +58,17 @@
             this.Libelle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabMission = new System.Windows.Forms.TabPage();
             this.tabEtablissement = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnAction2EtablissementSGM = new System.Windows.Forms.Button();
+            this.txtVilleEtablissementSGM = new System.Windows.Forms.TextBox();
+            this.btnAction1EtablissementSGM = new System.Windows.Forms.Button();
+            this.txtPaysEtablissementSGM = new System.Windows.Forms.TextBox();
+            this.txtNomEtablissementSGM = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lbEtablissementsSGM = new System.Windows.Forms.ListBox();
             this.tabProgramme = new System.Windows.Forms.TabPage();
             this.lblProgrammeSGM = new System.Windows.Forms.Label();
             this.lbProgrammesSGM = new System.Windows.Forms.ListBox();
@@ -108,6 +120,8 @@
             this.tabAccueil.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvQuestions)).BeginInit();
             this.tabMission.SuspendLayout();
+            this.tabEtablissement.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tabProgramme.SuspendLayout();
             this.gbEtudiantSGM.SuspendLayout();
             this.tabEtudiant.SuspendLayout();
@@ -388,12 +402,121 @@
             // 
             // tabEtablissement
             // 
+            this.tabEtablissement.Controls.Add(this.groupBox2);
+            this.tabEtablissement.Controls.Add(this.label12);
+            this.tabEtablissement.Controls.Add(this.lbEtablissementsSGM);
             this.tabEtablissement.Location = new System.Drawing.Point(4, 22);
             this.tabEtablissement.Name = "tabEtablissement";
             this.tabEtablissement.Size = new System.Drawing.Size(824, 659);
             this.tabEtablissement.TabIndex = 2;
             this.tabEtablissement.Text = "Établissement(s)";
             this.tabEtablissement.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnAction2EtablissementSGM);
+            this.groupBox2.Controls.Add(this.txtVilleEtablissementSGM);
+            this.groupBox2.Controls.Add(this.btnAction1EtablissementSGM);
+            this.groupBox2.Controls.Add(this.txtPaysEtablissementSGM);
+            this.groupBox2.Controls.Add(this.txtNomEtablissementSGM);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Location = new System.Drawing.Point(283, 15);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(322, 111);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Établissement";
+            // 
+            // btnAction2EtablissementSGM
+            // 
+            this.btnAction2EtablissementSGM.Location = new System.Drawing.Point(241, 47);
+            this.btnAction2EtablissementSGM.Name = "btnAction2EtablissementSGM";
+            this.btnAction2EtablissementSGM.Size = new System.Drawing.Size(75, 23);
+            this.btnAction2EtablissementSGM.TabIndex = 4;
+            this.btnAction2EtablissementSGM.Text = "Modifier";
+            this.btnAction2EtablissementSGM.UseVisualStyleBackColor = true;
+            this.btnAction2EtablissementSGM.Click += new System.EventHandler(this.btnAction2EtablissementSGM_Click);
+            // 
+            // txtVilleEtablissementSGM
+            // 
+            this.txtVilleEtablissementSGM.Enabled = false;
+            this.txtVilleEtablissementSGM.Location = new System.Drawing.Point(85, 72);
+            this.txtVilleEtablissementSGM.Name = "txtVilleEtablissementSGM";
+            this.txtVilleEtablissementSGM.Size = new System.Drawing.Size(150, 20);
+            this.txtVilleEtablissementSGM.TabIndex = 5;
+            // 
+            // btnAction1EtablissementSGM
+            // 
+            this.btnAction1EtablissementSGM.Location = new System.Drawing.Point(241, 18);
+            this.btnAction1EtablissementSGM.Name = "btnAction1EtablissementSGM";
+            this.btnAction1EtablissementSGM.Size = new System.Drawing.Size(75, 23);
+            this.btnAction1EtablissementSGM.TabIndex = 3;
+            this.btnAction1EtablissementSGM.Text = "Ajouter";
+            this.btnAction1EtablissementSGM.UseVisualStyleBackColor = true;
+            this.btnAction1EtablissementSGM.Click += new System.EventHandler(this.btnAction1EtablissementSGM_Click);
+            // 
+            // txtPaysEtablissementSGM
+            // 
+            this.txtPaysEtablissementSGM.Enabled = false;
+            this.txtPaysEtablissementSGM.Location = new System.Drawing.Point(85, 46);
+            this.txtPaysEtablissementSGM.Name = "txtPaysEtablissementSGM";
+            this.txtPaysEtablissementSGM.Size = new System.Drawing.Size(150, 20);
+            this.txtPaysEtablissementSGM.TabIndex = 4;
+            // 
+            // txtNomEtablissementSGM
+            // 
+            this.txtNomEtablissementSGM.Enabled = false;
+            this.txtNomEtablissementSGM.Location = new System.Drawing.Point(85, 20);
+            this.txtNomEtablissementSGM.Name = "txtNomEtablissementSGM";
+            this.txtNomEtablissementSGM.Size = new System.Drawing.Size(150, 20);
+            this.txtNomEtablissementSGM.TabIndex = 3;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(15, 75);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(32, 13);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "Ville :";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(15, 49);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(36, 13);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "Pays :";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(15, 23);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(35, 13);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Nom :";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(32, 15);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(83, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Établissements :";
+            // 
+            // lbEtablissementsSGM
+            // 
+            this.lbEtablissementsSGM.FormattingEnabled = true;
+            this.lbEtablissementsSGM.Location = new System.Drawing.Point(13, 31);
+            this.lbEtablissementsSGM.Name = "lbEtablissementsSGM";
+            this.lbEtablissementsSGM.Size = new System.Drawing.Size(120, 95);
+            this.lbEtablissementsSGM.TabIndex = 0;
+            this.lbEtablissementsSGM.SelectedIndexChanged += new System.EventHandler(this.lbEtablissementsSGM_SelectedIndexChanged);
             // 
             // tabProgramme
             // 
@@ -477,6 +600,7 @@
             this.txtCycleProgrammeSGM.Name = "txtCycleProgrammeSGM";
             this.txtCycleProgrammeSGM.Size = new System.Drawing.Size(139, 20);
             this.txtCycleProgrammeSGM.TabIndex = 6;
+            this.txtCycleProgrammeSGM.Text = "1er";
             // 
             // btnAction1ProgrammeSGM
             // 
@@ -841,6 +965,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(851, 709);
             this.Controls.Add(this.tabRecherche);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainPannelSGM";
             this.Text = "Systeme de Gestion de Mission";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainPannelSGM_FormClosing);
@@ -853,6 +978,10 @@
             this.tabAccueil.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvQuestions)).EndInit();
             this.tabMission.ResumeLayout(false);
+            this.tabEtablissement.ResumeLayout(false);
+            this.tabEtablissement.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.tabProgramme.ResumeLayout(false);
             this.tabProgramme.PerformLayout();
             this.gbEtudiantSGM.ResumeLayout(false);
@@ -958,6 +1087,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Pays;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomQueston;
         private System.Windows.Forms.DataGridViewTextBoxColumn Libelle;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ListBox lbEtablissementsSGM;
+        private System.Windows.Forms.Button btnAction2EtablissementSGM;
+        private System.Windows.Forms.Button btnAction1EtablissementSGM;
+        private System.Windows.Forms.TextBox txtVilleEtablissementSGM;
+        private System.Windows.Forms.TextBox txtPaysEtablissementSGM;
+        private System.Windows.Forms.TextBox txtNomEtablissementSGM;
     }
 }
 
