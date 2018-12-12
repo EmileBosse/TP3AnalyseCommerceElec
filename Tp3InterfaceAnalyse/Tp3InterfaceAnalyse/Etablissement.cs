@@ -24,5 +24,11 @@ namespace Tp3InterfaceAnalyse
             Pays = pPays;
             Ville = pVille;
         }
+
+        public Etablissement(string pNom, Guid id)
+        {
+            Nom = pNom;
+            Identifiant = id;
+        }
     }
 }

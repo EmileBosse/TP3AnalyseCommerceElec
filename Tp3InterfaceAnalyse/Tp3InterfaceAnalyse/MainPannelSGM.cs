@@ -19,6 +19,7 @@ namespace Tp3InterfaceAnalyse
         private List<Etudiant> etudiants;
         private List<Employe> employes;
         private List<Programme> programmes;
+        private List<Etablissement> etablissements;
 
 
         public MainPannelSGM()
@@ -27,6 +28,7 @@ namespace Tp3InterfaceAnalyse
             etudiants = new List<Etudiant>();
             employes = new List<Employe>();
             programmes = new List<Programme>();
+            etablissements = new List<Etablissement>();
         }
 
         public void setPreviousWindow(SignIn window)
@@ -108,10 +110,8 @@ namespace Tp3InterfaceAnalyse
                 {
                     var id = item.Attributes["new_etablissementjkweid"];
                     var nom = item.Attributes["new_name"].ToString();
-                    var pays = item.Attributes["new_pays"].ToString();
-                    var ville = item.Attributes["new_ville"].ToString();
-                    lbEtablissement.Items.Add(new ListItem(nom));
-                    resultEta.Add(new Etablissement(nom, (Guid)id, pays, ville));
+                    lbEtablissement.Items.Add(new ListItem(nom, id.ToString()));
+                    resultEta.Add(new Etablissement(nom, (Guid)id));
                 }
             }
         }
@@ -160,9 +160,229 @@ namespace Tp3InterfaceAnalyse
 
         }
 
+        private void btnPaysOriginSGM_Click(object sender, EventArgs e)
+        {
+            // Trier selon le pays en ordre alphabetique
+        }
+
+        private void btnTrieCycleEtudeSGM_Click(object sender, EventArgs e)
+        {
+            // Trier selon le cycle d'etude en ordre alphabetique
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Trier selon le programme d'etude en ordre alphabetique
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Trier selon l'etablissement d'origine en ordre alphabetique
+        }
+
+        private void gvQuestions_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void lblQuestions_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabRecherche_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btn1State = Btn1State.ajouter;
+            btn2State = Btn2State.modifier;
+            //you can add your tab change here if you want to do an onload thing
+            if (tabRecherche.SelectedTab.Name.ToString() == "tabEtudiant")
+            {
+                onloadEtudiantTab();
+                tabRecherche.Height = 273;
+                this.Height = 330;
+                lbEtudiantsSGM.SelectedIndex = 0;
+            }
+            else if (tabRecherche.SelectedTab.Name.ToString() == "tabEmploye")
+            {
+                onloadEmployeTab();
+                tabRecherche.Height = 206;
+                this.Height = 268;
+                lbEmployesSGM.SelectedIndex = 0;
+            }
+            else if (tabRecherche.SelectedTab.Name.ToString() == "tabProgramme")
+            {
+                onloadProgrammeTab();
+                tabRecherche.Height = 192;
+                this.Height = 254;
+                lbProgrammesSGM.SelectedIndex = 0;
+            }
+            else if (tabRecherche.SelectedTab.Name.ToString() == "tabEtablissement")
+            {
+                onloadEtablissementTab();
+                tabRecherche.Height = 172;
+                this.Height = 233;
+                lbEtablissementsSGM.SelectedIndex = 0;
+            }
+            else
+            {
+                this.Height = 748;
+                tabRecherche.Height = 685;
+            }
+        }
+
+        #region tabEtablissement
+
+        private Guid selectedEtablissementId;
+
+        private void lbEtablissementsSGM_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //here we need to fill the info box to the right
+            clearEtablissementFields(false);
+        }
+
+        private void enableEtablissementFields(bool enable)
+        {
+            txtNomEtablissementSGM.Enabled = enable;
+            txtPaysEtablissementSGM.Enabled = enable;
+            txtVilleEtablissementSGM.Enabled = enable;
+
+            lbEtablissementsSGM.Enabled = !enable;
+        }
+
+        private void clearEtablissementFields(bool clear)
+        {
+            if (clear)
+            {
+                txtNomEtablissementSGM.Text = "";
+                txtPaysEtablissementSGM.Text = "";
+                txtVilleEtablissementSGM.Text = "";
+            }
+            else
+            {
+                foreach (Etablissement et in etablissements)
+                {
+                    if (et.Nom == lbEtablissementsSGM.SelectedItem.ToString())
+                    {
+                        txtNomEtablissementSGM.Text = et.Nom;
+                        txtPaysEtablissementSGM.Text = et.Pays;
+                        txtVilleEtablissementSGM.Text = et.Ville;
+
+                        selectedEtablissementId = et.Identifiant;
+                    }
+                }
+            }
+        }
+
+        private void btnAction1EtablissementSGM_Click(object sender, EventArgs e)
+        {
+            switch (btn1State)
+            {
+                case Btn1State.ajouter:
+                    //clear all the fields
+                    enableEtablissementFields(true);
+                    clearEtablissementFields(true);
+                    //switch btn1 to confirmerAjout
+                    btn1State = Btn1State.confirmerAjout;
+                    btnAction1EtablissementSGM.Text = "Confirmer";
+                    //switch btn2 to annulerAjout
+                    btn2State = Btn2State.annulerAjout;
+                    btnAction2EtablissementSGM.Text = "Annuler";
+                    break;
+                case Btn1State.confirmerAjout:
+                    crm.CreateEtablissement(new Etablissement(txtNomEtablissementSGM.Text, new Guid(), txtPaysEtablissementSGM.Text, txtVilleEtablissementSGM.Text));
+                    onloadEtablissementTab();
+                    enableEtablissementFields(false);
+                    //switch btn1 to ajouter
+                    btn1State = Btn1State.ajouter;
+                    btnAction1EtablissementSGM.Text = "Ajouter";
+                    //switch btn2 to modifier
+                    btn2State = Btn2State.modifier;
+                    btnAction2EtablissementSGM.Text = "Modifier";
+                    break;
+                case Btn1State.confirmerModif:
+                    //throw the modification action to CRM
+                    crm.UpdateEtablissement(new Etablissement(txtNomEtablissementSGM.Text, selectedEtablissementId, txtPaysEtablissementSGM.Text, txtVilleEtablissementSGM.Text));
+                    onloadEtablissementTab();
+                    enableEtablissementFields(false);
+                    //switch btn1 to ajouter
+                    btn1State = Btn1State.ajouter;
+                    btnAction1EtablissementSGM.Text = "Ajouter";
+                    //switch btn2 to modifier
+                    btn2State = Btn2State.modifier;
+                    btnAction1EtablissementSGM.Text = "Modifier";
+                    break;
+            }
+        }
+
+        private void btnAction2EtablissementSGM_Click(object sender, EventArgs e)
+        {
+            switch (btn2State)
+            {
+                case Btn2State.modifier:
+                    //Enable the fields
+                    enableEtablissementFields(true);
+                    //switch btn2 to annulerModif
+                    btn2State = Btn2State.annulerModif;
+                    btnAction2EtablissementSGM.Text = "Annuler";
+                    //switch btn1 to confirmerModif
+                    btn1State = Btn1State.confirmerModif;
+                    btnAction1EtablissementSGM.Text = "Confirmer";
+                    break;
+                case Btn2State.annulerAjout:
+                    //messagebox of validation
+                    DialogResult dialogResult1 = MessageBox.Show("Êtes-vous certain de vouloir annuler l'ajout?", "SGM", MessageBoxButtons.YesNo);
+                    //if yes fill the field with the initial state
+                    if (dialogResult1 == DialogResult.Yes)
+                    {
+                        enableEtablissementFields(false);
+                        clearEtablissementFields(false);
+                        //switch btn2 to modifier
+                        btn2State = Btn2State.modifier;
+                        btnAction2EtablissementSGM.Text = "Modifier";
+                        //switch btn1 to ajouter
+                        btn1State = Btn1State.ajouter;
+                        btnAction1EtablissementSGM.Text = "Ajouter";
+                    }
+                    //else do nothing
+                    break;
+                case Btn2State.annulerModif:
+                    //messagebox of validation
+                    DialogResult dialogResult2 = MessageBox.Show("Êtes-vous certain de vouloir annuler les modifications?", "SGM", MessageBoxButtons.YesNo);
+                    //if yes fill the field with the initial state
+                    if (dialogResult2 == DialogResult.Yes)
+                    {
+                        enableEtablissementFields(false);
+                        clearEtablissementFields(false);
+                        //switch btn2 to modifier
+                        btn2State = Btn2State.modifier;
+                        btnAction2EtablissementSGM.Text = "Modifier";
+                        //switch btn1 to ajouter
+                        btn1State = Btn1State.ajouter;
+                        btnAction1EtablissementSGM.Text = "Ajouter";
+                    }
+                    //else do nothing
+                    break;
+            }
+        }
+
+        private void onloadEtablissementTab()
+        {
+            lbEtablissementsSGM.Items.Clear();
+            foreach (var item in crm.RetrieveEtablissements())
+            {
+                var id = item.Attributes["new_etablissementjkweid"];
+                var nom = item.Attributes["new_name"].ToString();
+                var pays = item.Attributes["new_pays"].ToString();
+                var ville = item.Attributes["new_ville"].ToString();
+                lbEtablissementsSGM.Items.Add(new ListItem(nom));
+                etablissements.Add(new Etablissement(nom, (Guid)id, pays, ville));
+            }
+        }
+        #endregion
+
         #region tabEtudiant
 
-        private enum Btn1State { ajouter, confirmerAjout, confirmerModif};
+        private enum Btn1State { ajouter, confirmerAjout, confirmerModif };
         private Btn1State btn1State = Btn1State.ajouter;
         private enum Btn2State { modifier, annulerAjout, annulerModif };
         private Btn2State btn2State = Btn2State.modifier;
@@ -331,70 +551,6 @@ namespace Tp3InterfaceAnalyse
         }
 
         #endregion
-
-        private void tabRecherche_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            btn1State = Btn1State.ajouter;
-            btn2State = Btn2State.modifier;
-            //you can add your tab change here if you want to do an onload thing
-            if (tabRecherche.SelectedTab.Name.ToString() == "tabEtudiant")
-            {
-                onloadEtudiantTab();
-                tabRecherche.Height = 273;
-                this.Height = 330;
-                lbEtudiantsSGM.SelectedIndex = 0;
-            }
-            else if (tabRecherche.SelectedTab.Name.ToString() == "tabEmploye")
-            {
-                onloadEmployeTab();
-                tabRecherche.Height = 206;
-                this.Height = 268;
-                lbEmployesSGM.SelectedIndex = 0;
-            }
-            else if(tabRecherche.SelectedTab.Name.ToString() == "tabProgramme")
-            {
-                onloadProgrammeTab();
-                tabRecherche.Height = 192;
-                this.Height = 254;
-                lbProgrammesSGM.SelectedIndex = 0;
-            }
-            else
-            {
-                this.Height = 748;
-                tabRecherche.Height = 685;
-            }
-        }
-
-        private void btnPaysOriginSGM_Click(object sender, EventArgs e)
-        {
-            // Trier selon le pays en ordre alphabetique
-        }
-
-        private void btnTrieCycleEtudeSGM_Click(object sender, EventArgs e)
-        {
-            // Trier selon le cycle d'etude en ordre alphabetique
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            // Trier selon le programme d'etude en ordre alphabetique
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // Trier selon l'etablissement d'origine en ordre alphabetique
-        }
-
-        private void gvQuestions_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void lblQuestions_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         #region tabEmploye
 
