@@ -116,7 +116,7 @@ namespace Tp3InterfaceAnalyse
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void lblEtudiantListSGM_Click(object sender, EventArgs e)
@@ -365,22 +365,94 @@ namespace Tp3InterfaceAnalyse
 
         private void btnPaysOriginSGM_Click(object sender, EventArgs e)
         {
-            // Trier selon le pays en ordre alphabetique
+            List<Etudiant> result = new List<Etudiant>();
+            lbEtudiantsSGM.Items.Clear();
+            foreach (var item in crm.RetrieveEtudiantsOrderByPays())
+            {
+                var id = item.Attributes["new_etudiantjkweid"];
+                var nom = item.Attributes["new_name"].ToString();
+                var pays = item.Attributes["new_pays"].ToString();
+                var prenom = item.Attributes["new_prenom"].ToString();
+                var adresse = item.Attributes["new_adresse"].ToString();
+                var ville = item.Attributes["new_ville"].ToString();
+                var codepermanent = item.Attributes["new_codepermanent"].ToString();
+                lbEtudiantsSGM.Items.Add(new ListItem(nom));
+                result.Add(new Etudiant(nom, (Guid)id, prenom, adresse, ville, pays, codepermanent));
+            }
+
+            gvEtudiant.Columns.Clear();
+            var bindinList = new BindingList<Etudiant>(result);
+            gvEtudiant.DataSource = new BindingSource(bindinList, null);
+            gvEtudiant.Columns["Identifiant"].Visible = false;
         }
 
         private void btnTrieCycleEtudeSGM_Click(object sender, EventArgs e)
         {
-            // Trier selon le cycle d'etude en ordre alphabetique
+            List<Etudiant> result = new List<Etudiant>();
+            lbEtudiantsSGM.Items.Clear();
+            foreach (var item in crm.RetrieveEtudiantsOrderByCycle())
+            {
+                var id = item.Attributes["new_etudiantjkweid"];
+                var nom = item.Attributes["new_name"].ToString();
+                var pays = item.Attributes["new_pays"].ToString();
+                var prenom = item.Attributes["new_prenom"].ToString();
+                var adresse = item.Attributes["new_adresse"].ToString();
+                var ville = item.Attributes["new_ville"].ToString();
+                var codepermanent = item.Attributes["new_codepermanent"].ToString();
+                lbEtudiantsSGM.Items.Add(new ListItem(nom));
+                result.Add(new Etudiant(nom, (Guid)id, prenom, adresse, ville, pays, codepermanent));
+            }
+
+            gvEtudiant.Columns.Clear();
+            var bindinList = new BindingList<Etudiant>(result);
+            gvEtudiant.DataSource = new BindingSource(bindinList, null);
+            gvEtudiant.Columns["Identifiant"].Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Trier selon le programme d'etude en ordre alphabetique
+            List<Etudiant> result = new List<Etudiant>();
+            lbEtudiantsSGM.Items.Clear();
+            foreach (var item in crm.RetrieveEtudiantsOrderByProgramme())
+            {
+                var id = item.Attributes["new_etudiantjkweid"];
+                var nom = item.Attributes["new_name"].ToString();
+                var pays = item.Attributes["new_pays"].ToString();
+                var prenom = item.Attributes["new_prenom"].ToString();
+                var adresse = item.Attributes["new_adresse"].ToString();
+                var ville = item.Attributes["new_ville"].ToString();
+                var codepermanent = item.Attributes["new_codepermanent"].ToString();
+                lbEtudiantsSGM.Items.Add(new ListItem(nom));
+                result.Add(new Etudiant(nom, (Guid)id, prenom, adresse, ville, pays, codepermanent));
+            }
+
+            gvEtudiant.Columns.Clear();
+            var bindinList = new BindingList<Etudiant>(result);
+            gvEtudiant.DataSource = new BindingSource(bindinList, null);
+            gvEtudiant.Columns["Identifiant"].Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Trier selon l'etablissement d'origine en ordre alphabetique
+            List<Etudiant> result = new List<Etudiant>();
+            lbEtudiantsSGM.Items.Clear();
+            foreach (var item in crm.RetrieveEtudiantsOrderByCycle())
+            {
+                var id = item.Attributes["new_etudiantjkweid"];
+                var nom = item.Attributes["new_name"].ToString();
+                var pays = item.Attributes["new_pays"].ToString();
+                var prenom = item.Attributes["new_prenom"].ToString();
+                var adresse = item.Attributes["new_adresse"].ToString();
+                var ville = item.Attributes["new_ville"].ToString();
+                var codepermanent = item.Attributes["new_codepermanent"].ToString();
+                lbEtudiantsSGM.Items.Add(new ListItem(nom));
+                result.Add(new Etudiant(nom, (Guid)id, prenom, adresse, ville, pays, codepermanent));
+            }
+
+            gvEtudiant.Columns.Clear();
+            var bindinList = new BindingList<Etudiant>(result);
+            gvEtudiant.DataSource = new BindingSource(bindinList, null);
+            gvEtudiant.Columns["Identifiant"].Visible = false;
         }
 
         private void gvQuestions_CellContentClick(object sender, DataGridViewCellEventArgs e)

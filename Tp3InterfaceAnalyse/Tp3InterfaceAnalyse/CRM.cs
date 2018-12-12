@@ -209,6 +209,136 @@ namespace Tp3InterfaceAnalyse
             }
         }
 
+        #region ÉtudiantOrderByPays
+        public List<Entity> RetrieveEtudiantsOrderByPays()
+        {
+            var result = new List<Entity>();
+
+            QueryExpression queryExp = new QueryExpression();
+            queryExp.EntityName = "new_etudiantjkwe";
+            queryExp.ColumnSet = new ColumnSet();
+            queryExp.ColumnSet.Columns.Add("new_name");
+            queryExp.ColumnSet.Columns.Add("new_prenom");
+            queryExp.ColumnSet.Columns.Add("new_adresse");
+            queryExp.ColumnSet.Columns.Add("new_pays");
+            queryExp.ColumnSet.Columns.Add("new_ville");
+            queryExp.ColumnSet.Columns.Add("new_codepermanent");
+            queryExp.ColumnSet.Columns.Add("new_etudiantjkweid");
+            queryExp.Orders.Add(new OrderExpression("new_pays", OrderType.Ascending));
+            EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
+            if (contCollection.Entities.Count > 0)
+            {
+                result.AddRange(contCollection.Entities.ToList());
+                return result;
+            }
+            else
+            {
+                return result;
+            }
+        }
+        #endregion
+
+        #region ÉtudiantOrderByCycle
+        public List<Entity> RetrieveEtudiantsOrderByCycle()
+        {
+            var result = new List<Entity>();
+
+            QueryExpression queryExp = new QueryExpression();
+            queryExp.EntityName = "new_etudiantjkwe";
+            queryExp.ColumnSet = new ColumnSet();
+            queryExp.ColumnSet.Columns.Add("new_name");
+            queryExp.ColumnSet.Columns.Add("new_prenom");
+            queryExp.ColumnSet.Columns.Add("new_adresse");
+            queryExp.ColumnSet.Columns.Add("new_pays");
+            queryExp.ColumnSet.Columns.Add("new_ville");
+            queryExp.ColumnSet.Columns.Add("new_codepermanent");
+            queryExp.ColumnSet.Columns.Add("new_etudiantjkweid");
+            queryExp.LinkEntities.Add(new LinkEntity("new_etudiantjkwe", "new_new_programme_etude_jkwe_new_etudiantjk", "new_etudiantjkweid", "new_etudiantjkweid", JoinOperator.Inner));
+            queryExp.LinkEntities[0].Columns.AddColumn("new_new_programme_etude_jkwe_new_etudiantjkid");
+            queryExp.LinkEntities[0].EntityAlias = "Programmeliees";
+            queryExp.Orders.Add(new OrderExpression("new_etudiantjkweid", OrderType.Ascending));
+
+            EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
+            if (contCollection.Entities.Count > 0)
+            {
+                result.AddRange(contCollection.Entities.ToList());
+                return result;
+            }
+            else
+            {
+                return result;
+            }
+        }
+        #endregion
+
+        #region ÉtudiantOrderByProgramme
+        public List<Entity> RetrieveEtudiantsOrderByProgramme()
+        {
+            var result = new List<Entity>();
+
+            QueryExpression queryExp = new QueryExpression();
+            queryExp.EntityName = "new_etudiantjkwe";
+            queryExp.ColumnSet = new ColumnSet();
+            queryExp.ColumnSet.Columns.Add("new_name");
+            queryExp.ColumnSet.Columns.Add("new_prenom");
+            queryExp.ColumnSet.Columns.Add("new_adresse");
+            queryExp.ColumnSet.Columns.Add("new_pays");
+            queryExp.ColumnSet.Columns.Add("new_ville");
+            queryExp.ColumnSet.Columns.Add("new_codepermanent");
+            queryExp.ColumnSet.Columns.Add("new_etudiantjkweid");
+            queryExp.LinkEntities.Add(new LinkEntity("new_etudiantjkwe", "new_new_programme_etude_jkwe_new_etudiantjk", "new_etudiantjkweid", "new_etudiantjkweid", JoinOperator.Inner));
+            queryExp.LinkEntities[0].Columns.AddColumn("new_new_programme_etude_jkwe_new_etudiantjkid");
+            queryExp.LinkEntities[0].EntityAlias = "Programmeliees";
+            queryExp.Orders.Add(new OrderExpression("new_etudiantjkweid", OrderType.Descending));
+
+            EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
+            if (contCollection.Entities.Count > 0)
+            {
+                result.AddRange(contCollection.Entities.ToList());
+                return result;
+            }
+            else
+            {
+                return result;
+            }
+        }
+        #endregion
+
+        #region ÉtudiantOrderByEtabliesement
+        public List<Entity> RetrieveEtudiantsOrderByEtabliesement()
+        {
+            var result = new List<Entity>();
+
+            QueryExpression queryExp = new QueryExpression();
+            queryExp.EntityName = "new_etudiantjkwe";
+            queryExp.ColumnSet = new ColumnSet();
+            queryExp.ColumnSet.Columns.Add("new_name");
+            queryExp.ColumnSet.Columns.Add("new_prenom");
+            queryExp.ColumnSet.Columns.Add("new_adresse");
+            queryExp.ColumnSet.Columns.Add("new_pays");
+            queryExp.ColumnSet.Columns.Add("new_ville");
+            queryExp.ColumnSet.Columns.Add("new_codepermanent");
+            queryExp.ColumnSet.Columns.Add("new_etudiantjkweid");
+            queryExp.Orders.Add(new OrderExpression("new_pays", OrderType.Ascending));
+            queryExp.LinkEntities.Add(new LinkEntity("new_etudiantjkwe", "new_new_etablisementjkwe_new_etudiantjkwe", "new_etudiantjkweid", "new_etudiantjkweid", JoinOperator.Inner));
+            queryExp.LinkEntities[0].Columns.AddColumn("new_new_etablisementjkwe_new_etudiantjkweid");
+            queryExp.LinkEntities[0].Columns.AddColumn("new_new_etablisementjkweid");
+            queryExp.LinkEntities[0].EntityAlias = "Etablisementliees";
+            queryExp.Orders.Add(new OrderExpression("new_new_etablisementjkweid", OrderType.Ascending));
+
+            EntityCollection contCollection = orgService.RetrieveMultiple(queryExp);
+            if (contCollection.Entities.Count > 0)
+            {
+                result.AddRange(contCollection.Entities.ToList());
+                return result;
+            }
+            else
+            {
+                return result;
+            }
+        }
+        #endregion
+
         public void CreateEtudiant(Etudiant etudiant)
         {
             Entity etudEnti = new Entity("new_etudiantjkwe");
